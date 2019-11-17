@@ -1,4 +1,6 @@
 .about-me {
+  background-image: url('../../assets/images/swirl_pattern_opaque.jpg') !important;
+  background-attachment: fixed;
   .card-wrapper {
     &:not(:last-child) {
       margin-bottom: 40px;

@@ -8,11 +8,12 @@ import ScrollSpy from './js/components/UI/ScrollSpy';
 import AboutMe from './js/components/AboutMe';
 import Skills from './js/components/Skills';
 import Footer from './js/components/Footer';
+import MyPortfolio from './js/components/MyPortfolio';
 //load banner lazily
 const AsyncBanner = lazy(() => import('./js/components/Banner'));
 
 class App extends Component {
-	scrollSpyData = ['', 'about-me', 'skills'];
+	scrollSpyData = ['', 'about-me', 'skills', 'my-portfolio'];
 	render() {
 		return (
 			<Suspense fallback={<div>...loading</div>}>
@@ -20,6 +21,7 @@ class App extends Component {
 					<AsyncBanner />
 					<AboutMe />
 					<Skills />
+					<MyPortfolio />
 				</ScrollSpy>
 				<Footer />
 				<SideNav />
