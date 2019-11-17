@@ -2,9 +2,9 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NavigationItem from './NavigationItem';
 
-const SideNav = (props) => {
+const SideNav = ({ history }) => {
 	const replaceUrl = (url) => {
-		props.history.replace(url);
+		history.replace(url);
 	};
 
 	return (
