@@ -1,0 +1,12 @@
+.skills {
+  background-color: #f5f5f5;
+
+  &.section .title-container {
+    margin: 0;
+  }
+  .skills-wrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}

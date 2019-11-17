@@ -29,10 +29,11 @@
     margin-bottom: 5px;
     color: white;
     text-decoration: none;
+    white-space: nowrap;
     @include border-radius(50%);
     @include flex-center();
     @include transition($transition300);
-    #{$rollover} {
+    &.active {
       text-decoration: none;
       background: rgba(255, 255, 255, 0.5);
       @include transition($transition150);
@@ -53,9 +54,9 @@
     opacity: 0;
     font-size: 12px;
     color: white;
-    background: rgba($green1, 0.5);
+    background: #5087b7;
     text-align: right;
-    padding: 2px 12px;
+    padding: 3px 12px 4px;
     position: absolute;
     top: 50%;
     left: 30px;

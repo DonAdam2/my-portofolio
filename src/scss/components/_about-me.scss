@@ -1,11 +1,34 @@
 .about-me {
-  padding: 3rem 0;
-  text-align: center;
-
   .card-wrapper {
-    height: 100%;
     &:not(:last-child) {
       margin-bottom: 40px;
+    }
+  }
+
+  .about-row {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 0 auto;
+
+    .about-column {
+      border-radius: 34px;
+      text-align: center;
+      flex-basis: 32%;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .about-me {
+    .card-wrapper {
+      &:not(:last-child) {
+        margin-bottom: 0;
+      }
+    }
+
+    .about-row {
+      flex-direction: row;
     }
   }
 }

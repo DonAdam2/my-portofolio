@@ -1,3 +1,9 @@
+@import "../generic/variables";
+
+.banner {
+  background-color: #e6e6e6;
+}
+
 .bg {
   position: relative;
   height: 65vh;
@@ -27,12 +33,16 @@
     font-size: 1.5rem;
   }
 }
-@media (min-width: 545px) {
+
+// >512
+@media (min-width: $mobile-large) {
   .bg {
     height: 85vh;
   }
 }
-@media (min-width: 768px) {
+
+// >768
+@media (min-width: $tablet) {
   .quote {
     h1 {
       font-size: 3rem;

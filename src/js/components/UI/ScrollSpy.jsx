@@ -112,7 +112,7 @@ class ScrollSpy extends Component {
 }
 
 ScrollSpy.propTypes = {
-	data: PropTypes.array,
+	data: PropTypes.array.isRequired,
 };
 
 export default withRouter(ScrollSpy);

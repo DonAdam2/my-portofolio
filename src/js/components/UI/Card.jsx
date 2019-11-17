@@ -10,14 +10,14 @@ const Card = ({ title, titleIcon, description }) => (
 			<span className="icon-wrapper">{titleIcon}</span>
 			<span className="text">{title}</span>
 		</h3>
-		<p className="description">{description}</p>
+		<div className="description">{description}</div>
 	</FadeContent>
 );
 
 Card.propTypes = {
-	title: PropTypes.string,
-	titleIcon: PropTypes.node,
-	description: PropTypes.string,
+	title: PropTypes.string.isRequired,
+	titleIcon: PropTypes.node.isRequired,
+	description: PropTypes.node.isRequired,
 };
 
 export default Card;

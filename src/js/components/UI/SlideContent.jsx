@@ -49,8 +49,8 @@ class SlideContent extends Component {
 }
 
 SlideContent.propTypes = {
-	leftMarkup: PropTypes.node,
-	rightMarkup: PropTypes.node,
+	leftMarkup: PropTypes.node.isRequired,
+	rightMarkup: PropTypes.node.isRequired,
 };
 
 export default SlideContent;

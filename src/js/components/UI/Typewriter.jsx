@@ -63,7 +63,7 @@ class Typewriter extends Component {
 }
 
 Typewriter.propTypes = {
-	sentencesText: PropTypes.array,
+	sentencesText: PropTypes.array.isRequired,
 	typingSpeed: PropTypes.number,
 	isInfinite: PropTypes.bool,
 };
