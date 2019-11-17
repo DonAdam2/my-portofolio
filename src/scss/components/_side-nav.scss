@@ -30,6 +30,7 @@
     color: white;
     text-decoration: none;
     white-space: nowrap;
+    font-weight: 700;
     @include border-radius(50%);
     @include flex-center();
     @include transition($transition300);
