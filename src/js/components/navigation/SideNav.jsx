@@ -9,9 +9,9 @@ const SideNav = (props) => {
 
 	return (
 		<nav className="quick-nav">
-			<NavigationItem click={replaceUrl} link="/" icon="fa-home" title="Home" exact={true} />
+			<NavigationItem click={replaceUrl} link="/" icon="fa-home" title="Intro" exact={true} />
 			<NavigationItem click={replaceUrl} link="/about-me" icon="fa-info" title="About Me" />
-			<NavigationItem click={replaceUrl} link="/skills" icon="fa-brain" title="Skills" />
+			<NavigationItem click={replaceUrl} link="/skills" icon="fa-cogs" title="Skills" />
 		</nav>
 	);
 };
