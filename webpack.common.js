@@ -130,7 +130,7 @@ module.exports = (env, options) => {
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
-				title: 'Webpack React',
+				title: 'Adam Morsi Portfolio',
 				template: __dirname + `/${rootDirectory}/index.html`,
 				filename: 'index.html',
 				inject: 'body',
