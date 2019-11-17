@@ -18,11 +18,17 @@ const Footer = () => {
 					<div className="col-xxs-4">
 						<h1>Contact</h1>
 						<ul>
-							<li>Tel: 0035797691992</li>
 							<li>
-								<a href="mailto:adam.morsi@yahoo.com">Email: adam.morsi@yahoo.com</a>
+								<a href="mailto:adam.morsi@yahoo.com">
+									<strong>Email:</strong> adam.morsi@yahoo.com
+								</a>
 							</li>
-							<li>Skype: don.adam8</li>
+							<li>
+								<strong>Tel:</strong> 0035797691992
+							</li>
+							<li>
+								<strong>Skype:</strong> don.adam8
+							</li>
 						</ul>
 					</div>
 					<div className="col-xxs-4">

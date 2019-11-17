@@ -11,6 +11,9 @@ const MyPortfolio = () => (
 					<Title title="my portfolio" />
 				</div>
 				<div className="col-xxs-12">
+					<h2 className="subtitle">Some Projects</h2>
+				</div>
+				<div className="col-xxs-12">
 					<SlideContent
 						leftMarkup={
 							<Fragment>
@@ -38,6 +41,68 @@ const MyPortfolio = () => (
 						}
 						rightMarkup={<img src="../../assets/images/fxprimus.png" alt="fxprimus" />}
 					/>
+				</div>
+				<div className="col-xxs-12">
+					<SlideContent
+						leftMarkup={<img src="../../assets/images/Cooking.png" alt="Cooking" />}
+						rightMarkup={
+							<Fragment>
+								<div className="title-wrapper">
+									<h2 className="title">Cooking App</h2>
+								</div>
+								<h3>Overview</h3>
+								<p>
+									This app was created using Angular 7. It has 3 filters using Angular pipes and it
+									has search functionality (based on tags) as well. I'm using flexbox to setup the
+									layout.
+								</p>
+								<h3>Project Skills</h3>
+								<p>
+									Angular 7
+									<br />
+									Typescript
+									<br />
+									SCSS
+									<br />
+									HTML5
+								</p>
+							</Fragment>
+						}
+					/>
+				</div>
+				<div className="col-xxs-12">
+					<h2 className="subtitle">Some Pens</h2>
+				</div>
+				<div className="col-xxs-12">
+					<SlideContent
+						leftMarkup={
+							<Fragment>
+								<div className="title-wrapper">
+									<h2 className="title">React crop</h2>
+								</div>
+								<h3>Overview</h3>
+								<p>
+									This pen allows the user to select the required portion of an image to crop it. It
+									has a lot of functionalities such as allowing the user to set the desired ratio
+									and flip image vertically or horizontally.
+								</p>
+								<h3>Project Skills</h3>
+								<p>
+									React
+									<br />
+									HTML5/SCSS
+									<br />
+									Javascript
+								</p>
+							</Fragment>
+						}
+						rightMarkup={<img src="../../assets/images/selectAndCrop.png" alt="selectAndCrop" />}
+					/>
+				</div>
+				<div className="col-xxs-12 text-center">
+					<a className="btn" href="https://codepen.io/AdamMorsi" target="_blank">
+						More pens
+					</a>
 				</div>
 			</div>
 		</div>

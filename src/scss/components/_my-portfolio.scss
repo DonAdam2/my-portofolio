@@ -12,4 +12,45 @@
       margin-top: 0;
     }
   }
+  .subtitle {
+    color: #E53935;
+    margin: 0;
+    text-align: center;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .btn{
+    position: relative;
+    cursor: pointer;
+    border: 1px solid #5087b7;
+    color: #5087b7;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 1em 1.5em;
+    z-index: 1;
+    border-radius: 5px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.2);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 250ms ease-in;
+      z-index: -1;
+      border-radius: 5px;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+
 }
