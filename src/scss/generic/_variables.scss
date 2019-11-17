@@ -3,3 +3,34 @@ $mobile-large : 512px;
 $tablet : 768px;
 $laptop : 992px;
 $desktop : 1200px;
+
+//colors for animated desktop component
+$white: #fff;
+$table-height: 6px;
+$base-color: #1b85cc;
+$color1: #bbedff;
+$color2: #004a77;
+$color3: #e9f9fe;
+$color4: #0061ad;
+$color5: #45bdf9;
+$color6: #74cefb;
+$color8: #effbff;
+$color10: #ccf2ff;
+$color11: #75add5;
+$color12: #98dbfc;
+$color13: #005692;
+$color14: #2282b8;
+$book-skew: 30deg;
+$line-thickness: 3px;
+
+//*** COLORS for sidenav ***/
+$blue1: #264868;
+$blue2: #3e6386;
+$green1: #59b7a9;
+
+//*** VARIABLES for sidenav ***/
+$element-height: 40px;
+$transition150: all 150ms ease-in-out;
+$transition300: all 300ms ease-in-out;
+$screen-mobile: "only screen and (max-width : 767px)";
+$rollover: "&.active, &:active, &:hover, &:focus";

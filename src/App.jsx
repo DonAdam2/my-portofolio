@@ -1,37 +1,28 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { connect } from 'react-redux';
-
-//selectors
-import { getTestAction } from './js/store/selectors/AppSelectors';
-//actions
-import { setTestAction } from './js/store/actions/AppActions';
+//components
+import SideNav from './js/components/navigation/SideNav';
+import BackToTop from './js/components/UI/BackToTop';
+import AboutMe from './js/components/AboutMe';
+//load banner lazily
+const AsyncBanner = lazy(() => import('./js/components/Banner'));
 
 class App extends Component {
 	render() {
-		const { testAction, setTestAction } = this.props;
 		return (
 			<div>
-				<p>
-					Testing the store <strong>{testAction}</strong>
-				</p>
-				<button className="std-btn primary" onClick={setTestAction}>
-					Change text
-				</button>
+				<Suspense fallback={<div>...loading</div>}>
+					<SideNav />
+					<AsyncBanner />
+					<div className="container">
+						<AboutMe />
+					</div>
+					<BackToTop btnColor="#dc3545" iconColor="#fff" scrollAnimationTime={700} />
+				</Suspense>
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = (state) => ({
-	testAction: getTestAction({ state }),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-	setTestAction: () => dispatch(setTestAction()),
-});
-
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(hot(App));
+export default connect()(hot(App));

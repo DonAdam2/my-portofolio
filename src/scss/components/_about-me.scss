@@ -1,0 +1,11 @@
+.about-me {
+  padding: 3rem 0;
+  text-align: center;
+
+  .card-wrapper {
+    height: 100%;
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+  }
+}

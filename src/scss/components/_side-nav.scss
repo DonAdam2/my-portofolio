@@ -1,0 +1,66 @@
+@import "../generic/mixins";
+@import "../generic/variables";
+
+//*** QUICK NAV ***/
+.quick-nav {
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 50%;
+  width: $element-height;
+  background: rgba(darken($blue1, 20%), 0.25);
+  @include border-radius(50px);
+  @include transform(50%);
+  @include flexbox();
+  @include flex-direction(column);
+  @include align-items(center);
+  @include transition($transition300);
+  &:hover {
+    @include transition($transition150);
+  }
+  @media #{$screen-mobile} {
+    display: none;
+  }
+
+  &-item {
+    position: relative;
+    height: $element-height;
+    width: $element-height;
+    margin-bottom: 5px;
+    color: white;
+    text-decoration: none;
+    @include border-radius(50%);
+    @include flex-center();
+    @include transition($transition300);
+    #{$rollover} {
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.5);
+      @include transition($transition150);
+      .quick-nav-title {
+        opacity: 1;
+        left: 40px;
+        @include transition($transition150);
+      }
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &-title {
+    display: block;
+    pointer-events: none;
+    opacity: 0;
+    font-size: 12px;
+    color: white;
+    background: rgba($green1, 0.5);
+    text-align: right;
+    padding: 2px 12px;
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    @include transform-all(translateY(-50%));
+    @include border-radius(50px);
+    @include transition($transition300);
+  }
+}

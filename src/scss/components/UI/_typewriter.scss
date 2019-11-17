@@ -1,0 +1,13 @@
+.typewriter {
+  border-right: 2px solid #fff;
+  animation: blinkTextCursor 0.5s infinite;
+}
+
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: #ffff;
+  }
+  to {
+    border-right-color: transparent;
+  }
+}

@@ -1,0 +1,51 @@
+.bg {
+  position: relative;
+  height: 65vh;
+  background-image: url("../../assets/images/banner.jpg");
+  background-size: 160% 160vh;
+  background-position: 0 20%;
+  background-repeat: repeat-x;
+  font-family: "Anonymous Pro", monospace;
+  text-align: center;
+  text-shadow: 1px 1px;
+  color: #fff;
+  animation: shift 45s linear infinite;
+}
+
+.quote {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 200%;
+  overflow: hidden;
+  width: 100vw;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+
+  h1 {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 545px) {
+  .bg {
+    height: 85vh;
+  }
+}
+@media (min-width: 768px) {
+  .quote {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+}
+
+@keyframes shift {
+  from {
+    background-position: 0 20%;
+  }
+
+  to {
+    background-position: 100% 20%;
+  }
+}
