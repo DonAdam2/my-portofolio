@@ -20,6 +20,7 @@ const Banner = () => (
 					/>
 				</p>
 			</div>
+			<div className="image-overlay" />
 		</div>
 	</div>
 );
