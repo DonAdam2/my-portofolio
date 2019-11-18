@@ -22,6 +22,10 @@ class Typewriter extends Component {
 		);
 	}
 
+	componentWillUnmount() {
+		clearInterval(this.timer);
+	}
+
 	tick = () => {
 		const { subText, loopNum, isDeleting } = this.state,
 			{ isInfinite, sentencesText } = this.props,

@@ -44,7 +44,7 @@ const MyPortfolio = () => (
 				</div>
 				<div className="col-xxs-12">
 					<SlideContent
-						leftMarkup={<img src="../../assets/images/Cooking.png" alt="Cooking" />}
+						leftMarkup={<img src="../../assets/images/cooking.png" alt="Cooking" />}
 						rightMarkup={
 							<Fragment>
 								<div className="title-wrapper">
