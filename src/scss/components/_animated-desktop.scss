@@ -2,6 +2,7 @@
 @import "../generic/mixins";
 
 .animated-desktop-container {
+  display: none;
   position: relative;
   width: 423px;
   height: 238px;
@@ -728,5 +729,11 @@
   }
   100% {
     transform: translate(22px, -10px);
+  }
+}
+
+@media(min-width: 436px) {
+  .animated-desktop-container {
+    display: block;
   }
 }

@@ -1,6 +1,5 @@
 import React, { Component, Suspense, lazy } from 'react';
 import { hot } from 'react-hot-loader/root';
-import { connect } from 'react-redux';
 //components
 import SideNav from './js/components/navigation/SideNav';
 import BackToTop from './js/components/UI/BackToTop';
@@ -31,4 +30,4 @@ class App extends Component {
 	}
 }
 
-export default connect()(hot(App));
+export default hot(App);

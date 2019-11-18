@@ -1,6 +1,20 @@
+@import "../generic/variables";
+
 .footer {
   text-align: center;
   background-color: #101010;
+
+  .row {
+    div:not(:first-child) {
+      margin-top: 50px;
+    }
+  }
+
+  .codepen-link {
+    svg {
+      margin-right: 20px;
+    }
+  }
 
   h1 {
     color: #f9f9f9;
@@ -41,4 +55,14 @@
             fill: #fff;
         }
     }
+}
+
+@media (min-width: $tablet) {
+  .footer {
+    .row {
+      div:not(:first-child) {
+        margin-top: 0;
+      }
+    }
+  }
 }

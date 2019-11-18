@@ -12,6 +12,7 @@
     justify-content: space-between;
     flex-direction: column;
     margin: 0 auto;
+    width: calc(100vw - 2rem);
 
     .about-column {
       border-radius: 34px;
@@ -31,6 +32,7 @@
 
     .about-row {
       flex-direction: row;
+      width: 100%;
     }
   }
 }

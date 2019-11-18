@@ -58,11 +58,8 @@
         "react": "^16.11.0",
         "react-dom": "^16.11.0",
         "react-hot-loader": "^4.12.15",
-        "react-redux": "^7.1.1",
         "react-router-dom": "^5.1.2",
-        "redux": "^4.0.4",
         "redux-logger": "^3.0.6",
-        "redux-thunk": "^2.3.0",
         "regenerator-runtime": "^0.13.3"
     }
 }
