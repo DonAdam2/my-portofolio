@@ -27,7 +27,7 @@ const AboutMe = () => (
 							}
 						/>
 					</div>
-					<div className="about-column card-wrapper">
+					<div className="about-column card-wrapper center-card">
 						<Card
 							title="why would you choose me?"
 							titleIcon={<MouseIcon />}
