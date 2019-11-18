@@ -96,7 +96,61 @@ const MyPortfolio = () => (
 								</p>
 							</Fragment>
 						}
-						rightMarkup={<img src="../../assets/images/selectAndCrop.png" alt="selectAndCrop" />}
+						rightMarkup={
+							<iframe
+								height="265"
+								style={{ width: '100%' }}
+								scrolling="no"
+								title="React select and crop image"
+								src="https://codepen.io/AdamMorsi/embed/preview/mZevwL?height=265&theme-id=default&default-tab=js,result"
+								frameBorder="no"
+							>
+								See the Pen{' '}
+								<a href="https://codepen.io/AdamMorsi/pen/mZevwL">React select and crop image</a> by
+								Adam Morsi (<a href="https://codepen.io/AdamMorsi">@AdamMorsi</a>) on{' '}
+								<a href="https://codepen.io">CodePen</a>.
+							</iframe>
+						}
+					/>
+				</div>
+				<div className="col-xxs-12">
+					<SlideContent
+						leftMarkup={
+							<iframe
+								height="265"
+								style={{ width: '100%' }}
+								scrolling="no"
+								title="React countdown"
+								src="https://codepen.io/AdamMorsi/embed/preview/mZayay?height=265&theme-id=default&default-tab=js,result"
+								frameBorder="no"
+							>
+								See the Pen <a href="https://codepen.io/AdamMorsi/pen/mZayay">React countdown</a> by
+								Adam Morsi (<a href="https://codepen.io/AdamMorsi">@AdamMorsi</a>) on{' '}
+								<a href="https://codepen.io">CodePen</a>.
+							</iframe>
+						}
+						rightMarkup={
+							<Fragment>
+								<div className="title-wrapper">
+									<h2 className="title">React Countdown</h2>
+								</div>
+								<h3 className="overview">Overview</h3>
+								<p>
+									This pen allows the developer to set the time to countdown to. It has flip
+									animation for each field of the timer.
+								</p>
+								<h3 className="overview">Project Skills</h3>
+								<p>
+									React
+									<br />
+									Javascript
+									<br />
+									SCSS
+									<br />
+									HTML5
+								</p>
+							</Fragment>
+						}
 					/>
 				</div>
 				<div className="col-xxs-12 text-center">
