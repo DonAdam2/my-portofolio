@@ -1,4 +1,7 @@
 import React, { Fragment } from 'react';
+//images
+import cookingImage from '../../assets/images/cooking.png';
+import fxprimusImage from '../../assets/images/fxprimus.png';
 //components
 import SlideContent from './UI/SlideContent';
 import Title from './shared/Title';
@@ -39,12 +42,12 @@ const MyPortfolio = () => (
 								</p>
 							</Fragment>
 						}
-						rightMarkup={<img src="../../assets/images/fxprimus.png" alt="fxprimus" />}
+						rightMarkup={<img src={fxprimusImage} alt="Fxprimus Website" />}
 					/>
 				</div>
 				<div className="col-xxs-12">
 					<SlideContent
-						leftMarkup={<img src="../../assets/images/cooking.png" alt="Cooking" />}
+						leftMarkup={<img src={cookingImage} alt="Cooking App" />}
 						rightMarkup={
 							<Fragment>
 								<div className="title-wrapper">
