@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 //components
 import SlideContent from './UI/SlideContent';
-import Title from './UI/Title';
+import Title from './shared/Title';
 
 const MyPortfolio = () => (
 	<div className="section my-portfolio">

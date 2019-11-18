@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import AnimatedDesktop from './AnimatedDesktop';
-import Title from './UI/Title';
+import AnimatedDesktop from './UI/AnimatedDesktop';
+import Title from './shared/Title';
 import Skill from './UI/Skill';
 
 const Skills = () => {

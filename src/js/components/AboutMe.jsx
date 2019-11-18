@@ -4,7 +4,7 @@ import Card from './UI/Card';
 import CodeIcon from './icons/CodeIcon';
 import MouseIcon from './icons/MouseIcon';
 import BriefCaseIcon from './icons/BriefCaseIcon';
-import Title from './UI/Title';
+import Title from './shared/Title';
 
 const AboutMe = () => (
 	<div className="section about-me">
