@@ -27,4 +27,18 @@
       }
     }
   }
+
+    strong {
+        svg {
+            width: 16px;
+            fill: #7d7d7d;
+        }
+    }
+    svg {
+        width: 40px;
+        fill: #7d7d7d;
+        &:hover {
+            fill: #fff;
+        }
+    }
 }
