@@ -6,16 +6,19 @@ const Banner = () => (
 		<div className="bg">
 			<div className="quote">
 				<h1>Hi, my name is Adam!</h1>
-				<Typewriter
-					sentencesText={[
-						'I am a software developer.',
-						'I am creative.',
-						'I Love design.',
-						'I am your next web guy.',
-					]}
-					typingSpeed={100}
-					isInfinite={true}
-				/>
+				<p>
+					I'm
+					<Typewriter
+						sentencesText={[
+							' a software developer.',
+							' creative.',
+							' in Love with design.',
+							' your next web guy.',
+						]}
+						typingSpeed={100}
+						isInfinite={true}
+					/>
+				</p>
 			</div>
 		</div>
 	</div>

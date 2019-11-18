@@ -20,12 +20,12 @@ const MyPortfolio = () => (
 								<div className="title-wrapper">
 									<h2 className="title">FxPrimus</h2>
 								</div>
-								<h3>Overview</h3>
+								<h3 className="overview">Overview</h3>
 								<p>
 									My primary role on this site was to create landing pages, update data on it and
 									use APIs to get the required data. Also we used web sockets to get live data.
 								</p>
-								<h3>Project Skills</h3>
+								<h3 className="overview">Project Skills</h3>
 								<p>
 									Web sockets
 									<br />
@@ -50,13 +50,13 @@ const MyPortfolio = () => (
 								<div className="title-wrapper">
 									<h2 className="title">Cooking App</h2>
 								</div>
-								<h3>Overview</h3>
+								<h3 className="overview">Overview</h3>
 								<p>
 									This app was created using Angular 7. It has 3 filters using Angular pipes and it
 									has search functionality (based on tags) as well. I'm using flexbox to setup the
 									layout.
 								</p>
-								<h3>Project Skills</h3>
+								<h3 className="overview">Project Skills</h3>
 								<p>
 									Angular 7
 									<br />
@@ -80,13 +80,13 @@ const MyPortfolio = () => (
 								<div className="title-wrapper">
 									<h2 className="title">React crop</h2>
 								</div>
-								<h3>Overview</h3>
+								<h3 className="overview">Overview</h3>
 								<p>
 									This pen allows the user to select the required portion of an image to crop it. It
 									has a lot of functionalities such as allowing the user to set the desired ratio
 									and flip image vertically or horizontally.
 								</p>
-								<h3>Project Skills</h3>
+								<h3 className="overview">Project Skills</h3>
 								<p>
 									React
 									<br />
