@@ -20,7 +20,7 @@ const AboutMe = () => (
 							titleIcon={<CodeIcon />}
 							description={
 								<ul>
-									<li>I'm a software developer (font-end) who lives in Nicosia, Cyprus.</li>
+									<li>I'm a software developer who lives in Nicosia, Cyprus.</li>
 									<li>I have been creating and designing websites for 3 years.</li>
 									<li>I have a bachelor degree in computer science.</li>
 								</ul>
