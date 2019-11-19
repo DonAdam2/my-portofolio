@@ -16,7 +16,7 @@ const MyPortfolio = () => (
 				<div className="col-xxs-12">
 					<h2 className="subtitle">Some Projects</h2>
 				</div>
-				<div className="col-xxs-12">
+				<div className="col-xxs-12 image-on-right">
 					<SlideContent
 						leftMarkup={
 							<Fragment>
@@ -45,7 +45,7 @@ const MyPortfolio = () => (
 						rightMarkup={<img src={fxprimusImage} alt="Fxprimus Website" />}
 					/>
 				</div>
-				<div className="col-xxs-12">
+				<div className="col-xxs-12 image-on-left">
 					<SlideContent
 						leftMarkup={<img src={cookingImage} alt="Cooking App" />}
 						rightMarkup={
@@ -76,7 +76,7 @@ const MyPortfolio = () => (
 				<div className="col-xxs-12">
 					<h2 className="subtitle">Some Pens</h2>
 				</div>
-				<div className="col-xxs-12">
+				<div className="col-xxs-12  image-on-right">
 					<SlideContent
 						leftMarkup={
 							<Fragment>
@@ -116,7 +116,7 @@ const MyPortfolio = () => (
 						}
 					/>
 				</div>
-				<div className="col-xxs-12">
+				<div className="col-xxs-12 image-on-left">
 					<SlideContent
 						leftMarkup={
 							<iframe

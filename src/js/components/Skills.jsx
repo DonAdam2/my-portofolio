@@ -32,10 +32,10 @@ const Skills = () => {
 					<div className="col-xxs-12">
 						<Title title="skills" />
 					</div>
-					<div className="col-sm-6">
+					<div className="col-md-6 desktop-wrapper">
 						<AnimatedDesktop />
 					</div>
-					<div className="col-sm-6 skills-wrapper">
+					<div className="col-md-6 skills-wrapper">
 						<ul>
 							{list.map((el, i) => (
 								<Fragment key={i}>

@@ -1,6 +1,41 @@
+@import "../generic/variables";
+
 .my-portfolio {
     background-image      : url("../../assets/images/ignasi_pattern_s.png");
     background-attachment : fixed;
+
+    .image-on-left {
+        .slide-content-from-left {
+            order: 1;
+
+            // > 992
+            @media (min-width: $laptop) {
+                order: 0;
+            }
+        }
+
+        .slide-content-from-right {
+            order: 0;
+            margin-bottom: 40px;
+
+            // > 992
+            @media (min-width: $laptop) {
+                margin-bottom: 0;
+                order: 1;
+            }
+        }
+    }
+
+    .image-on-right {
+        .slide-content-from-left {
+            margin-bottom: 40px;
+
+            // > 992
+            @media (min-width: $laptop) {
+                margin-bottom: 0;
+            }
+        }
+    }
 
     .title-wrapper {
         border-bottom : 2px solid #81cfe0;

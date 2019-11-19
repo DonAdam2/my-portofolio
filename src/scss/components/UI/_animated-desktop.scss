@@ -6,7 +6,10 @@
   position: relative;
   width: 423px;
   height: 238px;
-  margin: auto;
+
+    @media(min-width: 436px) {
+        display: block;
+    }
 }
 
 .mouse {
@@ -729,11 +732,5 @@
   }
   100% {
     transform: translate(22px, -10px);
-  }
-}
-
-@media(min-width: 436px) {
-  .animated-desktop-container {
-    display: block;
   }
 }

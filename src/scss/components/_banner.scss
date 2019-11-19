@@ -8,13 +8,22 @@
   position: relative;
   height: 65vh;
   background-image: url("../../assets/images/computer.jpg");
-  background-size: 160% 160vh;
+  background-size: 200% 80vh;
   background-position: 0 20%;
   background-repeat: repeat-x;
   text-align: center;
   text-shadow: 1px 1px;
   color: #fff;
   animation: shift 45s linear infinite;
+
+    @media(min-width: 511px) {
+        background-size: 200% 116vh;
+    }
+
+    // >1200
+    @media(min-width: $desktop) {
+        background-size: 160% 160vh;
+    }
 
     .image-overlay {
         display: block;

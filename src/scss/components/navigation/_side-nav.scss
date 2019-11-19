@@ -6,7 +6,7 @@
   position: fixed;
   z-index: 2;
   left: 0;
-  top: 50%;
+  top: 11%;
   width: $element-height;
   background: rgba(darken($blue1, 20%), 0.25);
   border-radius: 50px;
@@ -20,8 +20,9 @@
     transition: $transition150;
   }
 
-  @media #{$screen-mobile} {
-    display: none;
+  // > 768
+  @media (min-width: $laptop) {
+      top: 50%;
   }
 
   &-item {
