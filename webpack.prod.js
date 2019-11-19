@@ -5,6 +5,7 @@ const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 //constants
 const { cssSubDirectory } = require('./constants');
 
@@ -37,6 +38,7 @@ module.exports = (env, options) => {
 				// used for the lazy loaded component
 				chunkFilename: cssSubDirectory + '[id].[hash:8].css',
 			}),
+			new CopyPlugin([{ from: 'redirect', to: '' }]), //used to copy redirects file from redirect to dist (netlify)
 		],
 	});
 };

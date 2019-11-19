@@ -8,7 +8,7 @@ import AboutMe from './js/components/AboutMe';
 import Skills from './js/components/Skills';
 import Footer from './js/components/Footer';
 import MyPortfolio from './js/components/MyPortfolio';
-import Loader from './js/components/UI/Loader'; //loader icon
+import Loader from './js/components/UI/Loader';
 //load banner lazily
 const AsyncBanner = lazy(() => import('./js/components/Banner'));
 
