@@ -66,7 +66,7 @@ class ScrollSpy extends Component {
 
 		const tween = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
 			.to(
-				{ y: this.elementOffsetTop(refsList[name.replace('/', '')].current).top },
+				{ y: this.elementOffsetTop(refsList[name.replace('/', '')].current).top + 10 },
 				this.scrollDuration
 			) // Move to top of the clicked element in 700ms.
 			.easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
