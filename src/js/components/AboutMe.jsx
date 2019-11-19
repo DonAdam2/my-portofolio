@@ -34,7 +34,7 @@ const AboutMe = () => (
 							description={
 								<ul>
 									<li>Because my primary focus is YOU.</li>
-									<li>I keep current with latest web design technologies and tools.</li>
+									<li>I keep current with latest web development technologies and tools.</li>
 									<li>I provide beautiful, professional and responsive websites.</li>
 								</ul>
 							}
