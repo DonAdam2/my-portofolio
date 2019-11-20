@@ -5,14 +5,14 @@
 .quick-nav {
   position: fixed;
   z-index: 2;
-  left: 0;
-  top: 20%;
-  width: $element-height;
+  left: 50%;
+  top: 2%;
+  width: 160px;
   background: rgba(darken($blue1, 20%), 0.25);
   border-radius: 50px;
-  transform: translateY(-50%);
+  transform: translate(-50%, -2%);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   transition: $transition300;
 
@@ -20,16 +20,20 @@
     transition: $transition150;
   }
 
-  // > 768
+  // > 992
   @media (min-width: $laptop) {
-      top: 50%;
+    flex-direction: column;
+    width: $element-height;
+    top: 50%;
+    left: 0;
+    transform: translate(0%, -50%);
   }
 
   &-item {
     position: relative;
     height: $element-height;
     width: $element-height;
-    margin-bottom: 5px;
+    margin-bottom: 0;
     color: white;
     text-decoration: none;
     white-space: nowrap;
@@ -39,15 +43,34 @@
     align-items: center;
     transition: $transition300;
 
+    // > 992
+    @media (min-width: $laptop) {
+      margin-bottom: 5px;
+    }
+
     &.active {
       text-decoration: none;
       background: rgba(255, 255, 255, 0.5);
       transition: $transition150;
 
       .quick-nav-title {
-        opacity: 1;
-        left: 40px;
+        opacity: 0;
+        left: 50%;
+        top: 53px;
+        transform: translate(-50%, -12px);
         transition: $transition150;
+
+        // > 768
+        @media (min-width: $tablet) {
+          opacity: 1;
+        }
+
+        // > 992
+        @media (min-width: $laptop) {
+          left: 40px;
+          top: 50%;
+          transform: translate(0, -50%);
+        }
       }
     }
 
@@ -62,15 +85,22 @@
     opacity: 0;
     font-size: 0.875rem;
     color: white;
-    background: rgba(25,118,210, 0.9);
+    background: rgba(25, 118, 210, 0.9);
     text-align: right;
     padding: 3px 12px 4px;
     position: absolute;
-    top: 50%;
-    left: 30px;
-    transform:translateY(-50%);
+    top: 0;
+    left: 0;
+    transform: translate(0);
     border-radius: 50px;
     letter-spacing: 0.02857em;
     transition: $transition300;
+
+    // > 992
+    @media (min-width: $laptop) {
+      left: 30px;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
   }
 }
