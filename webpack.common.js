@@ -143,7 +143,7 @@ module.exports = (env, options) => {
 				favicon: `./${rootDirectory}/assets/images/favicon.png`,
 				meta: {
 					description: description,
-					image: `./${rootDirectory}/assets/images/intro.png`,
+					image: `${url}${rootDirectory}/assets/images/intro.png`,
 					keywords: 'adam morsi, portfolio, software developer, frontend developer',
 					url: url,
 				},
