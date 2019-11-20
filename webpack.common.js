@@ -145,7 +145,7 @@ module.exports = (env, options) => {
 					description: description,
 					image: `${
 						options.mode === 'development' ? 'http://localhost:3000/' : url
-					}${rootDirectory}/assets/images/favicon.png`,
+					}${rootDirectory}/assets/images/intro.png`,
 					keywords: 'adam morsi, portfolio, software developer, frontend developer',
 					url: options.mode === 'development' ? 'http://localhost:3000/' : url,
 				},
