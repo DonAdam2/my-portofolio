@@ -143,9 +143,11 @@ module.exports = (env, options) => {
 				favicon: `./${rootDirectory}/assets/images/favicon.png`,
 				meta: {
 					description: description,
-					image: `https://www.dropbox.com/s/3evmezguns7xibj/intro.png?dl=0`,
+					image: `${
+						options.mode === 'development' ? 'http://localhost:3000/' : url
+					}${rootDirectory}/assets/images/favicon.png`,
 					keywords: 'adam morsi, portfolio, software developer, frontend developer',
-					url: url,
+					url: options.mode === 'development' ? 'http://localhost:3000/' : url,
 				},
 			}),
 		],
