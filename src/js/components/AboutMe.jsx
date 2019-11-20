@@ -21,7 +21,7 @@ const AboutMe = () => (
 							description={
 								<ul>
 									<li>I'm a software developer who lives in Nicosia, Cyprus.</li>
-									<li>I have been creating and designing websites for 3 years.</li>
+									<li>I have been creating and developing websites for 2+ years.</li>
 									<li>I have a bachelor degree in computer science.</li>
 								</ul>
 							}
