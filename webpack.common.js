@@ -4,7 +4,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
 //constants
-const { port, devServer, rootDirectory, jsSubDirectory } = require('./constants');
+const {
+	port,
+	devServer,
+	rootDirectory,
+	jsSubDirectory,
+	metaInfo: { title, description, url },
+} = require('./constants');
 let fullDevServerUrl = devServer + ':' + port + '/';
 
 module.exports = (env, options) => {
@@ -130,17 +136,16 @@ module.exports = (env, options) => {
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
-				title: 'Adam Morsi Portfolio',
+				title: title,
 				template: __dirname + `/${rootDirectory}/index.html`,
 				filename: 'index.html',
 				inject: 'body',
 				favicon: `./${rootDirectory}/assets/images/favicon.png`,
 				meta: {
-					author: 'Adam Morsi',
-					description:
-						'Hello, I am adam, I am a software developer currently based in Nicosia, Cyprus. I love creating responsive web applications. I love learning and being up to date with latest technologies',
+					description: description,
 					image: `./${rootDirectory}/assets/images/intro.png`,
 					keywords: 'adam morsi, portfolio, software developer, frontend developer',
+					url: url,
 				},
 			}),
 		],
