@@ -145,6 +145,8 @@ module.exports = (env, options) => {
 					description: description,
 					keywords: 'adam morsi, portfolio, software developer, frontend developer',
 					url: options.mode === 'development' ? 'http://localhost:3000/' : url,
+					'apple-mobile-web-app-capable': 'yes',
+					'mobile-web-app-capable': 'yes',
 				},
 			}),
 		],
