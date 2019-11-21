@@ -24,8 +24,6 @@ class ScrollSpy extends Component {
 			list[el] = createRef();
 		});
 		this.setState({ refsList: list });
-		// add the debounceScroll method
-		window.addEventListener('scroll', this.debounceScroll);
 
 		const urlExist = new Promise((resolve, reject) => {
 			data.forEach((el) => {
@@ -43,6 +41,9 @@ class ScrollSpy extends Component {
 					this.debounceScroll();
 				});
 				this.animateScrolling(history.location.pathname);
+			} else {
+				// add the debounceScroll method on scroll
+				window.addEventListener('scroll', this.debounceScroll);
 			}
 		});
 
@@ -100,7 +101,8 @@ class ScrollSpy extends Component {
 		if (isFirstLoad) {
 			history.push(history.location.pathname);
 			this.animateScrolling(history.location.pathname);
-			setTimeout(() => this.setState({ isFirstLoad: false }), this.scrollDuration);
+			this.setState({ isFirstLoad: false });
+			window.addEventListener('scroll', this.debounceScroll);
 		} else {
 			Object.entries(refsList).forEach((el, i) => {
 				// if the current section offsetTop is less than the current scroll position => set the active link to the current section
