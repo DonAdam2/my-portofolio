@@ -1,29 +1,45 @@
 import React, { Fragment } from 'react';
-import AnimatedDesktop from './UI/AnimatedDesktop';
 import Title from './shared/Title';
 import Skill from './UI/Skill';
+import JavascriptIcon from './icons/JavascriptIcon';
+import TypescriptIcon from './icons/TypescriptIcon';
+import ReactIcon from './icons/ReactIcon';
+import ReduxIcon from './icons/ReduxIcon';
+import AngularIcon from './icons/AngularIcon';
+import RxjsIcon from '../../assets/images/reactivex.png';
+import WebpackIcon from './icons/WebpackIcon';
+import Html5Icon from './icons/Html5Icon';
+import Css3Icon from './icons/Css3Icon';
+import SassIcon from './icons/SassIcon';
+import BootstrapIcon from './icons/BootstrapIcon';
+import MaterialDesignIcon from './icons/MaterialDesignIcon';
+import DrupalIcon from './icons/DrupalIcon';
+import WordPressIcon from './icons/WordPressIcon';
+import JiraIcon from './icons/JiraIcon';
+import GitIcon from './icons/GitIcon';
+import LinuxIcon from './icons/LinuxIcon';
 
 const Skills = () => {
 	const list = [
-		'Javascript',
-		'Typescript',
-		'React',
-		'React Native',
-		'Redux',
-		'Angular 2+',
-		'RxJs',
-		'Webpack',
-		'HTML5',
-		'CSS3',
-		'SCSS',
-		'Bootstrap',
-		'Material Design',
-		'AJAX',
-		'Drupal',
-		'WordPress',
-		'JIRA',
-		'Git',
-		'Linux',
+		{ label: 'Javascript', icon: <JavascriptIcon /> },
+		{ label: 'Typescript', icon: <TypescriptIcon /> },
+		{ label: 'React', icon: <ReactIcon /> },
+		{ label: 'React Native', icon: <ReactIcon /> },
+		{ label: 'Redux', icon: <ReduxIcon /> },
+		{ label: 'Angular 2+', icon: <AngularIcon /> },
+		{ label: 'RxJs', icon: <img className="back-logo" src={RxjsIcon} alt="rxjs icon" /> },
+		{ label: 'Webpack', icon: <WebpackIcon /> },
+		{ label: 'HTML5', icon: <Html5Icon /> },
+		{ label: 'CSS3', icon: <Css3Icon /> },
+		{ label: 'SCSS', icon: <SassIcon /> },
+		{ label: 'Bootstrap', icon: <BootstrapIcon /> },
+		{ label: 'Material Design', icon: <MaterialDesignIcon /> },
+		{ label: 'AJAX', icon: <span>AJAX</span> },
+		{ label: 'Drupal', icon: <DrupalIcon /> },
+		{ label: 'WordPress', icon: <WordPressIcon /> },
+		{ label: 'JIRA', icon: <JiraIcon /> },
+		{ label: 'Git', icon: <GitIcon /> },
+		{ label: 'Linux', icon: <LinuxIcon /> },
 	];
 	return (
 		<div className="section skills">
@@ -32,17 +48,12 @@ const Skills = () => {
 					<div className="col-xxs-12">
 						<Title title="skills" />
 					</div>
-					<div className="col-md-6 desktop-wrapper">
-						<AnimatedDesktop />
-					</div>
-					<div className="col-md-6 skills-wrapper">
-						<ul>
-							{list.map((el, i) => (
-								<Fragment key={i}>
-									<Skill label={el} />
-								</Fragment>
-							))}
-						</ul>
+					<div className="col-md-12 skills-wrapper">
+						{list.map((el, i) => (
+							<Fragment key={i}>
+								<Skill label={el.label} icon={el.icon} />
+							</Fragment>
+						))}
 					</div>
 				</div>
 			</div>
