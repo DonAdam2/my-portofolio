@@ -122,7 +122,7 @@ class ScrollSpy extends Component {
 
 	debounceScroll = () => {
 		clearTimeout(this.scrollTimeout);
-		this.scrollTimeout = setTimeout(this.onScrollSpy, 300);
+		this.scrollTimeout = setTimeout(this.onScrollSpy, 250);
 	};
 
 	render() {
