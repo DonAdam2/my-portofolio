@@ -44,6 +44,7 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   backface-visibility: hidden;
   position: absolute;
+  transform: rotateX(0deg);
   top: 0;
   left: 0;
 }
