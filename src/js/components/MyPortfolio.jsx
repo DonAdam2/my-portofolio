@@ -27,18 +27,26 @@ const MyPortfolio = () => (
 								<p>
 									My primary role on this site was to create landing pages, update data on it and
 									use APIs to get the required data. Also we used web sockets to get live data.
+									<br />
+									Created the infrastructure of the new members area using angular 8.
 								</p>
 								<h3 className="overview">Project Skills</h3>
 								<p>
 									Web sockets
 									<br />
-									HTML5/CSS3
-									<br />
 									Javascript
 									<br />
-									Bootstrap
+									Typescript
 									<br />
-									JQuiry
+									Angular 8
+									<br />
+									JQuery
+									<br />
+									HTML5/CSS3
+									<br />
+									SCSS
+									<br />
+									Bootstrap
 								</p>
 							</Fragment>
 						}
@@ -55,13 +63,13 @@ const MyPortfolio = () => (
 								</div>
 								<h3 className="overview">Overview</h3>
 								<p>
-									This app was created using Angular 7. It has 3 filters using Angular pipes and it
+									This app was created using Angular 8. It has 3 filters using Angular pipes and it
 									has search functionality (based on tags) as well. I'm using flexbox to setup the
 									layout.
 								</p>
 								<h3 className="overview">Project Skills</h3>
 								<p>
-									Angular 7
+									Angular 8
 									<br />
 									Typescript
 									<br />
@@ -93,9 +101,11 @@ const MyPortfolio = () => (
 								<p>
 									React
 									<br />
-									HTML5/SCSS
-									<br />
 									Javascript
+									<br />
+									SCSS
+									<br />
+									JSX
 								</p>
 							</Fragment>
 						}
@@ -150,7 +160,7 @@ const MyPortfolio = () => (
 									<br />
 									SCSS
 									<br />
-									HTML5
+									JSX
 								</p>
 							</Fragment>
 						}
