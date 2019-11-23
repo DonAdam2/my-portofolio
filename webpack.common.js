@@ -9,7 +9,7 @@ const {
 	devServer,
 	rootDirectory,
 	jsSubDirectory,
-	metaInfo: { title, description, url },
+	metaInfo: { title, description, url, keywords },
 } = require('./constants');
 let fullDevServerUrl = devServer + ':' + port + '/';
 
@@ -132,7 +132,7 @@ module.exports = (env, options) => {
 				favicon: `./${rootDirectory}/assets/images/favicon.png`,
 				meta: {
 					description: description,
-					keywords: 'adam morsi, portfolio, software developer, frontend developer',
+					keywords: keywords,
 					url: options.mode === 'development' ? 'http://localhost:3000/' : url,
 					'apple-mobile-web-app-capable': 'yes',
 					'mobile-web-app-capable': 'yes',
