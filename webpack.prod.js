@@ -58,6 +58,13 @@ module.exports = (env, options) => {
 									quality: [0.65, 0.9],
 									speed: 4,
 								},
+								gifsicle: {
+									interlaced: false,
+								},
+								// the webp option will enable WEBP
+								webp: {
+									quality: 75,
+								},
 							},
 						},
 					],
