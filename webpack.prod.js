@@ -1,9 +1,7 @@
 // the following 2 lines is to merge common webpack configurations with this file
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
-const path = require('path');
 //plugins
-const PrerenderSPAPlugin = require('prerender-spa-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
@@ -39,12 +37,6 @@ module.exports = (env, options) => {
 				filename: cssSubDirectory + '[name].[hash:8].css',
 				// used for the lazy loaded component
 				chunkFilename: cssSubDirectory + '[id].[hash:8].css',
-			}),
-			new PrerenderSPAPlugin({
-				// Required - The path to the webpack-outputted app to prerender.
-				staticDir: path.join(__dirname, 'dist'),
-				// Required - Routes to render.
-				routes: ['/'],
 			}),
 			new CopyPlugin([{ from: 'redirect', to: '' }]), //used to copy redirects file from redirect to dist (netlify)
 		],
