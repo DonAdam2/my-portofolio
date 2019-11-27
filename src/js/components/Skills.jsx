@@ -34,7 +34,16 @@ const Skills = () => {
 		{ label: 'SCSS', icon: <SassIcon /> },
 		{ label: 'Bootstrap', icon: <BootstrapIcon /> },
 		{ label: 'Material Design', icon: <MaterialDesignIcon /> },
-		{ label: 'AJAX', icon: <span>AJAX</span> },
+		{
+			label: 'AJAX',
+			icon: (
+				<img
+					className="back-logo"
+					src="https://cdn.artandlogic.com/wp-content/uploads/2000px-AJAX_logo_by_gengns.svg_.png"
+					alt="AJAX"
+				/>
+			),
+		},
 		{ label: 'Drupal', icon: <DrupalIcon /> },
 		{ label: 'WordPress', icon: <WordPressIcon /> },
 		{ label: 'JIRA', icon: <JiraIcon /> },
