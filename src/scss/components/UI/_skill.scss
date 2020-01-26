@@ -41,7 +41,7 @@
 
 .front, .back {
   border-radius: 50%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   backface-visibility: hidden;
   position: absolute;
   transform: rotateX(0deg);
@@ -60,7 +60,7 @@
     font-weight: 700;
     font-size: 1.2rem;
     text-align: center;
-    color: #c02227;
+    color: #3182d5;
     margin: 0;
     user-select: none;
   }
@@ -93,5 +93,5 @@
   width: $outer-circle;
   height: $outer-circle;
   background-color: rgba(255, 255, 255, 0);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }

@@ -80,14 +80,13 @@ module.exports = (env, options) => {
 							// style-loader => insert styles in the head of the HTML as style tags or in blob links
 							// MiniCssExtractPlugin => extract styles to a file
 							loader: options.mode === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
-							options: {
-								// used for debugging the app (to see from which component styles are applied)
-								sourceMap: options.mode === 'development',
-							},
+							//if source map is set to true from previous loaders => this loader will be true as well
 						},
 						{
+							//Resolves @import statements
 							loader: 'css-loader',
 							options: {
+								// used for debugging the app (to see from which component styles are applied)
 								sourceMap: options.mode === 'development',
 								// Number of loaders applied before CSS loader (which is postcss-loader)
 								importLoaders: 3,
@@ -101,19 +100,21 @@ module.exports = (env, options) => {
 							loader: 'postcss-loader',
 							options: {
 								ident: 'postcss',
-								sourceMap: true,
+								sourceMap: options.mode === 'development',
 								plugins: [autoprefixer()],
 							},
 						},
 						{
+							//Rewrites relative paths in url() statements based on the original source file
 							loader: 'resolve-url-loader',
 							options: {
-								//needs sourcemaps to resolve urls
+								//needs sourcemaps to resolve urls (images)
 								sourceMap: true,
 								engine: 'rework',
 							},
 						},
 						{
+							//Compiles Sass to CSS
 							loader: 'sass-loader',
 							options: {
 								sourceMap: true,
@@ -133,7 +134,7 @@ module.exports = (env, options) => {
 				meta: {
 					description: description,
 					keywords: keywords,
-					url: options.mode === 'development' ? 'http://localhost:3000/' : url,
+					url: options.mode === 'development' ? fullDevServerUrl : url,
 					'apple-mobile-web-app-capable': 'yes',
 					'mobile-web-app-capable': 'yes',
 				},

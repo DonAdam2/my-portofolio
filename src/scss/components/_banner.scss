@@ -3,26 +3,13 @@
 .intro {
     position: relative;
     height: 65vh;
-    background-size: 200% 80vh;
-    background-position: 0 20%;
-    background-repeat: repeat-x;
     text-align: center;
     text-shadow: 1px 1px;
     color: #fff;
-    animation: shift 45s linear infinite;
-
-    @media(min-width: 511px) {
-        background-size: 200% 116vh;
-    }
 
     // >512
     @media (min-width: $mobile-large) {
-        height: 85vh;
-    }
-
-    // >1200
-    @media(min-width: $desktop) {
-        background-size: 160% 160vh;
+        height: 55vh;
     }
 
     .image-overlay {
