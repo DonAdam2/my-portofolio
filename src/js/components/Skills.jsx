@@ -18,6 +18,8 @@ import WordPressIcon from './icons/WordPressIcon';
 import JiraIcon from './icons/JiraIcon';
 import GitIcon from './icons/GitIcon';
 import LinuxIcon from './icons/LinuxIcon';
+import NodeJsIcon from './icons/NodeJsIcon';
+import MongoDBIcon from './icons/MongoDBIcon';
 
 const Skills = () => {
 	const list = [
@@ -32,6 +34,8 @@ const Skills = () => {
 		{ label: 'HTML5', icon: <Html5Icon /> },
 		{ label: 'CSS3', icon: <Css3Icon /> },
 		{ label: 'SCSS', icon: <SassIcon /> },
+		{ label: 'NodeJS', icon: <NodeJsIcon /> },
+		{ label: 'MongoDB', icon: <MongoDBIcon /> },
 		{ label: 'Bootstrap', icon: <BootstrapIcon /> },
 		{ label: 'Material Design', icon: <MaterialDesignIcon /> },
 		{ label: 'AJAX', icon: <span>AJAX</span> },
