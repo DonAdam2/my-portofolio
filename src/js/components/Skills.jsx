@@ -20,11 +20,13 @@ import GitIcon from './icons/GitIcon';
 import LinuxIcon from './icons/LinuxIcon';
 import NodeJsIcon from './icons/NodeJsIcon';
 import MongoDBIcon from './icons/MongoDBIcon';
+import NextJsIcon from './icons/NextJSIcon';
 
 const Skills = () => {
 	const list = [
 		{ label: 'Javascript', icon: <JavascriptIcon /> },
 		{ label: 'Typescript', icon: <TypescriptIcon /> },
+		{ label: 'NextJS', icon: <NextJsIcon /> },
 		{ label: 'React', icon: <ReactIcon /> },
 		{ label: 'React Native', icon: <ReactIcon /> },
 		{ label: 'Redux', icon: <ReduxIcon /> },
