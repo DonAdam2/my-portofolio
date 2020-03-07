@@ -8,6 +8,8 @@ const Banner = () => {
 		squares.push(i);
 	}
 
+	const generateRandomNum = ({ min, max }) => Math.floor(Math.random() * (max - min + 1) + min);
+
 	return (
 		<div className="intro">
 			<div className="quote">
@@ -29,17 +31,17 @@ const Banner = () => {
 			<div className="squares-wrapper">
 				<ul className="squares">
 					{squares.map((el, i) => {
-						const randomDimensions = Math.floor(Math.random() * (150 - 15 + 1) + 15);
+						const randomDimensions = generateRandomNum({ min: 15, max: 150 });
 
 						return (
 							<li
 								key={i}
 								style={{
-									left: `${Math.floor(Math.random() * (100 - 0 + 1) + 0)}%`,
+									left: `${generateRandomNum({ min: 0, max: 90 })}%`,
 									width: randomDimensions,
 									height: randomDimensions,
-									animationDelay: `${i % 2 ? Math.floor(Math.random() * (20 - 0 + 1) + 0) : 0}s`,
-									animationDuration: `${Math.floor(Math.random() * (50 - 10 + 1) + 10)}s`,
+									animationDelay: `${i % 2 ? generateRandomNum({ min: 0, max: 20 }) : 0}s`,
+									animationDuration: `${generateRandomNum({ min: 10, max: 50 })}s`,
 								}}
 							/>
 						);
