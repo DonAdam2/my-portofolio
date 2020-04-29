@@ -1,34 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153098389-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		/>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153098389-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
 
-            gtag('config', 'UA-153098389-1');
-        </script>
-        <!--facebook meta tags-->
-        <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>">
-        <meta property="og:description" content="<%= htmlWebpackPlugin.options.meta.description %>">
-        <meta property="og:image" content="<%= require('./assets/images/intro.png') %>">
-        <meta property="og:url" content="<%= htmlWebpackPlugin.options.meta.url %>"/>
-        <!--twitter meta tags-->
-        <meta name="twitter:title" content="<%= htmlWebpackPlugin.options.title %>">
-        <meta name="twitter:description" content="<%= htmlWebpackPlugin.options.meta.description %>">
-        <meta name="twitter:image" content="<%= require('./assets/images/intro.png') %>">
-        <meta name="twitter:card" content="<%= require('./assets/images/intro.png') %>">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap" rel="stylesheet">
-        <!--site meta tags-->
-        <title><%= htmlWebpackPlugin.options.title %></title>
-        <meta name="image" content="<%= require('./assets/images/intro.png') %>">
-    </head>
-    <body>
-        <div id="root"></div>
-    </body>
+			gtag('config', 'UA-153098389-1');
+		</script>
+		<!--facebook meta tags-->
+		<meta property="og:site_name" content="<%= htmlWebpackPlugin.options.title %>" />
+		<meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>" />
+		<meta property="og:description" content="<%= htmlWebpackPlugin.options.meta.description %>" />
+		<meta
+			property="og:image"
+			itemprop="image"
+			content="<%= require('./assets/images/intro.png') %>"
+		/>
+		<meta property="og:url" content="<%= htmlWebpackPlugin.options.meta.url %>" />
+		<meta property="og:type" content="website" />
+		<!--twitter meta tags-->
+		<meta name="twitter:title" content="<%= htmlWebpackPlugin.options.title %>" />
+		<meta name="twitter:description" content="<%= htmlWebpackPlugin.options.meta.description %>" />
+		<meta name="twitter:image" content="<%= require('./assets/images/intro.png') %>" />
+		<meta name="twitter:card" content="<%= require('./assets/images/intro.png') %>" />
+		<link
+			href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap"
+			rel="stylesheet"
+		/>
+		<!--site meta tags-->
+		<title><%= htmlWebpackPlugin.options.title %></title>
+		<meta name="image" content="<%= require('./assets/images/intro.png') %>" />
+	</head>
+	<body>
+		<div id="root"></div>
+	</body>
 </html>
