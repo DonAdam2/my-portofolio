@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 //images
 import cookingImage from '../../assets/images/cooking.png';
 import fxprimusImage from '../../assets/images/fxprimus.png';
+import trinitiImage from '../../assets/images/tiniti.png';
 //components
 import SlideContent from './UI/SlideContent';
 import Title from './shared/Title';
@@ -15,6 +16,40 @@ const MyPortfolio = () => (
 				</div>
 				<div className="col-xxs-12">
 					<h2 className="subtitle">Some Projects</h2>
+				</div>
+				<div className="col-xxs-12 image-on-left">
+					<SlideContent
+						leftMarkup={<img src={trinitiImage} alt="Triniti support" />}
+						rightMarkup={
+							<Fragment>
+								<div className="title-wrapper">
+									<h2 className="title">Triniti</h2>
+								</div>
+								<h3 className="overview">Overview</h3>
+								<p>
+									This app is created using React and Redux. It has different authorization levels
+									(admin, biller agent and no charge agent). It allows them to create agents,
+									subscriptions, transactions, refund transactions, notes, email templates, email
+									offers, quick phrases, search using multiple fields such as email, username,
+									firstname, etc..., send errors and manage products.
+								</p>
+								<h3 className="overview">Project Skills</h3>
+								<p>
+									Custom webpack build
+									<br />
+									React, Redux, Redux thunk,
+									<br />
+									es6
+									<br />
+									IndexedDB
+									<br />
+									SCSS
+									<br />
+									HTML5
+								</p>
+							</Fragment>
+						}
+					/>
 				</div>
 				<div className="col-xxs-12 image-on-right">
 					<SlideContent
@@ -163,6 +198,45 @@ const MyPortfolio = () => (
 									JSX
 								</p>
 							</Fragment>
+						}
+					/>
+				</div>
+				<div className="col-xxs-12  image-on-right">
+					<SlideContent
+						leftMarkup={
+							<Fragment>
+								<div className="title-wrapper">
+									<h2 className="title">React ScrollSpy</h2>
+								</div>
+								<h3 className="overview">Overview</h3>
+								<p>This pen implements animated scroll spy functionality using React and TweenJs</p>
+								<h3 className="overview">Project Skills</h3>
+								<p>
+									React, React Router Dom
+									<br />
+									Es6
+									<br />
+									SCSS
+									<br />
+									JSX
+									<br />
+									TweenJs
+								</p>
+							</Fragment>
+						}
+						rightMarkup={
+							<iframe
+								height="265"
+								style={{ width: '100%' }}
+								scrolling="no"
+								title="React ScrollSpy"
+								src="https://codepen.io/AdamMorsi/embed/preview/vwOGyg?height=265&theme-id=default&default-tab=js,result"
+								frameBorder="no"
+							>
+								See the Pen <a href="https://codepen.io/AdamMorsi/pen/vwOGyg">React ScrollSpy</a> by
+								Adam Morsi (<a href="https://codepen.io/AdamMorsi">@AdamMorsi</a>) on{' '}
+								<a href="https://codepen.io">CodePen</a>.
+							</iframe>
 						}
 					/>
 				</div>
