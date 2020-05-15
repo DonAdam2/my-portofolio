@@ -19,16 +19,10 @@
 			gtag('config', 'UA-153098389-1');
 		</script>
 		<!--facebook meta tags-->
-		<meta property="og:site_name" content="<%= htmlWebpackPlugin.options.title %>" />
 		<meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>" />
 		<meta property="og:description" content="<%= htmlWebpackPlugin.options.meta.description %>" />
-		<meta
-			property="og:image"
-			itemprop="image"
-			content="<%= require('./assets/images/intro.png') %>"
-		/>
+		<meta property="og:image" content="<%= require('./assets/images/intro.png') %>" />
 		<meta property="og:url" content="<%= htmlWebpackPlugin.options.meta.url %>" />
-		<meta property="og:type" content="website" />
 		<!--twitter meta tags-->
 		<meta name="twitter:title" content="<%= htmlWebpackPlugin.options.title %>" />
 		<meta name="twitter:description" content="<%= htmlWebpackPlugin.options.meta.description %>" />
