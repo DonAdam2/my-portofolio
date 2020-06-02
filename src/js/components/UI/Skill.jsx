@@ -7,10 +7,10 @@ const Skill = ({ label, icon }) => (
 		<div className="circle-container">
 			<div className="outer-ring" />
 			<div className="circle">
-				<div className="front">
+				<div className="front">{icon}</div>
+				<div className="back">
 					<p>{label}</p>
 				</div>
-				<div className="back">{icon}</div>
 			</div>
 		</div>
 	</div>
