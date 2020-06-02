@@ -5,6 +5,7 @@ import CodeIcon from './icons/CodeIcon';
 import MouseIcon from './icons/MouseIcon';
 import BriefCaseIcon from './icons/BriefCaseIcon';
 import Title from './shared/Title';
+import { getYears } from './constants/helpers';
 
 const AboutMe = () => (
 	<div className="section about-me">
@@ -21,7 +22,10 @@ const AboutMe = () => (
 							description={
 								<ul>
 									<li>I'm a software developer who lives in Nicosia, Cyprus.</li>
-									<li>I have been creating and developing websites and web apps for 3+ years.</li>
+									<li>
+										I have been creating and developing websites and web apps for{' '}
+										{getYears('06-01-2017')}+ years.
+									</li>
 									<li>I have a bachelor degree in computer science.</li>
 								</ul>
 							}

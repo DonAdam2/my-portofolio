@@ -1,5 +1,6 @@
 import React from 'react';
 import Typewriter from './UI/Typewriter';
+import { getYears } from './constants/helpers';
 
 const Banner = () => {
 	let squares = [];
