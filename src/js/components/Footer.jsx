@@ -4,13 +4,28 @@ import LinkedInIcon from './icons/LinkedInIcon';
 import SkypeIcon from './icons/SkypeIcon';
 import CodePenIcon from './icons/CodePenIcon';
 import GitHubIcon from './icons/GitHubIcon';
+import GooglePlayIcon from './icons/GooglePlayIcon';
 
 const Footer = () => {
 	return (
 		<div className="section footer">
 			<div className="container">
 				<div className="row">
-					<div className="col-xxs-12 col-sm-4">
+					<div className="col-xxs-12 col-sm-3">
+						<h1>Android Version</h1>
+						<ul>
+							<li>
+								<a
+									href="https://play.google.com/store/apps/details?id=com.adam_morsi.adam_morsi_cv"
+									target="_blank"
+									className="codepen-link"
+								>
+									<GooglePlayIcon />
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div className="col-xxs-12 col-sm-3">
 						<h1>Social Media</h1>
 						<ul>
 							<li>
@@ -20,7 +35,7 @@ const Footer = () => {
 							</li>
 						</ul>
 					</div>
-					<div className="col-xxs-12 col-sm-4">
+					<div className="col-xxs-12 col-sm-3">
 						<h1>Contact</h1>
 						<ul>
 							<li>
@@ -45,7 +60,7 @@ const Footer = () => {
 							</li>
 						</ul>
 					</div>
-					<div className="col-xxs-12 col-sm-4">
+					<div className="col-xxs-12 col-sm-3">
 						<h1>CodePen & Git</h1>
 						<ul>
 							<li>
