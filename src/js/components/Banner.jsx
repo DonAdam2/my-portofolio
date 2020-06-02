@@ -20,7 +20,7 @@ const Banner = () => {
 						sentencesText={[
 							'a software developer.',
 							'creative.',
-							'in Love with web development.',
+							'in Love with software development.',
 							'your next web guy.',
 						]}
 						typingSpeed={100}
