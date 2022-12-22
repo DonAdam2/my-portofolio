@@ -1,7 +1,7 @@
 import React from 'react';
 //constants
 import { getYears } from '@/js/constants/helpers';
-import { myPhoneNumber } from '@/js/constants/constants';
+import { myPhoneNumber, mySkypeUsername } from '@/js/constants/constants';
 //components
 import SkypeIcon from '../../components/icons/SkypeIcon';
 
@@ -38,7 +38,9 @@ const AboutMePage = () => (
             <strong className="main-text d-flex align-items-center">
               <SkypeIcon />
             </strong>{' '}
-            <a href="skype:live:don.adam8?chat">Start chat</a>
+            <a href={`skype:${mySkypeUsername}?chat`}>
+              Start chat <strong>`{mySkypeUsername}`</strong>
+            </a>
           </li>
         </ul>
       </div>
