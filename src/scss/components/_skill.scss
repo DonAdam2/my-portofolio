@@ -1,0 +1,42 @@
+.skill {
+  background-color: $grey-dark-theme;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-bottom: 10px;
+  border-radius: 5px;
+
+  .skill-icon-wrapper {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+
+    // > 992
+    @media (min-width: $laptop) {
+      width: 145px;
+      height: 145px;
+    }
+
+    img {
+      width: 90%;
+    }
+
+    svg {
+      width: 60px;
+      height: 60px;
+      fill: #fff;
+
+      // > 992
+      @media (min-width: $laptop) {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+}

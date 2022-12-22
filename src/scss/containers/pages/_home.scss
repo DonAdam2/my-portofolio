@@ -1,0 +1,42 @@
+.home {
+  background-image: url('~@/public/assets/images/mandala/home/darkHomeMobile.svg');
+
+  @media (min-width: $laptop) {
+    background-image: url('~@/public/assets/images/mandala/home/darkHomeDesktop.svg');
+  }
+
+  .title {
+    font-size: 30px;
+    margin-top: 0;
+    color: $dark-gold-dark-theme;
+
+    @media (min-width: $mobile-large) {
+      font-size: 40px;
+    }
+
+    @media (min-width: $tablet) {
+      font-size: 59px;
+    }
+
+    @media (min-width: $laptop) {
+      font-size: 42px;
+    }
+
+    @media (min-width: $desktop) {
+      font-size: 50px;
+    }
+  }
+
+  .subtitle {
+    font-size: 20px;
+    margin: 0;
+
+    @media (min-width: $mobile-large) {
+      font-size: 30px;
+    }
+
+    @media (min-width: $tablet) {
+      font-size: 35px;
+    }
+  }
+}

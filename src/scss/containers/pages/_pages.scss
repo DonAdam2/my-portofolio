@@ -1,0 +1,24 @@
+.page-wrapper {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  flex: 1;
+
+  @media (min-width: $laptop) {
+    background-position: right;
+    background-size: cover;
+  }
+
+  @media (min-width: 1600px) {
+    background-size: contain;
+  }
+
+  .inner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+}

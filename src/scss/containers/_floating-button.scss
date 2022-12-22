@@ -1,0 +1,37 @@
+.toggle-nav {
+  position: fixed;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  transition: all 0.2s ease;
+
+  button {
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    min-width: 40px;
+    min-height: 40px;
+    position: absolute;
+    background-color: transparent;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &.main-button {
+      z-index: 20;
+    }
+  }
+}
+
+.menu-identifier {
+  position: fixed;
+  left: 55px;
+  top: 20px;
+  font-size: 20px;
+  color: $light-gold-dark-theme;
+}

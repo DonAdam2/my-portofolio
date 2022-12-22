@@ -1,0 +1,48 @@
+import React from 'react';
+//constants
+import { getYears } from '../../constants/helpers';
+//components
+import SkypeIcon from '../../components/icons/SkypeIcon';
+
+const AboutMePage = () => (
+  <div className="about-me page-wrapper">
+    <div className="content-wrapper">
+      <div className="inner-content">
+        <p className="main-text title">About Me</p>
+        <p>
+          I'm a software developer who lives in Nicosia, Cyprus.
+          <br /> I have been creating and developing websites and web apps for{' '}
+          {getYears('06-01-2017')}+ years.
+          <br /> I have a bachelor degree in computer science.
+          <br />I keep current with latest web development technologies and tools.
+          <br /> I provide beautiful, professional and responsive websites.
+        </p>
+        <p className="main-text subtitle">You may contact me to have a great product:</p>
+        <ul>
+          <li>
+            <a href="mailto:adam.morsi@yahoo.com">
+              <strong className="main-text">
+                <i className="far fa-envelope"></i>
+              </strong>{' '}
+              adam.morsi@yahoo.com
+            </a>
+          </li>
+          <li>
+            <strong className="main-text">
+              <i className="fas fa-phone"></i>
+            </strong>{' '}
+            +357 97691992
+          </li>
+          <li>
+            <strong className="main-text d-flex align-items-center">
+              <SkypeIcon />
+            </strong>{' '}
+            don.adam8
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+);
+
+export default AboutMePage;

@@ -1,75 +1,85 @@
-import React, { Component, createRef } from 'react';
-//proptypes
-import PropTypes from 'prop-types';
+import { useEffect, useRef, useState } from 'react';
 
-class Typewriter extends Component {
-	state = {
-		sentences: [],
-		subText: '',
-		loopNum: 0,
-		isDeleting: false,
-	};
-	typewrite = createRef();
-	timer;
+const Typewriter = ({ typingSpeed, isInfinite, sentences, separator = '|', color = '#000000' }) => {
+  const [subText, setSubText] = useState(''),
+    speed = typingSpeed ? typingSpeed : 100,
+    delTimer1 = useRef(null),
+    delTimer2 = useRef(null),
+    typeTimer1 = useRef(null),
+    typeTimer2 = useRef(null),
+    startWriterTimer = useRef(null),
+    initTimer = useRef(null);
 
-	componentDidMount() {
-		const { typingSpeed } = this.props;
-		this.timer = setInterval(
-			() => {
-				this.tick();
-			},
-			typingSpeed ? typingSpeed : 100
-		);
-	}
+  function delWriter(text, i, cb) {
+    if (i >= 0) {
+      setSubText(text.substring(0, i--));
 
-	componentWillUnmount() {
-		clearInterval(this.timer);
-	}
+      delTimer1.current = setTimeout(function () {
+        delWriter(text, i, cb);
+      }, speed);
+    } else if (typeof cb == 'function') {
+      delTimer2.current = setTimeout(cb, speed);
+    }
+  }
 
-	tick = () => {
-		const { subText, loopNum, isDeleting } = this.state,
-			{ isInfinite, sentencesText } = this.props,
-			i = loopNum % sentencesText.length,
-			sentence = sentencesText[i];
+  // function to generate the key hitting effect
+  function typeWriter(text, i, cb) {
+    if (i < text.length + 1) {
+      setSubText(text.substring(0, i++));
 
-		if (isDeleting) {
-			this.setState((prevState) => ({
-				subText: sentence.substring(0, prevState.subText.length - 1),
-			}));
-		} else {
-			this.setState((prevState) => ({
-				subText: sentence.substring(0, prevState.subText.length + 1),
-			}));
-		}
+      typeTimer1.current = setTimeout(function () {
+        typeWriter(text, i++, cb);
+      }, speed);
+    } else if (i === text.length + 1) {
+      const foundIndex = sentences.findIndex((el) => el === text),
+        isLastSentence = foundIndex === sentences.length - 1;
 
-		if (!isDeleting && subText === sentence) {
-			this.setState({ isDeleting: true });
-		} else if (isDeleting && subText === '') {
-			this.setState((prevState) => ({
-				isDeleting: false,
-				loopNum: prevState.loopNum + 1,
-			}));
-		}
+      if (!isLastSentence || (isLastSentence && isInfinite)) {
+        typeTimer2.current = setTimeout(function () {
+          delWriter(text, i, cb);
+        }, speed);
+      }
+    }
+  }
 
-		if (!isInfinite && loopNum === sentencesText.length - 1 && subText === sentence) {
-			clearInterval(this.timer);
-		}
-	};
+  // the main writer function
+  function StartWriter(i) {
+    if (typeof sentences[i] === 'undefined') {
+      startWriterTimer.current = setTimeout(function () {
+        StartWriter(0);
+      }, speed);
+    } else if (i < sentences[i].length + 1) {
+      typeWriter(sentences[i], 0, function () {
+        StartWriter(i + 1);
+      });
+    }
+  }
 
-	render() {
-		const { subText } = this.state;
-		return (
-			<span className="typewriter" ref={this.typewrite}>
-				{subText}
-			</span>
-		);
-	}
-}
+  useEffect(() => {
+    initTimer.current = setTimeout(function () {
+      StartWriter(0);
+    }, speed);
 
-Typewriter.propTypes = {
-	sentencesText: PropTypes.array.isRequired,
-	typingSpeed: PropTypes.number,
-	isInfinite: PropTypes.bool,
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(delTimer1.current);
+      clearTimeout(delTimer2.current);
+      clearTimeout(typeTimer1.current);
+      clearTimeout(typeTimer2.current);
+      clearTimeout(startWriterTimer.current);
+      clearTimeout(initTimer.current);
+    };
+  }, []);
+
+  return (
+    <span className="typewriter" style={{ '--color': color }}>
+      {subText}
+      <span className="separator">{separator}</span>
+    </span>
+  );
 };
 
 export default Typewriter;

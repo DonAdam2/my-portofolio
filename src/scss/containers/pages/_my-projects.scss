@@ -1,0 +1,66 @@
+.my-portfolio {
+  display: flex;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+  @media (min-width: $tablet) {
+    background-image: url('~@/public/assets/images/mandala/projects/right.svg');
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .book-img,
+  iframe {
+    width: 100%;
+    margin: auto;
+  }
+
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+
+    @media (min-width: $tablet) {
+      background-image: url('~@/public/assets/images/mandala/projects/left.svg');
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .project-wrapper {
+      border: 1px solid;
+      margin-bottom: 15px;
+      border-radius: $book-border-radius;
+      background-color: white;
+      color: black;
+      display: flex;
+      flex-direction: column;
+
+      @media (min-width: $tablet) {
+        flex-direction: row;
+      }
+
+      .image-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-basis: 50%;
+        padding: 10px;
+      }
+
+      .overview-wrapper {
+        max-width: 450px;
+        flex-basis: 50%;
+        align-self: center;
+      }
+    }
+
+    p {
+      padding: 0 5px;
+    }
+  }
+}

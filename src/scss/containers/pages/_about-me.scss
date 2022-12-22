@@ -1,0 +1,81 @@
+.about-me {
+  background-image: url('~@/public/assets/images/mandala/about/darkAbout.svg');
+  background-size: cover;
+  align-items: center;
+
+  @media (min-width: $tablet) {
+    background-size: contain;
+  }
+
+  .content-wrapper {
+    background-color: rgba(27, 31, 34, 0.7);
+    height: 100%;
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+
+    @media (min-width: $laptop) {
+      flex-basis: 50%;
+    }
+
+    .inner-content {
+      line-height: 25px;
+      font-size: 15px;
+      letter-spacing: 2px;
+      max-height: 450px;
+      overflow: auto;
+      display: block;
+      background-color: transparent !important;
+      flex-basis: 100%;
+      color: #f1f1f1;
+
+      @media (min-width: $tablet) {
+        max-height: 900px;
+        display: flex;
+        height: 100%;
+        line-height: 27px;
+      }
+
+      .title {
+        font-size: 40px;
+        margin: 20px 0 0;
+
+        @media (min-width: $mobile-large) {
+          font-size: 50px;
+        }
+      }
+
+      .subtitle {
+        margin-bottom: 0;
+      }
+
+      .main-text {
+        color: $dark-gold-dark-theme;
+        fill: $dark-gold-dark-theme;
+      }
+
+      svg {
+        width: 20px;
+      }
+
+      strong {
+        margin-right: 5px;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 0;
+
+        li {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      a {
+        color: #f1f1f1;
+      }
+    }
+  }
+}

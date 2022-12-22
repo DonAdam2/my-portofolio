@@ -7,7 +7,7 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   z-index: 101;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: $black;
   opacity: 1;
   transition: opacity 0.3s;
   display: flex;
@@ -21,14 +21,15 @@
     position: relative;
     margin: 0 auto;
 
-    &::before, &::after {
-      content: "";
+    &::before,
+    &::after {
+      content: '';
       width: 20px;
       height: 20px;
       position: absolute;
       top: 0;
       left: calc(50% - 10px);
-      background-color: #3498db;
+      background-color: $dark-gold-dark-theme;
       animation: squaremove 1s ease-in-out infinite;
     }
 
@@ -40,7 +41,8 @@
 }
 
 @keyframes squaremove {
-  0%, 100% {
+  0%,
+  100% {
     -webkit-transform: translate(0, 0) rotate(0);
     -ms-transform: translate(0, 0) rotate(0);
     -o-transform: translate(0, 0) rotate(0);

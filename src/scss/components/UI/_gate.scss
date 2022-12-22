@@ -1,0 +1,42 @@
+.gate {
+  min-height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  .left-gate,
+  .right-gate {
+    background-color: $black;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    z-index: 10;
+  }
+
+  .left-gate {
+    left: 0;
+  }
+
+  .right-gate {
+    right: 0;
+  }
+
+  .open-gate {
+    animation: gate 2s infinite;
+  }
+}
+
+@keyframes gate {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 50%;
+  }
+  100% {
+    width: 0;
+  }
+}

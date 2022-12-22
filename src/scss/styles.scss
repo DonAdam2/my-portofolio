@@ -1,10 +1,4 @@
-@import "generic.scss";
-@import "components.scss";
-
-#root {
-    font-family: 'Montserrat', sans-serif;
-}
-
-.section {
-  padding: 3rem 0;
-}
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+@import 'generic';
+@import 'components';
+@import 'containers';
