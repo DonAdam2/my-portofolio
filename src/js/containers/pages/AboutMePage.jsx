@@ -1,6 +1,7 @@
 import React from 'react';
 //constants
-import { getYears } from '../../constants/helpers';
+import { getYears } from '@/js/constants/helpers';
+import { myPhoneNumber } from '@/js/constants/constants';
 //components
 import SkypeIcon from '../../components/icons/SkypeIcon';
 
@@ -31,13 +32,13 @@ const AboutMePage = () => (
             <strong className="main-text">
               <i className="fas fa-phone"></i>
             </strong>{' '}
-            +357 97691992
+            <a href={`tel:+357${myPhoneNumber}`}>+357 {myPhoneNumber}</a>
           </li>
           <li>
             <strong className="main-text d-flex align-items-center">
               <SkypeIcon />
             </strong>{' '}
-            don.adam8
+            <a href="skype:live:don.adam8?chat">Start chat</a>
           </li>
         </ul>
       </div>
