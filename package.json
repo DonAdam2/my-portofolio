@@ -52,7 +52,7 @@
 	"dependencies": {
 		"@hot-loader/react-dom": "^16.10.2",
 		"@tweenjs/tween.js": "^16.11.0",
-		"axios": "^0.19.0",
+		"axios": "^0.21.2",
 		"core-js": "^3.3.5",
 		"prettier": "^1.18.2",
 		"prop-types": "^15.7.2",
