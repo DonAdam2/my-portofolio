@@ -25,6 +25,7 @@ const Footer = () => (
         <DarkGooglePlayIcon />
       </a>
     </div>
+    <p className="copyright">&#64; {new Date().getFullYear()} Adam Morsi</p>
   </div>
 );
 
