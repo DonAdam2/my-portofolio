@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 //dark images
 import darkHomeDesktop from '@/public/assets/images/mandala/home/darkHomeDesktop.svg';
@@ -34,13 +34,10 @@ import DarkGearIcon from './js/components/icons/floatingButtonIcons/dark/DarkGea
 import DarkBagIcon from './js/components/icons/floatingButtonIcons/dark/DarkBagIcon';
 //components
 import Gate from './js/components/UI/Gate';
-import Loader from './js/components/UI/Loader';
 import Footer from './js/components/Footer';
 //pages
 import NotFoundPage from '@/js/containers/pages/NotFoundPage';
-
-//load floating button lazily
-const FloatingButton = lazy(() => import('./js/containers/FloatingButton'));
+import FloatingButton from '@/js/containers/FloatingButton';
 
 const App = () => {
   const navigate = useNavigate(),
@@ -135,7 +132,7 @@ const App = () => {
   ];
 
   return (
-    <Suspense fallback={<Loader />}>
+    <>
       <Gate isAnimateGate={isAnimateGate}>
         <div className="page">
           <div className="content">
@@ -155,7 +152,7 @@ const App = () => {
         buttons={buttons}
         mainButtonIcon={<DarkLogoIcon width={iconWidth} />}
       />
-    </Suspense>
+    </>
   );
 };
 
