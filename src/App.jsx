@@ -33,11 +33,11 @@ import DarkInfoIcon from './js/components/icons/floatingButtonIcons/dark/DarkInf
 import DarkGearIcon from './js/components/icons/floatingButtonIcons/dark/DarkGearIcon';
 import DarkBagIcon from './js/components/icons/floatingButtonIcons/dark/DarkBagIcon';
 //components
+import FloatingButton from '@/js/containers/FloatingButton';
 import Gate from './js/components/UI/Gate';
 import Footer from './js/components/Footer';
 //pages
 import NotFoundPage from '@/js/containers/pages/NotFoundPage';
-import FloatingButton from '@/js/containers/FloatingButton';
 
 const App = () => {
   const navigate = useNavigate(),
