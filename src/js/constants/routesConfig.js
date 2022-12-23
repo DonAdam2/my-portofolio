@@ -1,11 +1,9 @@
-import { lazy } from 'react';
 //urls
 import { getAboutPageUrl, getHomePageUrl, getProjectsPageUrl, getSkillsPageUrl } from './appUrls';
-
-const HomePage = lazy(() => import('../containers/pages/HomePage')),
-  AboutMePage = lazy(() => import('../containers/pages/AboutMePage')),
-  SkillsPage = lazy(() => import('../containers/pages/SkillsPage')),
-  MyProjectsPage = lazy(() => import('../containers/pages/MyProjectsPage'));
+import HomePage from '@/js/containers/pages/HomePage';
+import AboutMePage from '@/js/containers/pages/AboutMePage';
+import SkillsPage from '@/js/containers/pages/SkillsPage';
+import MyProjectsPage from '@/js/containers/pages/MyProjectsPage';
 
 export const routes = [
   { path: getHomePageUrl(), element: <HomePage /> },

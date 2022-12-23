@@ -36,7 +36,6 @@ import DarkBagIcon from './js/components/icons/floatingButtonIcons/dark/DarkBagI
 import Gate from './js/components/UI/Gate';
 import Loader from './js/components/UI/Loader';
 import Footer from './js/components/Footer';
-import SuspenseWrapper from '@/js/components/shared/SuspenseWrapper';
 //pages
 import NotFoundPage from '@/js/containers/pages/NotFoundPage';
 
@@ -142,11 +141,7 @@ const App = () => {
           <div className="content">
             <Routes>
               {routes.map((el, i) => (
-                <Route
-                  key={i}
-                  path={el.path}
-                  element={<SuspenseWrapper>{el.element}</SuspenseWrapper>}
-                />
+                <Route key={i} path={el.path} element={el.element} />
               ))}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
