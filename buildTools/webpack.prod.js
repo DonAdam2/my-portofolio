@@ -8,9 +8,11 @@ const { merge } = require('webpack-merge'),
   CssMinimizerPlugin = require('css-minimizer-webpack-plugin'),
   TerserJSPlugin = require('terser-webpack-plugin'),
   { CleanWebpackPlugin } = require('clean-webpack-plugin'),
+  { InjectManifest } = require('workbox-webpack-plugin'),
   CopyPlugin = require('copy-webpack-plugin'),
   //constants
-  { cssSubDirectory } = require('./constants');
+  { cssSubDirectory } = require('./constants'),
+  PATHS = require('./paths');
 
 module.exports = (env, options) => {
   return merge(common(env, options), {
@@ -70,7 +72,21 @@ module.exports = (env, options) => {
         // used for the lazy loaded component
         chunkFilename: cssSubDirectory + '[id].[contenthash:8].css',
       }),
-      new CopyPlugin({ patterns: [{ from: 'redirect', to: '' }] }), //used to copy redirects file from redirect to dist (netlify)
+      new CopyPlugin({
+        patterns: [
+          //copy redirects file from redirect to dist (netlify)
+          { from: 'redirect', to: '' },
+          //copy pwa required files and images
+          { from: 'public/manifest.json', to: '' },
+          { from: 'public/assets/images/pwa', to: 'assets/images/pwa' },
+        ],
+      }),
+      new InjectManifest({
+        //this is the source of your service worker setup
+        swSrc: `${PATHS.src}/serviceWorker/swSource.js`,
+        //this is the output name of your service worker file
+        swDest: 'serviceWorker.js',
+      }),
     ],
   });
 };

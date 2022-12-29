@@ -18,13 +18,23 @@
 
       gtag('config', 'UA-153098389-1');
     </script>
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#ffffff" />
+    <link
+      rel="apple-touch-icon"
+      href="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/pwa/icon-192x192.png') %>"
+    />
     <!-- Google / Search Engine Tags -->
-    <meta name="robots" content="index,follow">
-    <meta itemprop="name" content="<%= htmlWebpackPlugin.options.title %>">
-    <meta itemprop="description" content="<%= htmlWebpackPlugin.options.meta.description %>">
-    <meta itemprop="image" content="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/intro.png') %>">
+    <meta name="robots" content="index,follow" />
+    <meta itemprop="name" content="<%= htmlWebpackPlugin.options.title %>" />
+    <meta itemprop="description" content="<%= htmlWebpackPlugin.options.meta.description %>" />
+    <meta
+      itemprop="image"
+      content="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/intro.png') %>"
+    />
     <!--facebook meta tags-->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="website" />
     <meta property="og:url" content="<%= htmlWebpackPlugin.options.meta.url %>" />
     <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>" />
     <meta property="og:description" content="<%= htmlWebpackPlugin.options.meta.description %>" />
@@ -46,7 +56,7 @@
     />
     <!--site meta tags-->
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <meta name="title" content="<%= htmlWebpackPlugin.options.title %>">
+    <meta name="title" content="<%= htmlWebpackPlugin.options.title %>" />
     <!--fonts-->
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap"
