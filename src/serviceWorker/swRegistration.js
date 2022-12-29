@@ -1,6 +1,6 @@
 import { Workbox } from 'workbox-window';
 
-export default async function registerServiceWorker() {
+export default function registerServiceWorker() {
   if (process.env.NODE_ENV === 'production') {
     if ('serviceWorker' in navigator) {
       const wb = new Workbox('serviceWorker.js');
@@ -13,7 +13,7 @@ export default async function registerServiceWorker() {
         }
       });
 
-      await wb.register();
+      wb.register();
     }
   } else {
     return;
