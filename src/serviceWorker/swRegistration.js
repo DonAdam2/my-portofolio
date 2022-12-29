@@ -13,7 +13,13 @@ export default function registerServiceWorker() {
         }
       });
 
-      wb.register();
+      wb.register()
+        .then(function (registration) {
+          console.log('Service Worker Registered', registration);
+        })
+        .catch(function (err) {
+          console.log('Service Worker Failed to Register', err);
+        });
     }
   } else {
     return;

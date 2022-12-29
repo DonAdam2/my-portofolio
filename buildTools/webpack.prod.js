@@ -45,7 +45,7 @@ module.exports = (env, options) => {
               comparisons: false,
               // Disabled because of an issue with Terser breaking valid code
               inline: 2,
-              drop_console: true,
+              // drop_console: true,
             },
             mangle: {
               safari10: true,
