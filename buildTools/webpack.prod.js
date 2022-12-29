@@ -86,6 +86,7 @@ module.exports = (env, options) => {
         swSrc: `${PATHS.src}/serviceWorker/swSource.js`,
         //this is the output name of your service worker file
         swDest: 'serviceWorker.js',
+        exclude: ['_redirects'],
       }),
     ],
   });
