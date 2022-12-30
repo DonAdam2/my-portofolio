@@ -7,7 +7,6 @@ module.exports = {
   rootDirectory: 'src',
   publicDirectory: 'public',
   outputDirectory: 'dist',
-  environmentsDirectory: 'environments',
   jsSubDirectory: 'js/',
   cssSubDirectory: 'css/',
   isCssModules: false,
