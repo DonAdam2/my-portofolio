@@ -16,6 +16,10 @@
 - [Prettier](https://prettier.io/)
 - [Webpack](https://webpack.js.org/)
 
+### It has the following setup
+- Google Analytics
+- Progressive web app using `InjectManifest` from `workbox-webpack-plugin`
+
 ## Available Scripts
 
 In the project directory, you can run:
