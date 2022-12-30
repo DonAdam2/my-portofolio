@@ -189,6 +189,7 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, isMenuBtnIdentifier
                 left: mainButton.left,
               }}
               onClick={isHasTouch ? mouseEnterHandler : () => {}}
+              aria-label="Main menu button"
             >
               {mainButtonIcon}
             </button>
