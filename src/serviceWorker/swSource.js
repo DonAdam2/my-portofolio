@@ -85,11 +85,11 @@ registerRoute(
 
 /************** cache static resources **************/
 //resources in index.html file (e.g: tailwind, bootstrap, ...etc)
-/*const staticResourcesCacheName = 'static-resources';
+const staticResourcesCacheName = 'static-resources';
 
 registerRoute(
   ({ request }) => request.destination === 'script' || request.destination === 'style',
   new StaleWhileRevalidate({
     cacheName: staticResourcesCacheName,
   })
-);*/
+);
