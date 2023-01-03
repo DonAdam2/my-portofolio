@@ -90,6 +90,25 @@ registerRoute(
   })
 );
 
+/************** cache images **************/
+const imagesMaxEntries = 60;
+
+registerRoute(
+  ({ request, url }) => url.origin === self.location.origin && request.destination === 'image',
+  new CacheFirst({
+    cacheName: 'images',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxAgeSeconds: maxAgeOneMonth,
+        maxEntries: imagesMaxEntries,
+      }),
+    ],
+  })
+);
+
 /************** skipWaiting **************/
 // This allows the web app to trigger skipWaiting via
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
