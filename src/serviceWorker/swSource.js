@@ -94,7 +94,7 @@ registerRoute(
 const imagesMaxEntries = 60;
 
 registerRoute(
-  ({ request }) => request.destination === 'image',
+  ({ request, url }) => url.origin === self.location.origin && request.destination === 'image',
   new CacheFirst({
     cacheName: 'images',
     plugins: [
