@@ -8,6 +8,7 @@
   "name": "Adam Portfolio",
   "short_name": "Adam Morsi Portfolio",
   "description": "Hello, I'm adam, I'm a versatile Software engineer with 6 years of experience designing, developing, and managing complex sites, internal frameworks.",
+  "categories": ["technology", "web"],
   "icons": [
     {
       "src": "./assets/images/pwa/icon-192x192.png",
