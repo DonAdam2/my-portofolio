@@ -1,6 +1,6 @@
 import React from 'react';
 //simple bar
-import 'simplebar/dist/simplebar.min.css';
+import 'simplebar-react/dist/simplebar.min.css';
 import SimpleBar from 'simplebar-react';
 //custom hooks
 import useWindowSize from '../../customHooks/UseWindowSize';

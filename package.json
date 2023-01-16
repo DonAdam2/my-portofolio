@@ -86,7 +86,7 @@
   },
   "dependencies": {
     "react-router-dom": "^6.6.2",
-    "simplebar-react": "^2.3.0",
+    "simplebar-react": "^3.0.0",
     "workbox-cacheable-response": "^6.5.4",
     "workbox-core": "^6.5.4",
     "workbox-expiration": "^6.5.4",
