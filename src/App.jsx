@@ -147,7 +147,7 @@ const App = () => {
         </div>
       </Gate>
       <FloatingButton
-        isMenuBtnIdentifier
+        menuIdentifier={{ enable: true }}
         location="top-left"
         buttons={buttons}
         mainButtonIcon={<DarkLogoIcon width={iconWidth} />}

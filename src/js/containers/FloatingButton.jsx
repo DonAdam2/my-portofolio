@@ -2,26 +2,51 @@ import React, { Fragment, useEffect, useRef, useState } from 'react';
 //custom hooks
 import useTouchScreenDetect from '../customHooks/UseTouchScreenDetect';
 import useOutsideClick from '../customHooks/UseOutsideClick';
-//constants
-import { setTimeoutRAF } from '../constants/helpers';
 
-const FloatingButton = ({ location, buttons, mainButtonIcon, isMenuBtnIdentifier }) => {
-  const [isHover, setIsHover] = useState(false),
+const availablePositions = {
+  topLeft: 'top-left',
+  topRight: 'top-right',
+  bottomLeft: 'bottom-left',
+  bottomRight: 'bottom-right',
+};
+
+const FloatingButton = ({ location, buttons, mainButtonIcon, menuIdentifier }) => {
+  const { enable = false, icon, label = 'Menu', className = '' } = menuIdentifier ?? {},
+    [isHover, setIsHover] = useState(false),
     [isMenuIdentifier, setIsMenuIdentifier] = useState(true),
-    menuIdentifierCancelPauseTimer = useRef(() => {}),
-    registerMenuIdentifierCancelPauseTimer = (fn) => (menuIdentifierCancelPauseTimer.current = fn),
     isHasTouch = useTouchScreenDetect(),
     ref = useRef(null),
     radius = 25,
     buttonsLength = buttons.length,
     navigatorDimensions = radius * buttonsLength * 1.6,
-    circleRadius = radius * buttonsLength;
+    circleRadius = radius * buttonsLength,
+    isOnLeft =
+      location === availablePositions.topLeft || location === availablePositions.bottomLeft;
 
   useEffect(() => {
+    let timer;
+    if (enable) {
+      if (isHover) {
+        setIsMenuIdentifier(false);
+      } else {
+        timer = setTimeout(() => {
+          setIsMenuIdentifier(!isHover);
+        }, (buttons.length * 200) / 2);
+      }
+    }
     return () => {
-      menuIdentifierCancelPauseTimer.current();
+      if (enable) {
+        clearTimeout(timer);
+      }
     };
-  }, []);
+  }, [enable, isHover, buttons.length]);
+
+  const showFloatingBtnMenu = () => {
+    setIsHover(true);
+  };
+  const hideFloatingBtnMenu = () => {
+    setIsHover(false);
+  };
 
   useOutsideClick(ref, () => {
     if (isHasTouch) {
@@ -29,29 +54,9 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, isMenuBtnIdentifier
     }
   });
 
-  const showMenuIdentifier = () => {
-    setTimeoutRAF(
-      () => {
-        setIsMenuIdentifier(true);
-      },
-      (buttons.length * 200) / 2,
-      registerMenuIdentifierCancelPauseTimer
-    );
-  };
-
-  const showFloatingBtnMenu = () => {
-    setIsHover(true);
-    setIsMenuIdentifier(false);
-  };
-
-  const hideFloatingBtnMenu = () => {
-    setIsHover(false);
-    showMenuIdentifier();
-  };
-
   const setNavigatorLocation = () => {
     switch (location) {
-      case 'top-left':
+      case availablePositions.topLeft:
         return {
           container: {
             top: 4,
@@ -65,8 +70,14 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, isMenuBtnIdentifier
             bottom: 'auto',
             left: 0,
           },
+          identifier: {
+            top: 20,
+            right: 'auto',
+            bottom: 'auto',
+            left: 55,
+          },
         };
-      case 'top-right':
+      case availablePositions.topRight:
         return {
           container: {
             top: 10,
@@ -80,8 +91,14 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, isMenuBtnIdentifier
             bottom: 'auto',
             left: 'auto',
           },
+          identifier: {
+            top: 20,
+            right: 55,
+            bottom: 'auto',
+            left: 'auto',
+          },
         };
-      case 'bottom-left':
+      case availablePositions.bottomLeft:
         return {
           container: {
             top: 'auto',
@@ -94,6 +111,12 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, isMenuBtnIdentifier
             right: 'auto',
             bottom: 0,
             left: 0,
+          },
+          identifier: {
+            top: 'auto',
+            right: 'auto',
+            bottom: 20,
+            left: 55,
           },
         };
       default:
@@ -110,6 +133,12 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, isMenuBtnIdentifier
             bottom: 0,
             left: 'auto',
           },
+          identifier: {
+            top: 'auto',
+            right: 55,
+            bottom: 20,
+            left: 'auto',
+          },
         };
     }
   };
@@ -117,21 +146,21 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, isMenuBtnIdentifier
   // (x, y) = (r * cos(θ), r * sin(θ))
   const setButtonPosition = (index) => {
     switch (location) {
-      case 'top-left':
+      case availablePositions.topLeft:
         return {
           top: Math.round(circleRadius * Math.sin((Math.PI / 2 / (buttonsLength - 1)) * index)),
           right: 'auto',
           bottom: 'auto',
           left: Math.round(circleRadius * Math.cos((Math.PI / 2 / (buttonsLength - 1)) * index)),
         };
-      case 'top-right':
+      case availablePositions.topRight:
         return {
           top: Math.round(circleRadius * Math.sin((Math.PI / 2 / (buttonsLength - 1)) * index)),
           right: Math.round(circleRadius * Math.cos((Math.PI / 2 / (buttonsLength - 1)) * index)),
           bottom: 'auto',
           left: 'auto',
         };
-      case 'bottom-left':
+      case availablePositions.bottomLeft:
         return {
           top: 'auto',
           right: 'auto',
@@ -161,7 +190,8 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, isMenuBtnIdentifier
     handler();
   };
 
-  const { container, mainButton } = setNavigatorLocation();
+  const { container, mainButton, identifier } = setNavigatorLocation();
+
   return (
     <>
       {buttonsLength > 1 ? (
@@ -172,24 +202,16 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, isMenuBtnIdentifier
             onMouseLeave={!isHasTouch ? mouseLeaveHandler : () => {}}
             className="toggle-nav"
             style={{
-              top: container.top,
-              right: container.right,
-              bottom: container.bottom,
-              left: container.left,
+              ...container,
               width: isHover ? navigatorDimensions : 40,
               height: isHover ? navigatorDimensions : 40,
             }}
           >
             <button
               className="main-button"
-              style={{
-                top: mainButton.top,
-                right: mainButton.right,
-                bottom: mainButton.bottom,
-                left: mainButton.left,
-              }}
+              style={{ ...mainButton }}
               onClick={isHasTouch ? mouseEnterHandler : () => {}}
-              aria-label="Main menu button"
+              aria-label={`Main menu button ${location}`}
             >
               {mainButtonIcon}
             </button>
@@ -228,9 +250,15 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, isMenuBtnIdentifier
               </Fragment>
             ))}
           </div>
-          {isMenuBtnIdentifier && isMenuIdentifier && (
-            <div className="menu-identifier">
-              <i className="far fa-hand-point-left" /> Menu
+          {enable && isMenuIdentifier && (
+            <div
+              className={`menu-identifier ${className}`}
+              style={{ ...identifier, flexDirection: isOnLeft ? 'row' : 'row-reverse' }}
+            >
+              {icon ? icon : <i className={`far fa-hand-point-${isOnLeft ? 'left' : 'right'}`} />}{' '}
+              <span style={{ paddingLeft: isOnLeft ? 5 : 0, paddingRight: !isOnLeft ? 5 : 0 }}>
+                {label}
+              </span>
             </div>
           )}
         </>
@@ -238,10 +266,7 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, isMenuBtnIdentifier
         <div
           className="toggle-nav"
           style={{
-            top: container.top,
-            right: container.right,
-            bottom: container.bottom,
-            left: container.left,
+            ...container,
             width: 150,
           }}
         >
