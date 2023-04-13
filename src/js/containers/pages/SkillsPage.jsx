@@ -1,6 +1,6 @@
 import { useState } from 'react';
 //constants
-import { skillsImages } from '@/js/constants/helpers';
+import { skillsImages } from '@/js/constants/constants';
 //components
 import SkillsModal from '@/js/containers/modals/SkillsModal';
 

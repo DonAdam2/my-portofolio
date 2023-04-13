@@ -6,7 +6,7 @@ import useWindowSize from '../../customHooks/UseWindowSize';
 //components
 import Project from '../../components/Project';
 //constants
-import { projects } from '@/js/constants/helpers';
+import { projects } from '@/js/constants/constants';
 
 const MyProjectsPage = () => {
   const { height } = useWindowSize();
