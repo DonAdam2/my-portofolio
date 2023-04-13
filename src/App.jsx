@@ -23,8 +23,8 @@ import {
   getHomePageUrl,
   getProjectsPageUrl,
   getSkillsPageUrl,
-} from './js/constants/appUrls';
-import { routes } from './js/constants/routesConfig';
+} from '@/js/routing/appUrls';
+import { routes } from '@/js/routing/routesConfig';
 import { setTimeoutRAF } from './js/constants/helpers';
 //icons
 import DarkLogoIcon from './js/components/icons/floatingButtonIcons/dark/DarkLogoIcon';
