@@ -1,4 +1,3 @@
-import React from 'react';
 //icons
 import darkJavaScriptIcon from '@/public/assets/images/skillsIcons/dark/darkJavaScriptIcon.svg';
 import darkFrontendIcon from '@/public/assets/images/skillsIcons/dark/darkFrontendIcon.svg';
@@ -38,6 +37,13 @@ export const setTimeoutRAF = (fn, delay, registerCancel) => {
   const raf = requestAnimationFrame(loop);
   registerCancel(() => cancelAnimationFrame(raf));
 };
+
+export function createWrapperAndAppendToBody(wrapper, wrapperElementId) {
+  const wrapperElement = document.createElement(wrapper);
+  wrapperElement.setAttribute('id', wrapperElementId);
+  document.body.appendChild(wrapperElement);
+  return wrapperElement;
+}
 
 export const skillsImages = [
   { image: darkJavaScriptIcon },

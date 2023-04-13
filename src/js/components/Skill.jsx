@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Skill = ({ skillLabel, skillIcon }) => (
   <div className="skill">
     <div className="skill-icon-wrapper">{skillIcon}</div>

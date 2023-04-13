@@ -1,4 +1,3 @@
-import React from 'react';
 //icons
 import AngularIcon from '../components/icons/skillsIcons/AngularIcon';
 import BootstrapIcon from '../components/icons/skillsIcons/BootstrapIcon';

@@ -1,6 +1,8 @@
-@import 'components/UI/typewriter';
-@import 'components/UI/loader';
-@import 'components/UI/gate';
-@import 'components/UI/modal';
+@import 'components/typewriter';
+@import 'components/shared/loader';
+@import 'components/gate';
+@import 'components/shared/modal';
 @import 'components/skill';
 @import 'components/footer';
+@import 'components/shared/gradient-text-color';
+@import 'components/shared/button';

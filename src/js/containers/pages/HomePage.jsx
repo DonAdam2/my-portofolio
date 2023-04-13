@@ -1,6 +1,5 @@
-import React from 'react';
 //components
-import Typewriter from '../../components/UI/Typewriter';
+import Typewriter from '../../components/Typewriter';
 
 const HomePage = () => {
   return (

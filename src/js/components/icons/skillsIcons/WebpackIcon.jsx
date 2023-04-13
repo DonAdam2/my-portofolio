@@ -1,5 +1,3 @@
-import React from 'react';
-
 const WebpackIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 290">
     <path fill="#FFF" d="M128 .048l128 72.405V217.31l-128 72.405L0 217.31V72.453z" />

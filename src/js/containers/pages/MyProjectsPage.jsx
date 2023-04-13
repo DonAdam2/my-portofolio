@@ -1,4 +1,3 @@
-import React from 'react';
 //simple bar
 import 'simplebar-react/dist/simplebar.min.css';
 import SimpleBar from 'simplebar-react';

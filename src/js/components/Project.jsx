@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Project = ({ title, isImg, imgSrc, iframe, desc, skills }) => (
   <div className="project-wrapper">
     <div className="image-wrapper">

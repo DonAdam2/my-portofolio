@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
-//simple bar
-import SimpleBar from 'simplebar-react';
+import { useState } from 'react';
 //constants
 import { skillsImages } from '@/js/constants/helpers';
-import { skillsList } from '@/js/constants/skillsList';
 //components
-import Modal from '../../components/UI/Modal';
-import Skill from '../../components/Skill';
+import SkillsModal from '@/js/containers/modals/SkillsModal';
 
 const SkillsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,22 +31,7 @@ const SkillsPage = () => {
           ))}
         </div>
       </div>
-      <Modal
-        show={isModalOpen}
-        title="Skills LIst"
-        headerCloseHandler={closeModal}
-        enableFooter={false}
-      >
-        <SimpleBar
-          style={{
-            maxHeight: 430,
-          }}
-        >
-          {skillsList.map((el, i) => (
-            <Skill key={i} skillLabel={el.label} skillIcon={el.icon} />
-          ))}
-        </SimpleBar>
-      </Modal>
+      <SkillsModal isModalOpen={isModalOpen} closeModal={closeModal} />
     </div>
   );
 };

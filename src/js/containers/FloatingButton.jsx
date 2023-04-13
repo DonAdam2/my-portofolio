@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 //custom hooks
 import useTouchScreenDetect from '../customHooks/UseTouchScreenDetect';
 import useOutsideClick from '../customHooks/UseOutsideClick';

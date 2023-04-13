@@ -1,0 +1,115 @@
+.modal-window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 1;
+  transition: opacity 0.3s;
+  color: $light-gold-dark-theme;
+
+  &.inactive-modal {
+    transition: height 0s 0.3s, opacity 0.3s;
+    height: 0;
+    opacity: 0;
+  }
+
+  .modal-wrapper {
+    display: flex;
+    align-items: center;
+    min-height: 100%;
+  }
+
+  .modal {
+    margin: 0 auto;
+    z-index: 500;
+    background-color: $grey-dark-theme;
+    width: calc(100% - 1rem);
+    max-width: 600px;
+    border: 1px solid $dark-gold-dark-theme;
+    border-radius: 4px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+    cursor: initial;
+    transform: translateY(-100%);
+    opacity: 0;
+
+    & * {
+      box-sizing: border-box;
+    }
+
+    &.animate-modal {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .modal-btn {
+      margin-right: 8px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .modal-header {
+      position: relative;
+      padding: 10px;
+      border-bottom: 1px solid $dark-gold-dark-theme;
+      font-weight: 300;
+      font-size: 20px;
+      display: flex;
+      flex-direction: column;
+      & > div {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .modal-title {
+        margin: 0;
+        line-height: 1.42857143;
+        text-transform: capitalize;
+      }
+
+      .header-close-btn {
+        padding: 0;
+        cursor: pointer;
+        border: 0;
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 1;
+        color: $dark-gold-dark-theme;
+        text-shadow: 0 1px 0 $black;
+        outline: none;
+        opacity: 0.6;
+        transition: opacity 0.15s;
+        background-color: transparent;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      p {
+        margin: 5px 0 0;
+        font-size: 14px;
+      }
+    }
+
+    .modal-body {
+      position: relative;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .modal-footer {
+      padding: 10px;
+      text-align: right;
+      border-top: 1px solid $dark-gold-dark-theme;
+    }
+  }
+}

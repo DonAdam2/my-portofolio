@@ -19,12 +19,6 @@
     background-position: right;
   }
 
-  .simplebar-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
   .open-skills-btn {
     position: absolute;
     top: 23px;
@@ -196,11 +190,6 @@
       }
     }
   }
-}
-
-.simplebar-content:after,
-.simplebar-content:before {
-  content: none !important;
 }
 
 @keyframes rotateCube {

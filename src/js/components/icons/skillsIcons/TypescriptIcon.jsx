@@ -1,5 +1,3 @@
-import React from 'react';
-
 const TypescriptIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
     <path fill="#007ACC" d="M0 128v128h256V0H0z" />

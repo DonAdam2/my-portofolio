@@ -1,5 +1,3 @@
-import React from 'react';
-
 const DarkHomeIcon = ({ width }) => (
   <svg viewBox="0 0 1288 1101" style={{ width }}>
     <defs>

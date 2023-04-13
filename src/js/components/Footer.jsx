@@ -1,4 +1,3 @@
-import React from 'react';
 //icons
 import DarkLinkedInIcon from './icons/footerIcons/DarkLinkedInIcon';
 import DarkCodePenIcon from './icons/footerIcons/DarkCodePenIcon';

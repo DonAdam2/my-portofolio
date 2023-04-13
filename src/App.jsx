@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 //dark images
 import darkHomeDesktop from '@/public/assets/images/mandala/home/darkHomeDesktop.svg';
@@ -34,7 +34,7 @@ import DarkGearIcon from './js/components/icons/floatingButtonIcons/dark/DarkGea
 import DarkBagIcon from './js/components/icons/floatingButtonIcons/dark/DarkBagIcon';
 //components
 import FloatingButton from '@/js/containers/FloatingButton';
-import Gate from './js/components/UI/Gate';
+import Gate from '@/js/components/Gate';
 import Footer from './js/components/Footer';
 //pages
 import NotFoundPage from '@/js/containers/pages/NotFoundPage';

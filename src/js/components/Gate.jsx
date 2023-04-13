@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Gate = ({ children, isAnimateGate }) => (
   <div className="gate">
     <div className={`left-gate ${isAnimateGate ? 'open-gate' : ''}`} />

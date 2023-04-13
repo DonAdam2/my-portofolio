@@ -1,4 +1,3 @@
-import React from 'react';
 //constants
 import { getYears } from '@/js/constants/helpers';
 import { myPhoneNumber, mySkypeUsername } from '@/js/constants/constants';

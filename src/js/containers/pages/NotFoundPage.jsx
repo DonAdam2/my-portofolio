@@ -1,7 +1,6 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 //constants
-import { getHomePageUrl } from '../../constants/appUrls';
+import { getHomePageUrl } from '@/js/constants/appUrls';
 
 const NotFoundPage = () => (
   <div className="not-found page-wrapper">

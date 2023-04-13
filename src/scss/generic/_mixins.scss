@@ -1,0 +1,19 @@
+@mixin disable-background($color: $black, $background: $black) {
+  box-shadow: none;
+  color: rgba($color, 0.26);
+  background: rgba($background, 0.12);
+
+  .button-icon {
+    fill: rgba($color, 0.26);
+  }
+}
+
+@mixin disable-outlined-background($color: $black, $background: $black) {
+  box-shadow: none;
+  color: rgba($color, 0.26);
+  border-color: rgba($background, 0.26);
+
+  .button-icon {
+    fill: rgba($color, 0.26);
+  }
+}
