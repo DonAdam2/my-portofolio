@@ -48,6 +48,10 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, menuIdentifier }) =
     setIsHover(false);
   };
 
+  const toggleFloatingBtnMenu = () => {
+    setIsHover((prev) => !prev);
+  };
+
   useOutsideClick(ref, () => {
     if (isHasTouch) {
       hideFloatingBtnMenu();
@@ -210,7 +214,7 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, menuIdentifier }) =
             <button
               className="main-button"
               style={{ ...mainButton }}
-              onClick={isHasTouch ? mouseEnterHandler : () => {}}
+              onClick={isHasTouch ? toggleFloatingBtnMenu : () => {}}
               aria-label={`Main menu button ${location}`}
             >
               {mainButtonIcon}
