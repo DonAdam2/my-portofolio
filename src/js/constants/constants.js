@@ -12,6 +12,31 @@ import flowardHubImage from '@/public/assets/images/flowardHub.png';
 import keepConnectImage from '@/public/assets/images/keepConnect.png';
 import trinitiImage from '@/public/assets/images/tiniti.png';
 import fxprimusImage from '@/public/assets/images/fxprimus.png';
+import JavascriptIcon from '@/js/components/icons/skillsIcons/JavascriptIcon';
+import TypescriptIcon from '@/js/components/icons/skillsIcons/TypescriptIcon';
+import NextJsIcon from '@/js/components/icons/skillsIcons/NextJsIcon';
+import ReactIcon from '@/js/components/icons/skillsIcons/ReactIcon';
+import ReduxIcon from '@/js/components/icons/skillsIcons/ReduxIcon';
+import AngularIcon from '@/js/components/icons/skillsIcons/AngularIcon';
+import RxjsIcon from '@/public/assets/images/reactivex.png';
+import JestIcon from '@/js/components/icons/skillsIcons/JestIcon';
+import CypressIcon from '@/js/components/icons/skillsIcons/CypressIcon';
+import WebpackIcon from '@/js/components/icons/skillsIcons/WebpackIcon';
+import AjaxIcon from '@/js/components/icons/skillsIcons/AjaxIcon';
+import Html5Icon from '@/js/components/icons/skillsIcons/Html5Icon';
+import Css3Icon from '@/js/components/icons/skillsIcons/Css3Icon';
+import SassIcon from '@/js/components/icons/skillsIcons/SassIcon';
+import BootstrapIcon from '@/js/components/icons/skillsIcons/BootstrapIcon';
+import MaterialDesignIcon from '@/js/components/icons/skillsIcons/MaterialDesignIcon';
+import NodeJsIcon from '@/js/components/icons/skillsIcons/NodeJsIcon';
+import MongoDBIcon from '@/js/components/icons/skillsIcons/MongoDBIcon';
+import DrupalIcon from '@/js/components/icons/skillsIcons/DrupalIcon';
+import WordPressIcon from '@/js/components/icons/skillsIcons/WordPressIcon';
+import GitIcon from '@/js/components/icons/skillsIcons/GitIcon';
+import LinuxIcon from '@/js/components/icons/skillsIcons/LinuxIcon';
+import DockerIcon from '@/js/components/icons/skillsIcons/DockerIcon';
+import TravisCIIcon from '@/js/components/icons/skillsIcons/TravisCIIcon';
+import JiraIcon from '@/js/components/icons/skillsIcons/JiraIcon';
 
 export const myPhoneNumber = '97691992';
 export const mySkypeUsername = 'live:don.adam8';
@@ -23,6 +48,38 @@ export const skillsImages = [
   { image: darkStylesIcon },
   { image: darkBackendIcon },
   { image: darkFrontendIcon },
+];
+
+export const skillsList = [
+  { label: 'Javascript', icon: <JavascriptIcon /> },
+  { label: 'Typescript', icon: <TypescriptIcon /> },
+  { label: 'NextJS', icon: <NextJsIcon /> },
+  { label: 'React', icon: <ReactIcon /> },
+  { label: 'React Native', icon: <ReactIcon /> },
+  { label: 'Redux', icon: <ReduxIcon /> },
+  { label: 'Angular 2+', icon: <AngularIcon /> },
+  { label: 'RxJs', icon: <img className="back-logo" src={RxjsIcon} alt="rxjs icon" /> },
+  { label: 'Jest', icon: <JestIcon /> },
+  { label: 'Cypress', icon: <CypressIcon /> },
+  { label: 'Webpack', icon: <WebpackIcon /> },
+  {
+    label: 'AJAX',
+    icon: <AjaxIcon />,
+  },
+  { label: 'HTML5', icon: <Html5Icon /> },
+  { label: 'CSS3', icon: <Css3Icon /> },
+  { label: 'SCSS', icon: <SassIcon /> },
+  { label: 'Bootstrap', icon: <BootstrapIcon /> },
+  { label: `Material D`, icon: <MaterialDesignIcon /> },
+  { label: 'NodeJS', icon: <NodeJsIcon /> },
+  { label: 'MongoDB', icon: <MongoDBIcon /> },
+  { label: 'Drupal', icon: <DrupalIcon /> },
+  { label: 'WordPress', icon: <WordPressIcon /> },
+  { label: 'Git', icon: <GitIcon /> },
+  { label: 'Linux', icon: <LinuxIcon /> },
+  { label: 'Docker', icon: <DockerIcon /> },
+  { label: 'Travis CI', icon: <TravisCIIcon /> },
+  { label: 'Jira', icon: <JiraIcon /> },
 ];
 
 export const projects = [

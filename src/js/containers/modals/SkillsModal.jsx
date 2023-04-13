@@ -1,6 +1,6 @@
 import SimpleBar from 'simplebar-react';
 //constants
-import { skillsList } from '@/js/constants/skillsList';
+import { skillsList } from '@/js/constants/constants';
 //components
 import Skill from '@/js/components/Skill';
 import Modal from '@/js/components/shared/Modal';

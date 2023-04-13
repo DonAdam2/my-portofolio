@@ -2,3 +2,8 @@
 @import 'generic';
 @import 'components';
 @import 'containers';
+
+.simplebar-content:after,
+.simplebar-content:before {
+  content: none !important;
+}
