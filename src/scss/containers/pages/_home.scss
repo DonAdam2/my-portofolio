@@ -6,9 +6,13 @@
   }
 
   .title {
-    font-size: 30px;
+    font-size: 21px;
     margin-top: 0;
     color: $dark-gold-dark-theme;
+
+    @media (min-width: $mobile-small) {
+      font-size: 28px;
+    }
 
     @media (min-width: $mobile-large) {
       font-size: 40px;
@@ -28,8 +32,12 @@
   }
 
   .subtitle {
-    font-size: 20px;
+    font-size: 14.7px;
     margin: 0;
+
+    @media (min-width: $mobile-small) {
+      font-size: 19px;
+    }
 
     @media (min-width: $mobile-large) {
       font-size: 30px;
