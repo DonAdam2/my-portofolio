@@ -88,7 +88,7 @@ export const projects = [
     isImg: true,
     imgSrc: signItImage,
     iframe: '',
-    desc: `This app is created using React 17 in 2 languages Arabic and English. It's an e-signature site.`,
+    desc: `This app is created using React 18 in 2 languages Arabic and English. It's an e-signature site.`,
     skills: [
       'React, Redux, Redux thunk',
       'Typescript',

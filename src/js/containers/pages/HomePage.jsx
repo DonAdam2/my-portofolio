@@ -7,13 +7,12 @@ const HomePage = () => {
       <div className="inner-content">
         <p className="title">Hi, my name is Adam!</p>
         <p className="subtitle">
-          I'm{' '}
           <Typewriter
             sentences={[
-              'a software engineer.',
-              'creative.',
-              'in Love with software development.',
-              'your next web guy.',
+              'I am a software engineer.',
+              'I am creative.',
+              'I Love software development.',
+              'I am your next software guy.',
             ]}
             typingSpeed={100}
             isInfinite={true}
