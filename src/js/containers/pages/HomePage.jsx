@@ -11,7 +11,7 @@ const HomePage = () => {
             sentences={[
               'I am a software engineer.',
               'I am creative.',
-              'I Love software development.',
+              'I love software development.',
               'I am your next software guy.',
             ]}
             typingSpeed={100}
