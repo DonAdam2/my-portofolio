@@ -9,7 +9,7 @@ const HomePage = () => {
         <p className="subtitle">
           <Typewriter
             sentences={[
-              'I am a software engineerrr.',
+              'I am a software engineer.',
               'I am creative.',
               'I love software development.',
               'I am your next software guy.',
