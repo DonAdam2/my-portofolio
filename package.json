@@ -78,17 +78,17 @@
     "webpack-cli": "^5.1.3",
     "webpack-dev-server": "^4.15.0",
     "webpack-merge": "^5.9.0",
-    "workbox-webpack-plugin": "^6.5.4"
+    "workbox-webpack-plugin": "^7.0.0"
   },
   "dependencies": {
     "react-router-dom": "^6.11.2",
     "simplebar-react": "^3.2.4",
-    "workbox-cacheable-response": "^6.5.4",
-    "workbox-core": "^6.5.4",
-    "workbox-expiration": "^6.5.4",
-    "workbox-precaching": "^6.5.4",
-    "workbox-routing": "^6.5.4",
-    "workbox-strategies": "^6.5.4",
-    "workbox-window": "^6.5.4"
+    "workbox-cacheable-response": "^7.0.0",
+    "workbox-core": "^7.0.0",
+    "workbox-expiration": "^7.0.0",
+    "workbox-precaching": "^7.0.0",
+    "workbox-routing": "^7.0.0",
+    "workbox-strategies": "^7.0.0",
+    "workbox-window": "^7.0.0"
   }
 }
