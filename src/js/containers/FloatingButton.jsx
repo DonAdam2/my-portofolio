@@ -29,9 +29,12 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, menuIdentifier }) =
       if (isHover) {
         setIsMenuIdentifier(false);
       } else {
-        timer = setTimeout(() => {
-          setIsMenuIdentifier(!isHover);
-        }, (buttons.length * 200) / 2);
+        timer = setTimeout(
+          () => {
+            setIsMenuIdentifier(!isHover);
+          },
+          (buttons.length * 200) / 2
+        );
       }
     }
     return () => {
