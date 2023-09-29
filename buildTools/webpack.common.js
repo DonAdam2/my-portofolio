@@ -11,17 +11,25 @@ const path = require('path'),
     isCssModules,
     metaInfo: { title, description, url, keywords },
   } = require('./constants'),
-  PATHS = require('./paths');
+  {
+    srcPath,
+    publicDirPath,
+    outputSrcPath,
+    appIndexPath,
+    jsDirectoryPath,
+    stylesDirectoryPath,
+    indexHtmlPath,
+  } = require('./paths');
 
 module.exports = (env, options) => {
   // the mode variable is passed in package.json scripts (development, production)
   const isDevelopment = options.mode === 'development';
 
   return {
-    entry: `${PATHS.src}/index.jsx`,
+    entry: appIndexPath,
     output: {
       // __dirname is the absolute path to the root directory of our app
-      path: PATHS.outputSrc,
+      path: outputSrcPath,
       // hashes are very important in production for caching purposes
       filename: jsSubDirectory + 'bundle.[contenthash:8].js',
       // used for the lazy loaded component
@@ -51,9 +59,9 @@ module.exports = (env, options) => {
       extensions: ['.js', '.jsx', '.json'],
       // declaring aliases to reduce the use of relative path
       alias: {
-        '@/js': `${PATHS.src}/js`,
-        '@/scss': `${PATHS.src}/scss`,
-        '@/public': PATHS.public,
+        '@/js': jsDirectoryPath,
+        '@/scss': stylesDirectoryPath,
+        '@/public': publicDirPath,
       },
     },
     module: {
@@ -106,7 +114,7 @@ module.exports = (env, options) => {
                           return 'local';
                         },
                         localIdentName: isDevelopment ? '[name]_[local]' : '[contenthash:base64]',
-                        localIdentContext: PATHS.src,
+                        localIdentContext: srcPath,
                         localIdentHashSalt: 'react-boilerplate',
                         exportLocalsConvention: 'camelCaseOnly',
                       },
@@ -163,7 +171,7 @@ module.exports = (env, options) => {
           {},
           {
             inject: true,
-            template: `${PATHS.public}/index.html`,
+            template: indexHtmlPath,
             title,
             filename: 'index.html',
             meta: {

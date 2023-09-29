@@ -13,7 +13,7 @@ const { merge } = require('webpack-merge'),
   CopyPlugin = require('copy-webpack-plugin'),
   //constants
   { cssSubDirectory, metaInfo } = require('./constants'),
-  PATHS = require('./paths'),
+  { publicDirPath, srcPath } = require('./paths'),
   //helpers
   { getDirectoryDirectories, getDirectoryFiles } = require('./helpers');
 
@@ -127,7 +127,7 @@ module.exports = (env, options) => {
         categories: ['technology', 'web'],
         icons: [
           {
-            src: `${PATHS.public}/assets/images/pwa/icon-192x192.png`,
+            src: `${publicDirPath}/assets/images/pwa/icon-192x192.png`,
             sizes: '192x192',
             type: 'image/png',
             purpose: 'maskable',
@@ -135,19 +135,19 @@ module.exports = (env, options) => {
             ios: true,
           },
           {
-            src: `${PATHS.public}/assets/images/pwa/icon-256x256.png`,
+            src: `${publicDirPath}/assets/images/pwa/icon-256x256.png`,
             sizes: '256x256',
             type: 'image/png',
             destination: 'assets/images/pwa',
           },
           {
-            src: `${PATHS.public}/assets/images/pwa/icon-384x384.png`,
+            src: `${publicDirPath}/assets/images/pwa/icon-384x384.png`,
             sizes: '384x384',
             type: 'image/png',
             destination: 'assets/images/pwa',
           },
           {
-            src: `${PATHS.public}/assets/images/pwa/icon-512x512.png`,
+            src: `${publicDirPath}/assets/images/pwa/icon-512x512.png`,
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any',
@@ -157,7 +157,7 @@ module.exports = (env, options) => {
       }),
       new InjectManifest({
         //this is the source of your service worker setup
-        swSrc: `${PATHS.src}/serviceWorker/swSource.js`,
+        swSrc: `${srcPath}/serviceWorker/swSource.js`,
         //this is the output name of your service worker file
         swDest: 'serviceWorker.js',
         //exclude netlify _redirects file

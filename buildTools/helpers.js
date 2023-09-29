@@ -1,4 +1,8 @@
-const fs = require('fs');
+const fs = require('fs'),
+  path = require('path');
+
+//link of our app directory
+const appDirectory = fs.realpathSync(process.cwd());
 
 module.exports = {
   //git directories list of the given directory
@@ -12,4 +16,6 @@ module.exports = {
       .readdirSync(dir, { withFileTypes: true })
       .filter((item) => !item.isDirectory())
       .map((item) => item.name),
+  //get required link
+  resolveApp: (relativePath) => path.resolve(appDirectory, relativePath),
 };

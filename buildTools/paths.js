@@ -1,10 +1,12 @@
-const path = require('path'),
-  projectPath = `${path.join(__dirname)}/../`,
-  { outputDirectory, rootDirectory, publicDirectory } = require('./constants');
+const { outputDirectory, rootDirectory, publicDirectory } = require('./constants'),
+  { resolveApp } = require('./helpers');
 
 module.exports = {
-  projectPath,
-  src: path.join(projectPath, rootDirectory),
-  public: path.join(projectPath, publicDirectory),
-  outputSrc: path.resolve(projectPath, outputDirectory),
+  srcPath: resolveApp(rootDirectory),
+  appIndexPath: resolveApp(`${rootDirectory}/index`),
+  jsDirectoryPath: resolveApp(`${rootDirectory}/js`),
+  stylesDirectoryPath: resolveApp(`${rootDirectory}/scss`),
+  publicDirPath: resolveApp(publicDirectory),
+  indexHtmlPath: resolveApp(`${publicDirectory}/index.html`),
+  outputSrcPath: resolveApp(outputDirectory),
 };
