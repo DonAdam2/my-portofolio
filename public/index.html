@@ -15,13 +15,6 @@
 
       gtag('config', 'UA-153098389-1');
     </script>
-    <!-- PWA -->
-    <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#1b1f22" />
-    <link
-      rel="apple-touch-icon"
-      href="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/pwa/icon-192x192.png') %>"
-    />
     <!-- Google / Search Engine Tags -->
     <meta name="robots" content="index,follow" />
     <meta itemprop="name" content="<%= htmlWebpackPlugin.options.title %>" />
@@ -52,6 +45,7 @@
       content="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/intro.png') %>"
     />
     <!--site meta tags-->
+    <link rel="icon" type="image/png" href="<%= require('./assets/images/favicon.png') %>" />
     <title><%= htmlWebpackPlugin.options.title %></title>
     <meta name="title" content="<%= htmlWebpackPlugin.options.title %>" />
     <!--fonts-->

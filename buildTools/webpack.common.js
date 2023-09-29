@@ -166,7 +166,6 @@ module.exports = (env, options) => {
             template: `${PATHS.public}/index.html`,
             title,
             filename: 'index.html',
-            favicon: `${PATHS.public}/assets/images/favicon.png`,
             meta: {
               title,
               description,

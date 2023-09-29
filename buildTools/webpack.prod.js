@@ -9,12 +9,27 @@ const { merge } = require('webpack-merge'),
   TerserJSPlugin = require('terser-webpack-plugin'),
   { CleanWebpackPlugin } = require('clean-webpack-plugin'),
   { InjectManifest } = require('workbox-webpack-plugin'),
+  WebpackPwaManifest = require('webpack-pwa-manifest'),
   CopyPlugin = require('copy-webpack-plugin'),
   //constants
-  { cssSubDirectory } = require('./constants'),
-  PATHS = require('./paths');
+  { cssSubDirectory, metaInfo } = require('./constants'),
+  PATHS = require('./paths'),
+  //helpers
+  { getDirectoryDirectories, getDirectoryFiles } = require('./helpers');
 
 module.exports = (env, options) => {
+  const containedDirectoriesInPublicDirectory = getDirectoryDirectories('public'),
+    containedDirectoriesInAssetsDirectory = getDirectoryDirectories('public/assets'),
+    containedFilesInPublicDirectory = getDirectoryFiles('public'),
+    containedFilesInAssetsDirectory = getDirectoryFiles('public/assets'),
+    inPublicOtherDirectories = containedDirectoriesInPublicDirectory.filter(
+      (el) => el !== 'assets'
+    ),
+    inAssetsOtherDirectories = containedDirectoriesInAssetsDirectory.filter(
+      (el) => el !== 'fonts' && el !== 'images'
+    ),
+    inPublicOtherFiles = containedFilesInPublicDirectory.filter((el) => el !== 'index.html');
+
   return merge(common(env, options), {
     performance: {
       hints: false,
@@ -74,11 +89,70 @@ module.exports = (env, options) => {
       }),
       new CopyPlugin({
         patterns: [
+          ...(inPublicOtherDirectories.length > 0 ||
+          inAssetsOtherDirectories.length > 0 ||
+          inPublicOtherFiles.length > 0 ||
+          containedFilesInAssetsDirectory.length > 0
+            ? [
+                {
+                  from: `public`,
+                  globOptions: {
+                    ignore: [
+                      //ignore __index.html__ file because it's injected using __HtmlWebpackPlugin__
+                      '**/index.html',
+                      //ignore images and fonts directory in public directory because it's handled using __asset/resource__ module
+                      '**/public/assets/images/**/*',
+                      '**/public/assets/fonts/**/*',
+                    ],
+                  },
+                  to: '',
+                },
+              ]
+            : []),
           //copy redirects file from redirect to dist (netlify)
           { from: 'redirect', to: '' },
-          //copy pwa required files and images
-          { from: 'public/manifest.json', to: '' },
-          { from: 'public/assets/images/pwa', to: 'assets/images/pwa' },
+        ],
+      }),
+      new WebpackPwaManifest({
+        theme_color: '#1b1f22',
+        background_color: '#000000',
+        display: 'standalone',
+        scope: '/',
+        start_url: '/',
+        orientation: 'portrait',
+        name: 'Adam Portfolio',
+        short_name: metaInfo.title,
+        description: metaInfo.description,
+        id: '/',
+        categories: ['technology', 'web'],
+        icons: [
+          {
+            src: `${PATHS.public}/assets/images/pwa/icon-192x192.png`,
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'maskable',
+            destination: 'assets/images/pwa',
+            ios: true,
+          },
+          {
+            src: `${PATHS.public}/assets/images/pwa/icon-256x256.png`,
+            sizes: '256x256',
+            type: 'image/png',
+            destination: 'assets/images/pwa',
+          },
+          {
+            src: `${PATHS.public}/assets/images/pwa/icon-384x384.png`,
+            sizes: '384x384',
+            type: 'image/png',
+            destination: 'assets/images/pwa',
+          },
+          {
+            src: `${PATHS.public}/assets/images/pwa/icon-512x512.png`,
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any',
+            destination: 'assets/images/pwa',
+          },
         ],
       }),
       new InjectManifest({
