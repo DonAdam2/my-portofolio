@@ -158,20 +158,43 @@ module.exports = (env, options) => {
       new EsLintPlugin({
         extensions: ['.js', '.jsx', '.json'],
       }),
-      new HtmlWebpackPlugin({
-        title,
-        template: `${PATHS.public}/index.html`,
-        filename: 'index.html',
-        inject: 'body',
-        favicon: `${PATHS.public}/assets/images/favicon.png`,
-        meta: {
-          description,
-          keywords,
-          url: isDevelopment ? `${devServer}:${options.port}` : url,
-          'apple-mobile-web-app-capable': 'yes',
-          'mobile-web-app-capable': 'yes',
-        },
-      }),
+      new HtmlWebpackPlugin(
+        Object.assign(
+          {},
+          {
+            inject: true,
+            template: `${PATHS.public}/index.html`,
+            title,
+            filename: 'index.html',
+            favicon: `${PATHS.public}/assets/images/favicon.png`,
+            meta: {
+              title,
+              description,
+              keywords,
+              //coming from scripts/start.js file
+              ...(isDevelopment && { url: `${devServer}:${options.port}` }),
+              'apple-mobile-web-app-capable': 'yes',
+              'mobile-web-app-capable': 'yes',
+            },
+          },
+          !isDevelopment
+            ? {
+                minify: {
+                  removeComments: true,
+                  collapseWhitespace: true,
+                  removeRedundantAttributes: true,
+                  useShortDoctype: true,
+                  removeEmptyAttributes: true,
+                  removeStyleLinkTypeAttributes: true,
+                  keepClosingSlash: true,
+                  minifyJS: true,
+                  minifyCSS: true,
+                  minifyURLs: true,
+                },
+              }
+            : undefined
+        )
+      ),
     ],
   };
 };
