@@ -114,6 +114,7 @@ module.exports = (env, options) => {
         ],
       }),
       new WebpackPwaManifest({
+        filename: 'manifest.[hash].webmanifest',
         theme_color: '#1b1f22',
         background_color: '#000000',
         display: 'standalone',
