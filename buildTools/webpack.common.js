@@ -9,7 +9,7 @@ const path = require('path'),
     devServer,
     jsSubDirectory,
     isCssModules,
-    metaInfo: { title, description, url, keywords },
+    metaInfo: { title, description, url, keywords, siteName },
   } = require('./constants'),
   {
     srcPath,
@@ -178,6 +178,7 @@ module.exports = (env, options) => {
               title,
               description,
               keywords,
+              siteName,
               //coming from scripts/start.js file
               ...(isDevelopment && { url: `${devServer}:${options.port}` }),
               'apple-mobile-web-app-capable': 'yes',

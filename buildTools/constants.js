@@ -11,6 +11,8 @@ module.exports = {
   cssSubDirectory: 'css/',
   isCssModules: false,
   metaInfo: {
+    //displayed in search engines at the top of URL
+    siteName: 'Adam Morsi',
     title: 'Adam Morsi Portfolio',
     description: `Hello, I'm adam, I'm a versatile Software Engineer with ${
       new Date(new Date() - new Date('06-01-2017')).getFullYear() - 1970
