@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 //simple bar
 import 'simplebar-react/dist/simplebar.min.css';
 import SimpleBar from 'simplebar-react';
@@ -9,7 +10,13 @@ import Project from '../../components/Project';
 import { projects } from '@/js/constants/constants';
 
 const MyProjectsPage = () => {
-  const { height } = useWindowSize();
+  const { height } = useWindowSize(),
+    simpleBarRef = useRef(null),
+    [scrollableNode, setScrollableNode] = useState(null);
+
+  useEffect(() => {
+    setScrollableNode(simpleBarRef.current.getScrollElement());
+  }, []);
 
   return (
     <div className="my-portfolio">
@@ -21,6 +28,7 @@ const MyProjectsPage = () => {
             maxWidth: 900,
             margin: '0 auto',
           }}
+          ref={simpleBarRef}
         >
           {projects.map((el, i) => (
             <Project
@@ -31,6 +39,7 @@ const MyProjectsPage = () => {
               iframe={el.iframe}
               desc={el.desc}
               skills={el.skills}
+              scrollableNode={scrollableNode}
             />
           ))}
         </SimpleBar>

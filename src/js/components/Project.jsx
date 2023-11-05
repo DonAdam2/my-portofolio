@@ -1,7 +1,13 @@
-const Project = ({ title, isImg, imgSrc, iframe, desc, skills }) => (
+import LazyImage from '@/js/components/shared/LazyImage';
+
+const Project = ({ title, isImg, imgSrc, iframe, desc, skills, scrollableNode }) => (
   <div className="project-wrapper">
     <div className="image-wrapper">
-      {isImg ? <img className="book-img" src={imgSrc} alt={title} /> : iframe}
+      {isImg ? (
+        <LazyImage scrollableNode={scrollableNode} className="book-img" src={imgSrc} alt={title} />
+      ) : (
+        iframe
+      )}
     </div>
     <div className="overview-wrapper">
       <h2 className="project-name">{title}</h2>
