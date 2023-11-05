@@ -48,7 +48,17 @@ const LazyImage = ({ src, alt, className, loaderIcon, scrollableNode }) => {
     };
   }, [lazyLoad, loader, checkImage, scrollableNode]);
 
-  return <img ref={imageRef} className={className} src={imgSrc} alt={alt} />;
+  return (
+    <img
+      ref={imageRef}
+      style={{
+        maxWidth: imgSrc === 'https://www.eliananunes.com/images/lazy_loader.gif' ? 300 : '100%',
+      }}
+      className={className}
+      src={imgSrc}
+      alt={alt}
+    />
+  );
 };
 
 export default LazyImage;
