@@ -19,6 +19,6 @@ module.exports = {
     }+ years of experience designing, developing, and managing complex sites, internal frameworks.`,
     url: 'https://adam-morsi.com',
     keywords: 'Adam Morsi, portfolio, software developer, frontend developer',
-    twitterCardType: 'summary', //summary - summary_large_image - app
+    twitterCardType: 'summary_large_image', //summary - summary_large_image - app
   },
 };
