@@ -18,8 +18,7 @@ module.exports = {
       new Date(new Date() - new Date('06-01-2017')).getFullYear() - 1970
     }+ years of experience designing, developing, and managing complex sites, internal frameworks.`,
     url: 'https://adam-morsi.com',
-    keywords:
-      'Adam Morsi, portfolio, software developer, software engineer, frontend developer, frontend engineer',
+    keywords: 'Adam Morsi, portfolio, software developer, frontend developer',
     twitterCardType: 'summary', //summary - summary_large_image - app
   },
 };
