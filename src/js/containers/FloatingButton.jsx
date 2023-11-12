@@ -81,7 +81,7 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, menuIdentifier }) =
             top: 20,
             right: 'auto',
             bottom: 'auto',
-            left: 55,
+            left: 60,
           },
         };
       case availablePositions.topRight:
