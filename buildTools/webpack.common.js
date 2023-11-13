@@ -178,7 +178,7 @@ module.exports = (env, options) => {
               title,
               description,
               keywords,
-              'og:site_name': siteName,
+              siteName,
               'twitter:card': twitterCardType,
               //coming from scripts/start.js file
               url: isDevelopment ? `${devServer}:${options.port}` : url,
