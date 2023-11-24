@@ -73,7 +73,6 @@ const DarkGooglePlayIcon = () => (
         xlinkHref="#prefix__b"
       />
     </defs>
-    <title>{'footer 3-02'}</title>
     <g data-name="Layer 9">
       <path
         transform="rotate(45 627.314 529.742)"

@@ -1,16 +1,18 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 //custom hooks
 import useTouchScreenDetect from '../customHooks/UseTouchScreenDetect';
 import useOutsideClick from '../customHooks/UseOutsideClick';
+//components
+import Tooltip, { availableTooltipPositions } from '@/js/components/shared/Tooltip';
+import ConditionalWrapper from '@/js/components/shared/ConditionalWrapper';
 
-const availablePositions = {
-  topLeft: 'top-left',
-  topRight: 'top-right',
-  bottomLeft: 'bottom-left',
-  bottomRight: 'bottom-right',
-};
-
-const FloatingButton = ({ location, buttons, mainButtonIcon, menuIdentifier }) => {
+const FloatingButton = ({
+  location,
+  buttons,
+  mainButtonIcon,
+  menuIdentifier,
+  isTooltip = true,
+}) => {
   const { enable = false, icon, label = 'Menu', className = '' } = menuIdentifier ?? {},
     [isHover, setIsHover] = useState(false),
     [isMenuIdentifier, setIsMenuIdentifier] = useState(true),
@@ -20,8 +22,18 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, menuIdentifier }) =
     buttonsLength = buttons.length,
     navigatorDimensions = radius * buttonsLength * 1.6,
     circleRadius = radius * buttonsLength,
+    availablePositions = useMemo(
+      () => ({
+        topLeft: 'top-left',
+        topRight: 'top-right',
+        bottomLeft: 'bottom-left',
+        bottomRight: 'bottom-right',
+      }),
+      []
+    ),
     isOnLeft =
       location === availablePositions.topLeft || location === availablePositions.bottomLeft;
+  const refs = useRef([]);
 
   useEffect(() => {
     let timer;
@@ -199,6 +211,115 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, menuIdentifier }) =
 
   const { container, mainButton, identifier } = setNavigatorLocation();
 
+  const setTooltipPosition = (index) => {
+    const currentTop = setButtonPosition(index).top,
+      currentRight = setButtonPosition(index).right,
+      currentBottom = setButtonPosition(index).bottom,
+      currentLeft = setButtonPosition(index).left;
+
+    switch (location) {
+      case availablePositions.topLeft:
+        return {
+          top:
+            currentTop === 'auto'
+              ? 'auto'
+              : currentTop +
+                (refs.current ? refs.current[index]?.offsetHeight + (index > 4 ? 5 : 0) : 0),
+          right:
+            currentRight === 'auto'
+              ? 'auto'
+              : currentRight - (refs.current ? refs.current[index]?.offsetWidth / 1.7 : 0),
+          bottom:
+            currentBottom === 'auto'
+              ? 'auto'
+              : currentBottom - (refs.current ? refs.current[index]?.offsetHeight : 0),
+          left:
+            currentLeft === 'auto'
+              ? 'auto'
+              : currentLeft + (refs.current ? refs.current[index]?.offsetWidth / 1.7 : 0),
+        };
+      case availablePositions.topRight:
+        return {
+          top:
+            currentTop === 'auto'
+              ? 'auto'
+              : currentTop +
+                (refs.current ? refs.current[index]?.offsetHeight + (index > 4 ? 10 : 0) : 0),
+          right:
+            currentRight === 'auto'
+              ? 'auto'
+              : currentRight + (refs.current ? refs.current[index]?.offsetWidth : 0),
+          bottom:
+            currentBottom === 'auto'
+              ? 'auto'
+              : currentBottom - (refs.current ? refs.current[index]?.offsetHeight : 0),
+          left:
+            currentLeft === 'auto'
+              ? 'auto'
+              : currentLeft + (refs.current ? refs.current[index]?.offsetWidth / 1.7 : 0),
+        };
+      case availablePositions.bottomLeft:
+        return {
+          top:
+            currentTop === 'auto'
+              ? 'auto'
+              : currentTop - (refs.current ? refs.current[index]?.offsetHeight : 0),
+          right:
+            currentRight === 'auto'
+              ? 'auto'
+              : currentRight - (refs.current ? refs.current[index]?.offsetWidth : 0),
+          bottom:
+            currentBottom === 'auto'
+              ? 'auto'
+              : currentBottom +
+                (refs.current
+                  ? refs.current[index]?.offsetHeight - (buttons.length > 5 && index === 0 ? 9 : 0)
+                  : 0),
+          left:
+            currentLeft === 'auto'
+              ? 'auto'
+              : currentLeft +
+                (refs.current
+                  ? refs.current[index]?.offsetWidth /
+                    (buttons.length > 5 && index === 0 ? 1.3 : 1.7)
+                  : 0),
+        };
+      case availablePositions.bottomRight:
+        return {
+          top:
+            currentTop === 'auto'
+              ? 'auto'
+              : currentTop - (refs.current ? refs.current[index]?.offsetHeight : 0),
+          right:
+            currentRight === 'auto'
+              ? 'auto'
+              : currentRight +
+                (refs.current
+                  ? refs.current[index]?.offsetWidth /
+                    (buttons.length > 5 && index === 0 ? 1.1 : 1.2)
+                  : 0),
+          bottom:
+            currentBottom === 'auto'
+              ? 'auto'
+              : currentBottom +
+                (refs.current
+                  ? refs.current[index]?.offsetHeight - (buttons.length > 5 && index === 0 ? 5 : 0)
+                  : 0),
+          left:
+            currentLeft === 'auto'
+              ? 'auto'
+              : currentLeft + (refs.current ? refs.current[index]?.offsetWidth : 0),
+        };
+    }
+
+    return {
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+    };
+  };
+
   return (
     <>
       {buttonsLength > 1 ? (
@@ -223,9 +344,29 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, menuIdentifier }) =
               {mainButtonIcon}
             </button>
             {buttons.map((el, i) => (
-              <Fragment key={i}>
+              <ConditionalWrapper
+                key={i}
+                condition={isTooltip}
+                initialWrapper={(children) => <>{children}</>}
+                wrapper={(children) => (
+                  <Tooltip
+                    position={
+                      location === availablePositions.topLeft ||
+                      location === availablePositions.bottomLeft
+                        ? availableTooltipPositions.right
+                        : availableTooltipPositions.left
+                    }
+                    tooltipContent={el.tooltipLabel}
+                    customPosition={setTooltipPosition(i)}
+                    isDisplayTooltipIndicator={false}
+                  >
+                    {children}
+                  </Tooltip>
+                )}
+              >
                 <button
                   className="sub-button"
+                  ref={(el) => (refs.current[i] = el)}
                   style={{
                     opacity: isHover ? 0.9 : 0,
                     top: isHover
@@ -254,7 +395,7 @@ const FloatingButton = ({ location, buttons, mainButtonIcon, menuIdentifier }) =
                 >
                   {el.icon}
                 </button>
-              </Fragment>
+              </ConditionalWrapper>
             ))}
           </div>
           {enable && isMenuIdentifier && (

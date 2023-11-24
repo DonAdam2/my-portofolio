@@ -73,7 +73,6 @@ const DarkGearIcon = ({ width }) => (
         xlinkHref="#prefix__a"
       />
     </defs>
-    <title>{'Skills'}</title>
     <g data-name="Layer 11">
       <rect
         x={137.64}

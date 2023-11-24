@@ -49,7 +49,6 @@ const DarkGitHubIcon = () => (
         <stop offset={1} stopColor="#a67033" />
       </linearGradient>
     </defs>
-    <title>{'footer 4'}</title>
     <g data-name="Layer 9">
       <path
         transform="rotate(45 644.311 539.742)"

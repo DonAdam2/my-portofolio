@@ -116,18 +116,22 @@ const App = () => {
     {
       icon: <DarkHomeIcon width={iconWidth} />,
       click: () => buttonHandler(getHomePageUrl()),
+      tooltipLabel: 'Home',
     },
     {
       icon: <DarkInfoIcon width={iconWidth} />,
       click: () => buttonHandler(getAboutPageUrl()),
+      tooltipLabel: 'About Me',
     },
     {
       icon: <DarkGearIcon width={iconWidth} />,
       click: () => buttonHandler(getSkillsPageUrl()),
+      tooltipLabel: 'My Skills',
     },
     {
       icon: <DarkBagIcon width={iconWidth} />,
       click: () => buttonHandler(getProjectsPageUrl()),
+      tooltipLabel: 'My Projects',
     },
   ];
 

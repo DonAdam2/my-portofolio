@@ -33,7 +33,6 @@ const DarkHomeIcon = ({ width }) => (
         <stop offset={1} stopColor="#a67033" />
       </linearGradient>
     </defs>
-    <title>{'Home'}</title>
     <g data-name="Layer 12">
       <rect
         x={145.15}

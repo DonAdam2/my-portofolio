@@ -33,7 +33,6 @@ const DarkInfoIcon = ({ width }) => (
         <stop offset={1} stopColor="#a67033" />
       </linearGradient>
     </defs>
-    <title>{'About'}</title>
     <g data-name="Layer 11">
       <rect
         x={124.21}

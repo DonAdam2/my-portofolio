@@ -41,7 +41,6 @@ const DarkBagIcon = ({ width }) => (
         xlinkHref="#prefix__a"
       />
     </defs>
-    <title>{'Projects'}</title>
     <g data-name="Layer 11">
       <rect
         x={163.17}

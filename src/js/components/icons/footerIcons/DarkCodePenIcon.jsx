@@ -49,7 +49,6 @@ const DarkCodePenIcon = () => (
         <stop offset={1} stopColor="#a67033" />
       </linearGradient>
     </defs>
-    <title>{'footer 1'}</title>
     <g data-name="Layer 9">
       <path
         transform="rotate(45 630.72 560.703)"

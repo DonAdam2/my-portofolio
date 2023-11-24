@@ -57,7 +57,6 @@ const DarkLinkedInIcon = () => (
         xlinkHref="#prefix__b"
       />
     </defs>
-    <title>{'footer 2'}</title>
     <g data-name="Layer 9">
       <path
         transform="rotate(45 644.322 550.387)"
