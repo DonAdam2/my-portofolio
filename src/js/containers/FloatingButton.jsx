@@ -16,6 +16,7 @@ const FloatingButton = ({
   const { enable = false, icon, label = 'Menu', className = '' } = menuIdentifier ?? {},
     [isHover, setIsHover] = useState(false),
     [isMenuIdentifier, setIsMenuIdentifier] = useState(true),
+    [isDisableTooltip, setIsDisableTooltip] = useState(true), // used to disable tooltip during menu animation
     isHasTouch = useTouchScreenDetect(),
     ref = useRef(null),
     radius = 25,
@@ -32,8 +33,8 @@ const FloatingButton = ({
       []
     ),
     isOnLeft =
-      location === availablePositions.topLeft || location === availablePositions.bottomLeft;
-  const refs = useRef([]);
+      location === availablePositions.topLeft || location === availablePositions.bottomLeft,
+    buttonsRefs = useRef([]);
 
   useEffect(() => {
     let timer;
@@ -55,6 +56,29 @@ const FloatingButton = ({
       }
     };
   }, [enable, isHover, buttons.length]);
+
+  useEffect(() => {
+    let timer;
+
+    if (isTooltip) {
+      if (isHover) {
+        timer = setTimeout(
+          () => {
+            setIsDisableTooltip(false);
+          },
+          (buttons.length * 200) / 2
+        );
+      } else {
+        setIsDisableTooltip(true);
+      }
+    }
+
+    return () => {
+      if (isTooltip) {
+        clearTimeout(timer);
+      }
+    };
+  }, [isTooltip, isHover, buttons.length]);
 
   const showFloatingBtnMenu = () => {
     setIsHover(true);
@@ -224,19 +248,24 @@ const FloatingButton = ({
             currentTop === 'auto'
               ? 'auto'
               : currentTop +
-                (refs.current ? refs.current[index]?.offsetHeight + (index > 4 ? 5 : 0) : 0),
+                (buttonsRefs.current
+                  ? buttonsRefs.current[index]?.offsetHeight + (index > 4 ? 5 : 0)
+                  : 0),
           right:
             currentRight === 'auto'
               ? 'auto'
-              : currentRight - (refs.current ? refs.current[index]?.offsetWidth / 1.7 : 0),
+              : currentRight -
+                (buttonsRefs.current ? buttonsRefs.current[index]?.offsetWidth / 1.7 : 0),
           bottom:
             currentBottom === 'auto'
               ? 'auto'
-              : currentBottom - (refs.current ? refs.current[index]?.offsetHeight : 0),
+              : currentBottom -
+                (buttonsRefs.current ? buttonsRefs.current[index]?.offsetHeight : 0),
           left:
             currentLeft === 'auto'
               ? 'auto'
-              : currentLeft + (refs.current ? refs.current[index]?.offsetWidth / 1.7 : 0),
+              : currentLeft +
+                (buttonsRefs.current ? buttonsRefs.current[index]?.offsetWidth / 1.7 : 0),
         };
       case availablePositions.topRight:
         return {
@@ -244,43 +273,48 @@ const FloatingButton = ({
             currentTop === 'auto'
               ? 'auto'
               : currentTop +
-                (refs.current ? refs.current[index]?.offsetHeight + (index > 4 ? 10 : 0) : 0),
+                (buttonsRefs.current
+                  ? buttonsRefs.current[index]?.offsetHeight + (index > 4 ? 10 : 0)
+                  : 0),
           right:
             currentRight === 'auto'
               ? 'auto'
-              : currentRight + (refs.current ? refs.current[index]?.offsetWidth : 0),
+              : currentRight + (buttonsRefs.current ? buttonsRefs.current[index]?.offsetWidth : 0),
           bottom:
             currentBottom === 'auto'
               ? 'auto'
-              : currentBottom - (refs.current ? refs.current[index]?.offsetHeight : 0),
+              : currentBottom -
+                (buttonsRefs.current ? buttonsRefs.current[index]?.offsetHeight : 0),
           left:
             currentLeft === 'auto'
               ? 'auto'
-              : currentLeft + (refs.current ? refs.current[index]?.offsetWidth / 1.7 : 0),
+              : currentLeft +
+                (buttonsRefs.current ? buttonsRefs.current[index]?.offsetWidth / 1.7 : 0),
         };
       case availablePositions.bottomLeft:
         return {
           top:
             currentTop === 'auto'
               ? 'auto'
-              : currentTop - (refs.current ? refs.current[index]?.offsetHeight : 0),
+              : currentTop - (buttonsRefs.current ? buttonsRefs.current[index]?.offsetHeight : 0),
           right:
             currentRight === 'auto'
               ? 'auto'
-              : currentRight - (refs.current ? refs.current[index]?.offsetWidth : 0),
+              : currentRight - (buttonsRefs.current ? buttonsRefs.current[index]?.offsetWidth : 0),
           bottom:
             currentBottom === 'auto'
               ? 'auto'
               : currentBottom +
-                (refs.current
-                  ? refs.current[index]?.offsetHeight - (buttons.length > 5 && index === 0 ? 9 : 0)
+                (buttonsRefs.current
+                  ? buttonsRefs.current[index]?.offsetHeight -
+                    (buttons.length > 5 && index === 0 ? 9 : 0)
                   : 0),
           left:
             currentLeft === 'auto'
               ? 'auto'
               : currentLeft +
-                (refs.current
-                  ? refs.current[index]?.offsetWidth /
+                (buttonsRefs.current
+                  ? buttonsRefs.current[index]?.offsetWidth /
                     (buttons.length > 5 && index === 0 ? 1.3 : 1.7)
                   : 0),
         };
@@ -289,26 +323,27 @@ const FloatingButton = ({
           top:
             currentTop === 'auto'
               ? 'auto'
-              : currentTop - (refs.current ? refs.current[index]?.offsetHeight : 0),
+              : currentTop - (buttonsRefs.current ? buttonsRefs.current[index]?.offsetHeight : 0),
           right:
             currentRight === 'auto'
               ? 'auto'
               : currentRight +
-                (refs.current
-                  ? refs.current[index]?.offsetWidth /
+                (buttonsRefs.current
+                  ? buttonsRefs.current[index]?.offsetWidth /
                     (buttons.length > 5 && index === 0 ? 1.1 : 1.2)
                   : 0),
           bottom:
             currentBottom === 'auto'
               ? 'auto'
               : currentBottom +
-                (refs.current
-                  ? refs.current[index]?.offsetHeight - (buttons.length > 5 && index === 0 ? 5 : 0)
+                (buttonsRefs.current
+                  ? buttonsRefs.current[index]?.offsetHeight -
+                    (buttons.length > 5 && index === 0 ? 5 : 0)
                   : 0),
           left:
             currentLeft === 'auto'
               ? 'auto'
-              : currentLeft + (refs.current ? refs.current[index]?.offsetWidth : 0),
+              : currentLeft + (buttonsRefs.current ? buttonsRefs.current[index]?.offsetWidth : 0),
         };
     }
 
@@ -359,6 +394,7 @@ const FloatingButton = ({
                     tooltipContent={el.tooltipLabel}
                     customPosition={setTooltipPosition(i)}
                     isDisplayTooltipIndicator={false}
+                    disabled={isDisableTooltip}
                   >
                     {children}
                   </Tooltip>
@@ -366,7 +402,7 @@ const FloatingButton = ({
               >
                 <button
                   className="sub-button"
-                  ref={(el) => (refs.current[i] = el)}
+                  ref={(el) => (buttonsRefs.current[i] = el)}
                   style={{
                     opacity: isHover ? 0.9 : 0,
                     top: isHover
