@@ -1,10 +1,10 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 //custom hooks
 import useTouchScreenDetect from '../customHooks/UseTouchScreenDetect';
-import useOutsideClick from '../customHooks/UseOutsideClick';
 //components
-import Tooltip, { availableTooltipPositions } from '@/js/components/shared/Tooltip';
+import Tooltip from '@/js/components/shared/Tooltip';
 import ConditionalWrapper from '@/js/components/shared/ConditionalWrapper';
+import ClickAwayWrapper from '@/js/components/shared/ClickAwayWrapper';
 
 const FloatingButton = ({
   location,
@@ -90,12 +90,6 @@ const FloatingButton = ({
   const toggleFloatingBtnMenu = () => {
     setIsHover((prev) => !prev);
   };
-
-  useOutsideClick(ref, () => {
-    if (isHasTouch) {
-      hideFloatingBtnMenu();
-    }
-  });
 
   const setNavigatorLocation = () => {
     switch (location) {
@@ -356,7 +350,13 @@ const FloatingButton = ({
   };
 
   return (
-    <>
+    <ConditionalWrapper
+      condition={isHasTouch}
+      initialWrapper={(children) => <>{children}</>}
+      wrapper={(children) => (
+        <ClickAwayWrapper onClickAwayCallback={hideFloatingBtnMenu}>{children}</ClickAwayWrapper>
+      )}
+    >
       {buttonsLength > 1 ? (
         <>
           <div
@@ -388,8 +388,8 @@ const FloatingButton = ({
                     position={
                       location === availablePositions.topLeft ||
                       location === availablePositions.bottomLeft
-                        ? availableTooltipPositions.right
-                        : availableTooltipPositions.left
+                        ? 'right'
+                        : 'left'
                     }
                     tooltipContent={el.tooltipLabel}
                     customPosition={setTooltipPosition(i)}
@@ -401,7 +401,7 @@ const FloatingButton = ({
                 )}
               >
                 <button
-                  className="sub-button"
+                  className={`sub-button ${el.className ?? ''}`}
                   ref={(el) => (buttonsRefs.current[i] = el)}
                   style={{
                     opacity: isHover ? 0.9 : 0,
@@ -457,7 +457,7 @@ const FloatingButton = ({
           Must be more than one button
         </div>
       )}
-    </>
+    </ConditionalWrapper>
   );
 };
 

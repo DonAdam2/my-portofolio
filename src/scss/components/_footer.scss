@@ -23,3 +23,9 @@
     color: white;
   }
 }
+
+.tooltip-message {
+  &.no-wrap-text {
+    white-space: nowrap;
+  }
+}

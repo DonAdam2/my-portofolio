@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
-const useOutsideClick = (ref, callback) => {
+const useClickAway = (ref, onOutsideClickCallback) => {
   const handleClick = (e) => {
     if (ref.current && !ref.current.contains(e.target)) {
-      callback();
+      onOutsideClickCallback(e);
     }
   };
 
@@ -16,4 +16,4 @@ const useOutsideClick = (ref, callback) => {
   });
 };
 
-export default useOutsideClick;
+export default useClickAway;

@@ -4,42 +4,31 @@ import DarkCodePenIcon from './icons/footerIcons/DarkCodePenIcon';
 import DarkGitHubIcon from './icons/footerIcons/DarkGitHubIcon';
 import DarkGooglePlayIcon from './icons/footerIcons/DarkGooglePlayIcon';
 //components
-import Tooltip, { availableTooltipPositions } from '@/js/components/shared/Tooltip';
+import Tooltip from '@/js/components/shared/Tooltip';
 
 const Footer = () => (
   <div className="footer">
     <div className="footer-wrapper row">
-      <Tooltip
-        position={availableTooltipPositions.top}
-        isDisplayTooltipIndicator={false}
-        tooltipContent="LinknedIn"
-      >
+      <Tooltip position="top" isDisplayTooltipIndicator={false} tooltipContent="LinknedIn">
         <a href="https://www.linkedin.com/in/adam-morsi-715517b3/" className="link" target="_blank">
           <DarkLinkedInIcon />
         </a>
       </Tooltip>
-      <Tooltip
-        position={availableTooltipPositions.top}
-        isDisplayTooltipIndicator={false}
-        tooltipContent="Github"
-      >
+      <Tooltip position="top" isDisplayTooltipIndicator={false} tooltipContent="Github">
         <a href="https://github.com/DonAdam2" className="link" target="_blank">
           <DarkGitHubIcon />
         </a>
       </Tooltip>
-      <Tooltip
-        position={availableTooltipPositions.top}
-        isDisplayTooltipIndicator={false}
-        tooltipContent="Codepen"
-      >
+      <Tooltip position="top" isDisplayTooltipIndicator={false} tooltipContent="Codepen">
         <a href="https://codepen.io/AdamMorsi" className="link" target="_blank">
           <DarkCodePenIcon />
         </a>
       </Tooltip>
       <Tooltip
-        position={availableTooltipPositions.top}
+        position="top"
         isDisplayTooltipIndicator={false}
         tooltipContent="Google play"
+        className="no-wrap-text"
       >
         <a
           href="https://play.google.com/store/apps/details?id=com.adam_morsi.adam_morsi_cv"

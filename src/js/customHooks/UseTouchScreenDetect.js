@@ -6,11 +6,7 @@ const useTouchScreenDetect = () => {
 
   useEffect(() => {
     if (!isSSR) {
-      setIsTouchScreen(
-        'ontouchstart' in document.documentElement ||
-          navigator.maxTouchPoints > 0 ||
-          navigator.msMaxTouchPoints > 0
-      );
+      setIsTouchScreen('ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0);
     }
   }, [isTouchScreen, isSSR]);
 
