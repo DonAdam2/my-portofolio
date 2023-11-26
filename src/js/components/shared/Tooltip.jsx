@@ -26,7 +26,7 @@ const Tooltip = ({
     [styles, setStyles] = useState({}),
     tooltipWrapperRef = useRef(null),
     tooltipMessage = useRef(null),
-    space = 10,
+    space = 15,
     [childrenWidth, setChildrenWidth] = useState(undefined),
     [childrenHeight, setChildrenHeight] = useState(undefined),
     [showTopTooltip, setShowTopTooltip] = useState(false),
@@ -105,18 +105,16 @@ const Tooltip = ({
       if (position === availableTooltipPositions.top) {
         style.top = Math.max(
           space,
-          getElementOffset(tooltipWrapperRef.current).top -
-            (childrenHeight || 0) -
-            (isDisplayTooltipIndicator ? space : space / 2)
+          getElementOffset(tooltipWrapperRef.current).top - (childrenHeight || 0) - space
         );
       } else if (position === availableTooltipPositions.right) {
         style.top = getElementOffset(tooltipWrapperRef.current).top + wrapperRect.height / 2;
-        style.left = Math.max(space, wrapperRect.right);
+        style.left = Math.max(space, wrapperRect.right + space / 2);
       } else if (position === availableTooltipPositions.left) {
         style.top = getElementOffset(tooltipWrapperRef.current).top + wrapperRect.height / 2;
         style.left = Math.max(
           space,
-          getElementOffset(tooltipWrapperRef.current).left - (childrenWidth || 0) - space
+          getElementOffset(tooltipWrapperRef.current).left - ((childrenWidth || 0) + space)
         );
       }
       if (!isParentFixed && scrollableParent && wrapperParentUpdated) {
