@@ -26,6 +26,7 @@ const Tooltip = ({
     [styles, setStyles] = useState({}),
     tooltipWrapperRef = useRef(null),
     tooltipMessage = useRef(null),
+    newPosition = useRef(position),
     space = 15,
     [childrenWidth, setChildrenWidth] = useState(undefined),
     [childrenHeight, setChildrenHeight] = useState(undefined),
@@ -60,28 +61,36 @@ const Tooltip = ({
 
   //set children height if position is top
   useEffect(() => {
-    if (show && childrenHeight === undefined && position === availableTooltipPositions.top) {
+    if (
+      show &&
+      childrenHeight === undefined &&
+      newPosition.current === availableTooltipPositions.top
+    ) {
       setChildrenHeight(tooltipMessage.current?.offsetHeight);
     }
   }, [childrenHeight, show, position, availableTooltipPositions.top]);
 
   //update tooltip message visibility if position is top
   useEffect(() => {
-    if (childrenHeight !== undefined && position === availableTooltipPositions.top) {
+    if (childrenHeight !== undefined && newPosition.current === availableTooltipPositions.top) {
       setShowTopTooltip(true);
     }
   }, [childrenHeight, position, availableTooltipPositions.top]);
 
   //set children width if position is left
   useEffect(() => {
-    if (show && childrenWidth === undefined && position === availableTooltipPositions.left) {
+    if (
+      show &&
+      childrenWidth === undefined &&
+      newPosition.current === availableTooltipPositions.left
+    ) {
       setChildrenWidth(tooltipMessage.current?.offsetWidth);
     }
   }, [childrenWidth, show, position, availableTooltipPositions.left]);
 
   //update tooltip message visibility if position is left
   useEffect(() => {
-    if (childrenWidth !== undefined && position === availableTooltipPositions.left) {
+    if (childrenWidth !== undefined && newPosition.current === availableTooltipPositions.left) {
       setShowLeftTooltip(true);
     }
   }, [childrenWidth, position, availableTooltipPositions.left]);
@@ -98,22 +107,55 @@ const Tooltip = ({
         centeredHorizontalPosition = Math.max(space, wrapperRect.left + wrapperRect.width / 2),
         centeredVerticalPosition =
           getElementOffset(tooltipWrapperRef.current).top + wrapperRect.height / 2;
-      if (position === availableTooltipPositions.top) {
+      let pos = position;
+      //if position is left and no room for tooltip => change position to right
+      if (
+        position === availableTooltipPositions.left &&
+        wrapperRect.left - ((childrenWidth || 0) + space * 1.5) < 0
+      ) {
+        pos = availableTooltipPositions.right;
+      }
+      //if position is right and no room for tooltip => change position to left
+      else if (
+        position === availableTooltipPositions.right &&
+        wrapperRect.right + wrapperRect.width + ((childrenWidth || 0) + space * 2) >
+          window.innerWidth
+      ) {
+        pos = availableTooltipPositions.left;
+      }
+      //if position is top and no room for tooltip => change position to bottom
+      else if (
+        position === availableTooltipPositions.top &&
+        wrapperRect.top < (childrenHeight || 0) + space
+      ) {
+        pos = availableTooltipPositions.bottom;
+      }
+      //if position is bottom and no room for tooltip => change position to top
+      else if (
+        position === availableTooltipPositions.bottom &&
+        wrapperRect.bottom + (childrenHeight || 0) + space > window.innerHeight
+      ) {
+        pos = availableTooltipPositions.top;
+      }
+
+      newPosition.current = pos;
+
+      if (pos === availableTooltipPositions.top) {
         style.top = Math.max(
           space,
           getElementOffset(tooltipWrapperRef.current).top - (childrenHeight || 0) - space
         );
         style.left = centeredHorizontalPosition;
-      } else if (position === availableTooltipPositions.right) {
+      } else if (pos === availableTooltipPositions.right) {
         style.top = centeredVerticalPosition;
         style.left = Math.max(space, wrapperRect.right + space);
-      } else if (position === availableTooltipPositions.bottom) {
+      } else if (pos === availableTooltipPositions.bottom) {
         style.top =
           getElementOffset(tooltipWrapperRef.current).top +
           wrapperRect.height +
           (isDisplayTooltipIndicator ? space : space / 2);
         style.left = centeredHorizontalPosition;
-      } else if (position === availableTooltipPositions.left) {
+      } else if (pos === availableTooltipPositions.left) {
         style.top = centeredVerticalPosition;
         style.left = Math.max(space, wrapperRect.left - ((childrenWidth || 0) + space));
       }
@@ -127,16 +169,14 @@ const Tooltip = ({
       left: 0,
     };
   }, [
+    space,
     position,
+    isParentFixed,
     childrenWidth,
     childrenHeight,
     wrapperParentUpdated,
-    isParentFixed,
     isDisplayTooltipIndicator,
-    availableTooltipPositions.top,
-    availableTooltipPositions.right,
-    availableTooltipPositions.bottom,
-    availableTooltipPositions.left,
+    availableTooltipPositions,
   ]);
 
   useEffect(() => {
@@ -170,6 +210,28 @@ const Tooltip = ({
     }
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (show && isClickTrigger) {
+        setShow(false);
+      }
+    };
+
+    if (tooltipWrapperRef.current) {
+      const wrapperRef = tooltipWrapperRef.current,
+        scrollableParent = getScrollParent(wrapperRef),
+        newScrollableParent = scrollableParent === document.body ? window : scrollableParent;
+
+      newScrollableParent.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleScroll);
+
+      return () => {
+        newScrollableParent.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('resize', handleScroll);
+      };
+    }
+  }, [show, isClickTrigger]);
+
   return (
     <ConditionalWrapper
       condition={isClickTrigger}
@@ -201,14 +263,14 @@ const Tooltip = ({
               ref={tooltipMessage}
               className={`tooltip-message 
               ${className}
- on-${position} ${isDisplayTooltipIndicator ? 'is-indicator' : ''}`}
+ on-${newPosition.current} ${isDisplayTooltipIndicator ? 'is-indicator' : ''}`}
               dangerouslySetInnerHTML={{ __html: tooltipContent }}
               style={{
                 color: color ? color : '#ffffff',
                 '--background-color': backgroundColor ? backgroundColor : 'rgba(97, 97, 97, 0.92)',
                 ...(customPosition ? customPosition : styles),
-                ...(position === availableTooltipPositions.left ||
-                position === availableTooltipPositions.top
+                ...(newPosition.current === availableTooltipPositions.left ||
+                newPosition.current === availableTooltipPositions.top
                   ? { visibility: showLeftTooltip || showTopTooltip ? 'visible' : 'hidden' }
                   : {}),
               }}
