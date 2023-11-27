@@ -101,9 +101,7 @@ const Tooltip = ({
       if (position === availableTooltipPositions.top) {
         style.top = Math.max(
           space,
-          getElementOffset(tooltipWrapperRef.current).top -
-            (childrenHeight || 0) -
-            (isDisplayTooltipIndicator ? space : space / 2)
+          getElementOffset(tooltipWrapperRef.current).top - (childrenHeight || 0) - space
         );
         style.left = centeredHorizontalPosition;
       } else if (position === availableTooltipPositions.right) {
