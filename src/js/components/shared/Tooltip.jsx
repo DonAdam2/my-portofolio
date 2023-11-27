@@ -10,7 +10,7 @@ import ClickAwayWrapper from '@/js/components/shared/ClickAwayWrapper';
 
 const Tooltip = ({
   tooltipContent,
-  position,
+  position = 'top',
   color,
   backgroundColor,
   disabled,
@@ -92,30 +92,32 @@ const Tooltip = ({
         wrapperRef = tooltipWrapperRef.current,
         scrollableParent = getScrollParent(wrapperRef),
         style = {
-          //bottom
-          left: Math.max(
-            space,
-            getElementOffset(tooltipWrapperRef.current).left + wrapperRect.width / 2
-          ),
-          top:
-            getElementOffset(tooltipWrapperRef.current).top +
-            wrapperRect.height +
-            (isDisplayTooltipIndicator ? space : space / 2),
-        };
+          left: 0,
+          top: 0,
+        },
+        centeredHorizontalPosition = Math.max(space, wrapperRect.left + wrapperRect.width / 2),
+        centeredVerticalPosition =
+          getElementOffset(tooltipWrapperRef.current).top + wrapperRect.height / 2;
       if (position === availableTooltipPositions.top) {
         style.top = Math.max(
           space,
-          getElementOffset(tooltipWrapperRef.current).top - (childrenHeight || 0) - space
+          getElementOffset(tooltipWrapperRef.current).top -
+            (childrenHeight || 0) -
+            (isDisplayTooltipIndicator ? space : space / 2)
         );
+        style.left = centeredHorizontalPosition;
       } else if (position === availableTooltipPositions.right) {
-        style.top = getElementOffset(tooltipWrapperRef.current).top + wrapperRect.height / 2;
-        style.left = Math.max(space, wrapperRect.right + space / 2);
+        style.top = centeredVerticalPosition;
+        style.left = Math.max(space, wrapperRect.right + space);
+      } else if (position === availableTooltipPositions.bottom) {
+        style.top =
+          getElementOffset(tooltipWrapperRef.current).top +
+          wrapperRect.height +
+          (isDisplayTooltipIndicator ? space : space / 2);
+        style.left = centeredHorizontalPosition;
       } else if (position === availableTooltipPositions.left) {
-        style.top = getElementOffset(tooltipWrapperRef.current).top + wrapperRect.height / 2;
-        style.left = Math.max(
-          space,
-          getElementOffset(tooltipWrapperRef.current).left - ((childrenWidth || 0) + space)
-        );
+        style.top = centeredVerticalPosition;
+        style.left = Math.max(space, wrapperRect.left - ((childrenWidth || 0) + space));
       }
       if (!isParentFixed && scrollableParent && wrapperParentUpdated) {
         style.top -= scrollableParent.scrollTop;
@@ -127,14 +129,15 @@ const Tooltip = ({
       left: 0,
     };
   }, [
-    childrenHeight,
     position,
     childrenWidth,
+    childrenHeight,
     wrapperParentUpdated,
     isParentFixed,
     isDisplayTooltipIndicator,
     availableTooltipPositions.top,
     availableTooltipPositions.right,
+    availableTooltipPositions.bottom,
     availableTooltipPositions.left,
   ]);
 
@@ -200,9 +203,7 @@ const Tooltip = ({
               ref={tooltipMessage}
               className={`tooltip-message 
               ${className}
- on-${position ? position : availableTooltipPositions.top} ${
-   isDisplayTooltipIndicator ? 'is-indicator' : ''
- }`}
+ on-${position} ${isDisplayTooltipIndicator ? 'is-indicator' : ''}`}
               dangerouslySetInnerHTML={{ __html: tooltipContent }}
               style={{
                 color: color ? color : '#ffffff',
