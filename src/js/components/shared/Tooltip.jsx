@@ -169,7 +169,6 @@ const Tooltip = ({
       left: 0,
     };
   }, [
-    space,
     position,
     isParentFixed,
     childrenWidth,
