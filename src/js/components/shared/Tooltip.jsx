@@ -30,8 +30,7 @@ const Tooltip = ({
     space = 15,
     [childrenWidth, setChildrenWidth] = useState(undefined),
     [childrenHeight, setChildrenHeight] = useState(undefined),
-    [showTopTooltip, setShowTopTooltip] = useState(false),
-    [showLeftTooltip, setShowLeftTooltip] = useState(false),
+    [isTooltipVisible, setIsTooltipVisible] = useState(false),
     [wrapperParentUpdated, setWrapperParentUpdated] = useState({
       top: 0,
       left: 0,
@@ -48,6 +47,21 @@ const Tooltip = ({
     isHoverTrigger = useMemo(() => trigger === 'hover', [trigger]),
     isClickTrigger = useMemo(() => trigger === 'click', [trigger]);
 
+  //set children width and height
+  useEffect(() => {
+    if (show && childrenWidth === undefined && childrenHeight === undefined) {
+      setChildrenHeight(tooltipMessage.current?.offsetHeight);
+      setChildrenWidth(tooltipMessage.current?.offsetWidth);
+    }
+  }, [show, childrenWidth, childrenHeight]);
+
+  //update tooltip visibility
+  useEffect(() => {
+    if (show && !isTooltipVisible && childrenWidth !== undefined && childrenHeight !== undefined) {
+      setIsTooltipVisible(true);
+    }
+  }, [show, isTooltipVisible, childrenWidth, childrenHeight]);
+
   const showTooltip = () => {
     if (!show) {
       setShow(true);
@@ -58,42 +72,6 @@ const Tooltip = ({
   const hideTooltip = () => {
     setShow(false);
   };
-
-  //set children height if position is top
-  useEffect(() => {
-    if (
-      show &&
-      childrenHeight === undefined &&
-      newPosition.current === availableTooltipPositions.top
-    ) {
-      setChildrenHeight(tooltipMessage.current?.offsetHeight);
-    }
-  }, [childrenHeight, show, position, availableTooltipPositions.top]);
-
-  //update tooltip message visibility if position is top
-  useEffect(() => {
-    if (childrenHeight !== undefined && newPosition.current === availableTooltipPositions.top) {
-      setShowTopTooltip(true);
-    }
-  }, [childrenHeight, position, availableTooltipPositions.top]);
-
-  //set children width if position is left
-  useEffect(() => {
-    if (
-      show &&
-      childrenWidth === undefined &&
-      newPosition.current === availableTooltipPositions.left
-    ) {
-      setChildrenWidth(tooltipMessage.current?.offsetWidth);
-    }
-  }, [childrenWidth, show, position, availableTooltipPositions.left]);
-
-  //update tooltip message visibility if position is left
-  useEffect(() => {
-    if (childrenWidth !== undefined && newPosition.current === availableTooltipPositions.left) {
-      setShowLeftTooltip(true);
-    }
-  }, [childrenWidth, position, availableTooltipPositions.left]);
 
   const getStylesList = useCallback(() => {
     if (tooltipWrapperRef.current) {
@@ -107,28 +85,21 @@ const Tooltip = ({
         centeredHorizontalPosition = Math.max(space, wrapperRect.left + wrapperRect.width / 2),
         centeredVerticalPosition =
           getElementOffset(tooltipWrapperRef.current).top + wrapperRect.height / 2;
+
       let pos = position;
-      //if position is left and no room for tooltip => change position to right
-      if (
-        position === availableTooltipPositions.left &&
-        wrapperRect.left - ((childrenWidth || 0) + space * 1.5) < 0
-      ) {
-        pos = availableTooltipPositions.right;
-      }
-      //if position is right and no room for tooltip => change position to left
-      else if (
-        position === availableTooltipPositions.right &&
-        wrapperRect.right + wrapperRect.width + ((childrenWidth || 0) + space * 2) >
-          window.innerWidth
-      ) {
-        pos = availableTooltipPositions.left;
-      }
       //if position is top and no room for tooltip => change position to bottom
-      else if (
+      if (
         position === availableTooltipPositions.top &&
         wrapperRect.top < (childrenHeight || 0) + space
       ) {
         pos = availableTooltipPositions.bottom;
+      }
+      //if position is right and no room for tooltip => change position to left
+      else if (
+        position === availableTooltipPositions.right &&
+        wrapperRect.right + ((childrenWidth || 0) + space * 1.5) > window.innerWidth
+      ) {
+        pos = availableTooltipPositions.left;
       }
       //if position is bottom and no room for tooltip => change position to top
       else if (
@@ -136,6 +107,13 @@ const Tooltip = ({
         wrapperRect.bottom + (childrenHeight || 0) + space > window.innerHeight
       ) {
         pos = availableTooltipPositions.top;
+      }
+      //if position is left and no room for tooltip => change position to right
+      else if (
+        position === availableTooltipPositions.left &&
+        wrapperRect.left - ((childrenWidth || 0) + space * 1.5) < 0
+      ) {
+        pos = availableTooltipPositions.right;
       }
 
       newPosition.current = pos;
@@ -198,12 +176,10 @@ const Tooltip = ({
         scrollableParent = getScrollParent(wrapperRef);
 
       window.addEventListener('resize', updateScrollableParentScroll);
-
       scrollableParent.addEventListener('scroll', updateScrollableParentScroll);
 
       return () => {
         window.removeEventListener('resize', updateScrollableParentScroll);
-
         scrollableParent.removeEventListener('scroll', updateScrollableParentScroll);
       };
     }
@@ -270,7 +246,7 @@ const Tooltip = ({
                 ...(customPosition ? customPosition : styles),
                 ...(newPosition.current === availableTooltipPositions.left ||
                 newPosition.current === availableTooltipPositions.top
-                  ? { visibility: showLeftTooltip || showTopTooltip ? 'visible' : 'hidden' }
+                  ? { visibility: isTooltipVisible ? 'visible' : 'hidden' }
                   : {}),
               }}
             />
