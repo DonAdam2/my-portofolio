@@ -12,7 +12,7 @@ const AboutMePage = () => (
         <p>
           I'm a software developer who lives in Nicosia, Cyprus.
           <br /> I have been creating and developing websites and web apps for{' '}
-          {getYears('06-01-2017')}+ years.
+          {getYears('2017-01-06')}+ years.
           <br /> I have a bachelor degree in computer science.
           <br />I keep current with latest web development technologies and tools.
           <br /> I provide beautiful, professional and responsive websites.
