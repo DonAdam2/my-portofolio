@@ -229,7 +229,9 @@ const Tooltip = ({
         onTouchEnd={
           isHoverTrigger ? (disabled ? undefined : isHasTouch ? hideTooltip : undefined) : undefined
         }
-        onClick={isClickTrigger ? (disabled ? undefined : showTooltip) : undefined}
+        onClick={
+          isClickTrigger ? (disabled ? undefined : showTooltip) : disabled ? undefined : hideTooltip
+        }
         ref={tooltipWrapperRef}
       >
         <Portal wrapperElement="span" wrapperElementId="tooltip">
