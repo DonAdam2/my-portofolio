@@ -1,5 +1,6 @@
-export const getYears = (fromDate) =>
-  new Date(new Date() - new Date(fromDate)).getFullYear() - 1970;
+import dayjs from 'dayjs';
+
+export const getYears = (fromDate) => dayjs().diff(dayjs(fromDate), 'year');
 
 export const setTimeoutRAF = (fn, delay, registerCancel) => {
   const start = new Date().getTime();
