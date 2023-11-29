@@ -70,7 +70,9 @@ const Tooltip = ({
   };
 
   const hideTooltip = () => {
-    setShow(false);
+    if (show) {
+      setShow(false);
+    }
   };
 
   const getStylesList = useCallback(() => {
