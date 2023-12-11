@@ -408,23 +408,23 @@ const FloatingButton = ({
                     top: isHover
                       ? setButtonPosition(i).top
                       : setButtonPosition(i).top === 'auto'
-                      ? 'auto'
-                      : 0,
+                        ? 'auto'
+                        : 0,
                     right: isHover
                       ? setButtonPosition(i).right
                       : setButtonPosition(i).right === 'auto'
-                      ? 'auto'
-                      : 0,
+                        ? 'auto'
+                        : 0,
                     bottom: isHover
                       ? setButtonPosition(i).bottom
                       : setButtonPosition(i).bottom === 'auto'
-                      ? 'auto'
-                      : 0,
+                        ? 'auto'
+                        : 0,
                     left: isHover
                       ? setButtonPosition(i).left
                       : setButtonPosition(i).left === 'auto'
-                      ? 'auto'
-                      : 0,
+                        ? 'auto'
+                        : 0,
                     transition: `all 0.2s 0.${i + 1}s ease`,
                   }}
                   onClick={() => clickHandler(el.click)}

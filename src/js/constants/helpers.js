@@ -53,5 +53,5 @@ export const getScrollParent = (node) =>
   !node || node === document.body
     ? document.body
     : scroll(node)
-    ? node
-    : getScrollParent(node.parentNode);
+      ? node
+      : getScrollParent(node.parentNode);
