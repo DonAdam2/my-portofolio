@@ -43,8 +43,25 @@
     <!--site meta tags-->
     <link
       rel="icon"
+      type="image/x-icon"
+      href="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/favicon/favicon.ico') %>"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/favicon/apple-touch-icon.png') %>"
+    />
+    <link
+      rel="icon"
       type="image/png"
-      href="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/favicon.png') %>"
+      sizes="32x32"
+      href="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/favicon/favicon-32x32.png') %>"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/favicon/favicon-16x16.png') %>"
     />
     <title><%= htmlWebpackPlugin.options.title %></title>
     <!--fonts-->
