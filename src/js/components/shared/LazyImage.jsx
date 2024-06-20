@@ -24,6 +24,10 @@ const LazyImage = ({ src, alt, className, loaderIcon, scrollableNode }) => {
     }
   }, [src]);
 
+  useEffect(() => {
+    lazyLoad();
+  }, [lazyLoad]);
+
   const checkImage = useCallback(() => {
     if (loader.complete) {
       lazyLoad();
