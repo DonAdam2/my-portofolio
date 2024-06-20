@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+//images
+import spinner from '@/public/assets/images/spinner.gif';
 
 const LazyImage = ({ src, alt, className, loaderIcon, scrollableNode }) => {
-  const loaderSrc = loaderIcon ? loaderIcon : 'https://www.eliananunes.com/images/lazy_loader.gif',
+  const loaderSrc = loaderIcon ? loaderIcon : spinner,
     [imgSrc, setImgSrc] = useState(loaderSrc),
     imageRef = useRef(null),
     loader = useMemo(() => new Image(), []);
