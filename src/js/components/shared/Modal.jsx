@@ -2,6 +2,8 @@ import { useRef } from 'react';
 //custom hooks
 import useLockScroll from '@/js/customHooks/UseLockScroll';
 import useEventListener from '@/js/customHooks/UseEventListener';
+//icons
+import XIcon from '@/js/components/icons/XIcon';
 //components
 import Portal from '@/js/components/shared/Portal';
 import Button from '@/js/components/shared/Button';
@@ -12,10 +14,18 @@ const Modal = ({ header, footer, wrapper, maxWidth, className, children }) => {
       headerButtons,
       title,
       customTitle,
-      isNoCloseButton = false,
+      isCloseButton = true,
     } = header ?? {},
-    { enableFooter = true, footerButtons } = footer ?? {},
     {
+      enableFooter = true,
+      footerButtons,
+      isFooterBtnsFullWidth = false,
+      isFooterBtnsStacked = false,
+    } = footer ?? {},
+    {
+      targetElementId = 'app',
+      isAnimate = true,
+      animationType = 'slide-in-down', //slide-in-down | slide-in-up | slide-in-right | slide-in-left
       show,
       closeHandler,
       isCancelClickOnOverlay = false,
@@ -26,7 +36,7 @@ const Modal = ({ header, footer, wrapper, maxWidth, className, children }) => {
     } = wrapper ?? {},
     modalWrapperRef = useRef(null);
 
-  useLockScroll({ immediate: show, targetElement: document.getElementById('app') });
+  useLockScroll({ immediate: show, targetElement: document.getElementById(targetElementId) });
 
   const shortcutsHandler = (event) => {
     if (event.key === 'Escape' && closeHandler && show) closeHandler();
@@ -41,12 +51,16 @@ const Modal = ({ header, footer, wrapper, maxWidth, className, children }) => {
     return (
       <div className="modal-header">
         <div>
-          {customTitle ? customTitle : <h4 className="modal-title">{title}</h4>}
+          {customTitle ?? <h4 className="modal-title">{title}</h4>}
           <div>
             {headerButtons && renderModalBtns(headerButtons)}
-            {!isNoCloseButton && (
-              <button className="header-close-btn" onClick={closeHandler}>
-                ×
+            {isCloseButton && (
+              <button
+                data-test="modal-header-close-btn"
+                className="header-close-btn"
+                onClick={closeHandler}
+              >
+                <XIcon />
               </button>
             )}
           </div>
@@ -59,11 +73,27 @@ const Modal = ({ header, footer, wrapper, maxWidth, className, children }) => {
     if (!enableFooter) {
       return;
     }
-    return <div className="modal-footer">{footerButtons && renderModalBtns(footerButtons)}</div>;
+    return (
+      <div
+        className={`modal-footer ${isFooterBtnsFullWidth ? 'is-footer-btns-full-width' : ''} ${
+          isFooterBtnsStacked ? 'is-footer-btns-stacked' : ''
+        }`}
+        style={{ gap: isFooterBtnsStacked ? 10 : 0 }}
+      >
+        {footerButtons && renderModalBtns(footerButtons, true)}
+      </div>
+    );
   };
 
-  const renderModalBtns = (buttons) =>
-    buttons.map((el, i) => <Button className="modal-btn" {...el} key={i} />);
+  const renderModalBtns = (buttons, isFooter) =>
+    buttons.map((el, i) => (
+      <Button
+        className="modal-btn"
+        style={{ flex: isFooterBtnsFullWidth && isFooter ? 1 : 'unset' }}
+        {...el}
+        key={i}
+      />
+    ));
 
   return (
     <>
@@ -76,10 +106,8 @@ const Modal = ({ header, footer, wrapper, maxWidth, className, children }) => {
               backgroundColor: isTransparentBackground ? 'transparent' : '',
             }}
             onClick={(e) => {
-              if (e.target === modalWrapperRef.current && !isCancelClickOnOverlay) {
-                if (closeHandler) {
-                  closeHandler();
-                }
+              if (e.target === modalWrapperRef.current && !isCancelClickOnOverlay && closeHandler) {
+                closeHandler();
               }
             }}
           >
@@ -90,10 +118,13 @@ const Modal = ({ header, footer, wrapper, maxWidth, className, children }) => {
                 justifyContent: wrapperHeader || wrapperFooter ? 'space-between' : 'center',
               }}
               ref={modalWrapperRef}
+              data-test="modal-wrapper"
             >
               {wrapperHeader}
               <div
-                className={`modal ${show ? 'animate-modal' : ''} ${className ?? ''}`}
+                className={`modal ${show && isAnimate ? animationType : ''} ${
+                  !isAnimate ? 'no-animate-modal' : ''
+                } ${className ?? ''}`}
                 style={{ maxWidth: maxWidth ?? '' }}
               >
                 {renderHeader()}
