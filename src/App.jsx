@@ -100,7 +100,7 @@ const App = () => {
       () => {
         navigate(path);
       },
-      gateTimeout / 2,
+      gateTimeout / 2.1,
       registerRouteCancelPauseTimer
     );
   };
