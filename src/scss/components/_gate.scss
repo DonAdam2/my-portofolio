@@ -12,16 +12,19 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 0;
+    width: 50%;
+    transform: scaleX(0);
     z-index: 10;
   }
 
   .left-gate {
     left: 0;
+    transform-origin: left;
   }
 
   .right-gate {
     right: 0;
+    transform-origin: right;
   }
 
   .open-gate {
@@ -31,12 +34,12 @@
 
 @keyframes gate {
   0% {
-    width: 0;
+    transform: scaleX(0);
   }
   50% {
-    width: 50%;
+    transform: scaleX(1);
   }
   100% {
-    width: 0;
+    transform: scaleX(0);
   }
 }
