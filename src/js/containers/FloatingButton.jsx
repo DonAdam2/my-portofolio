@@ -102,10 +102,10 @@ const FloatingButton = ({
             left: -7,
           },
           mainButton: {
-            top: 0,
+            top: 2,
             right: 'auto',
             bottom: 'auto',
-            left: 0,
+            left: 2,
           },
           identifier: {
             top: 20,
