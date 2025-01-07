@@ -1,32 +1,34 @@
+@use '../../generic/variables' as vars;
+
 .home {
   background-image: url('~@/public/assets/images/mandala/home/darkHomeMobile.svg');
 
-  @media (min-width: $laptop) {
+  @media (min-width: vars.$laptop) {
     background-image: url('~@/public/assets/images/mandala/home/darkHomeDesktop.svg');
   }
 
   .title {
     font-size: 21px;
     margin-top: 0;
-    color: $dark-gold-dark-theme;
+    color: vars.$dark-gold-dark-theme;
 
-    @media (min-width: $mobile-small) {
+    @media (min-width: vars.$mobile-small) {
       font-size: 28px;
     }
 
-    @media (min-width: $mobile-large) {
+    @media (min-width: vars.$mobile-large) {
       font-size: 40px;
     }
 
-    @media (min-width: $tablet) {
+    @media (min-width: vars.$tablet) {
       font-size: 59px;
     }
 
-    @media (min-width: $laptop) {
+    @media (min-width: vars.$laptop) {
       font-size: 42px;
     }
 
-    @media (min-width: $desktop) {
+    @media (min-width: vars.$desktop) {
       font-size: 50px;
     }
   }
@@ -35,15 +37,15 @@
     font-size: 14.7px;
     margin: 0;
 
-    @media (min-width: $mobile-small) {
+    @media (min-width: vars.$mobile-small) {
       font-size: 19px;
     }
 
-    @media (min-width: $mobile-large) {
+    @media (min-width: vars.$mobile-large) {
       font-size: 30px;
     }
 
-    @media (min-width: $tablet) {
+    @media (min-width: vars.$tablet) {
       font-size: 35px;
     }
   }

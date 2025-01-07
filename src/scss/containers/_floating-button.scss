@@ -1,3 +1,5 @@
+@use '../generic/variables' as vars;
+
 .toggle-nav {
   position: fixed;
   z-index: 10;
@@ -33,5 +35,5 @@
   display: inline-flex;
   align-items: center;
   font-size: 20px;
-  color: $light-gold-dark-theme;
+  color: vars.$light-gold-dark-theme;
 }

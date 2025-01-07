@@ -1,6 +1,4 @@
-@import 'generic/variables';
-@import 'generic/mixins';
-@import 'generic/grid';
-@import 'generic/normalize';
-@import 'generic/typography';
-@import 'generic/animations';
+@use 'generic/grid';
+@use 'generic/normalize';
+@use 'generic/typography';
+@use 'generic/animations';

@@ -1,5 +1,7 @@
+@use '../generic/variables' as vars;
+
 .skill {
-  background-color: $grey-dark-theme;
+  background-color: vars.$grey-dark-theme;
   margin: 10px;
   display: inline-flex;
   flex-direction: column;
@@ -15,10 +17,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $white;
+    background-color: vars.$white;
 
     // > 992
-    @media (min-width: $laptop) {
+    @media (min-width: vars.$laptop) {
       width: 145px;
       height: 145px;
     }
@@ -33,7 +35,7 @@
       fill: #fff;
 
       // > 992
-      @media (min-width: $laptop) {
+      @media (min-width: vars.$laptop) {
         width: 100px;
         height: 100px;
       }

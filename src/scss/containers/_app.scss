@@ -1,3 +1,5 @@
+@use '../generic/variables' as vars;
+
 html,
 body,
 #root {
@@ -10,8 +12,8 @@ body,
 }
 
 .page {
-  background-color: $grey-dark-theme;
-  color: $light-gold-dark-theme;
+  background-color: vars.$grey-dark-theme;
+  color: vars.$light-gold-dark-theme;
   padding: 40px 40px 0 40px;
   min-height: 100%;
   display: flex;
@@ -25,7 +27,7 @@ body,
       flex-basis: 100%;
       background-color: rgba(27, 31, 34, 0.7);
 
-      @media (min-width: $laptop) {
+      @media (min-width: vars.$laptop) {
         flex-basis: 50%;
       }
     }

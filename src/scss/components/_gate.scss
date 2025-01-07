@@ -1,3 +1,5 @@
+@use '../generic/variables' as vars;
+
 .gate {
   min-height: 100%;
   position: absolute;
@@ -8,7 +10,7 @@
 
   .left-gate,
   .right-gate {
-    background-color: $black;
+    background-color: vars.$black;
     position: absolute;
     top: 0;
     bottom: 0;

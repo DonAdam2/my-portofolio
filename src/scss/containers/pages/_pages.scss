@@ -1,3 +1,5 @@
+@use '../../generic/variables' as vars;
+
 .page-wrapper {
   background-repeat: no-repeat;
   background-position: center;
@@ -5,7 +7,7 @@
   display: flex;
   flex: 1;
 
-  @media (min-width: $laptop) {
+  @media (min-width: vars.$laptop) {
     background-position: right;
     background-size: cover;
   }

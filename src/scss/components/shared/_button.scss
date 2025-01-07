@@ -1,3 +1,6 @@
+@use '../../generic/variables' as vars;
+@use '../../generic/mixins' as mixins;
+
 .button {
   display: inline-block;
   font-weight: 400;
@@ -15,138 +18,138 @@
   letter-spacing: 0.05rem;
 
   &.primary {
-    color: $white;
-    background-color: $primary;
+    color: vars.$white;
+    background-color: vars.$primary;
 
     &:hover {
       background-color: #0069d9;
     }
 
     &:disabled {
-      @include disable-background;
+      @include mixins.disable-background;
     }
 
     .button-icon {
-      fill: $white;
+      fill: vars.$white;
     }
   }
 
   &.secondary {
-    color: $white;
-    background-color: $secondary;
+    color: vars.$white;
+    background-color: vars.$secondary;
 
     &:hover {
       background-color: #5a6268;
     }
 
     &:disabled {
-      @include disable-background;
+      @include mixins.disable-background;
     }
 
     .button-icon {
-      fill: $white;
+      fill: vars.$white;
     }
   }
 
   &.warning {
-    color: $white;
-    background-color: $warning;
+    color: vars.$white;
+    background-color: vars.$warning;
 
     &:hover {
       background-color: #e0a800;
     }
 
     &:disabled {
-      @include disable-background;
+      @include mixins.disable-background;
     }
 
     .button-icon {
-      fill: $white;
+      fill: vars.$white;
     }
   }
 
   &.danger {
-    color: $white;
-    background-color: $danger;
+    color: vars.$white;
+    background-color: vars.$danger;
 
     &:hover {
       background-color: #c82333;
     }
 
     &:disabled {
-      @include disable-background;
+      @include mixins.disable-background;
     }
 
     .button-icon {
-      fill: $white;
+      fill: vars.$white;
     }
   }
 
   &.success {
-    color: $white;
-    background-color: $success;
+    color: vars.$white;
+    background-color: vars.$success;
 
     &:hover {
       background-color: #218838;
     }
 
     &:disabled {
-      @include disable-background;
+      @include mixins.disable-background;
     }
 
     .button-icon {
-      fill: $white;
+      fill: vars.$white;
     }
   }
 
   &.info {
-    color: $white;
-    background-color: $info;
+    color: vars.$white;
+    background-color: vars.$info;
 
     &:hover {
       background-color: #138496;
     }
 
     &:disabled {
-      @include disable-background;
+      @include mixins.disable-background;
     }
 
     .button-icon {
-      fill: $white;
+      fill: vars.$white;
     }
   }
 
   &.lightGrey {
-    background: $blue-gray-200;
-    color: $blue-gray-500;
+    background: vars.$blue-gray-200;
+    color: vars.$blue-gray-500;
     border-color: transparent;
 
     &:disabled {
-      @include disable-background;
+      @include mixins.disable-background;
     }
 
     .button-icon {
-      fill: $blue-gray-500;
+      fill: vars.$blue-gray-500;
     }
   }
 
   &.white {
-    background-color: $white;
+    background-color: vars.$white;
     box-shadow: 1px 1px 4px 1px rgb(0 0 0 / 20%);
 
     &:disabled {
-      @include disable-background;
+      @include mixins.disable-background;
     }
 
     .button-icon {
-      fill: $black;
+      fill: vars.$black;
     }
   }
 
   &.outline {
-    color: $purple;
+    color: vars.$purple;
     background: transparent;
-    border: 1px solid $purple;
+    border: 1px solid vars.$purple;
     padding: 0.2rem 0.75rem;
 
     &:disabled {
@@ -154,35 +157,35 @@
     }
 
     .button-icon {
-      fill: $purple;
+      fill: vars.$purple;
     }
   }
 
   &.text {
-    color: $black;
+    color: vars.$black;
 
     &:hover {
       box-shadow: none;
     }
 
     &:disabled {
-      @include disable-background;
+      @include mixins.disable-background;
     }
 
     .button-icon {
-      fill: $black;
+      fill: vars.$black;
     }
   }
 
   &.ghost {
-    color: $black;
-    border: 1px solid $blue-gray-500;
+    color: vars.$black;
+    border: 1px solid vars.$blue-gray-500;
 
     &:disabled {
-      @include disable-outlined-background;
+      @include mixins.disable-outlined-background;
     }
     .button-icon {
-      fill: $black;
+      fill: vars.$black;
     }
   }
 

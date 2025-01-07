@@ -1,3 +1,5 @@
+@use '../../generic/variables' as vars;
+
 $modal-padding: 15px;
 
 .modal-window {
@@ -13,7 +15,7 @@ $modal-padding: 15px;
   background-color: rgba(0, 0, 0, 0.7);
   opacity: 1;
   transition: opacity 0.3s;
-  color: $light-gold-dark-theme;
+  color: vars.$light-gold-dark-theme;
 
   &.inactive-modal {
     transition:
@@ -32,10 +34,10 @@ $modal-padding: 15px;
   .modal {
     margin: 0 auto;
     z-index: 500;
-    background-color: $grey-dark-theme;
+    background-color: vars.$grey-dark-theme;
     width: calc(100% - 1rem);
     max-width: 600px;
-    border: 1px solid $dark-gold-dark-theme;
+    border: 1px solid vars.$dark-gold-dark-theme;
     border-radius: 16px;
     box-shadow:
       0 8px 16px 0 rgba(0, 0, 0, 0.2),
@@ -92,7 +94,7 @@ $modal-padding: 15px;
     .modal-header {
       position: relative;
       padding: $modal-padding;
-      border-bottom: 1px solid $dark-gold-dark-theme;
+      border-bottom: 1px solid vars.$dark-gold-dark-theme;
       font-weight: 300;
       font-size: 20px;
       display: flex;
@@ -115,8 +117,8 @@ $modal-padding: 15px;
         font-size: 21px;
         font-weight: 700;
         line-height: 1;
-        color: $dark-gold-dark-theme;
-        text-shadow: 0 1px 0 $black;
+        color: vars.$dark-gold-dark-theme;
+        text-shadow: 0 1px 0 vars.$black;
         outline: none;
         opacity: 0.2;
         transition: opacity 0.15s;
@@ -142,7 +144,7 @@ $modal-padding: 15px;
     .modal-footer {
       padding: $modal-padding;
       text-align: right;
-      border-top: 1px solid $dark-gold-dark-theme;
+      border-top: 1px solid vars.$dark-gold-dark-theme;
 
       &.is-footer-btns-full-width {
         display: flex;

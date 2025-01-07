@@ -1,3 +1,5 @@
+@use '../../generic/variables' as vars;
+
 .skills-page {
   background-image: url('~@/public/assets/images/mandala/skills/darkSkillsLaptop.svg');
   background-repeat: no-repeat;
@@ -6,15 +8,15 @@
   display: flex;
   flex: 1;
 
-  @media (min-width: $tablet) {
+  @media (min-width: vars.$tablet) {
     background-size: contain;
   }
 
-  @media (min-width: $laptop) {
+  @media (min-width: vars.$laptop) {
     background-position: 561px;
   }
 
-  @media (min-width: $desktop) {
+  @media (min-width: vars.$desktop) {
     background-image: url('~@/public/assets/images/mandala/skills/darkSkillsDesktop.svg');
     background-position: right;
   }
@@ -25,7 +27,7 @@
     right: 15px;
     cursor: pointer;
     text-decoration: underline;
-    color: $dark-gold-dark-theme;
+    color: vars.$dark-gold-dark-theme;
     background-color: transparent;
     outline: none;
     border: none;
@@ -35,7 +37,7 @@
       text-decoration: none;
     }
 
-    @media (min-width: $desktop) {
+    @media (min-width: vars.$desktop) {
       left: 44.8%;
       right: 44.8%;
       top: 13px;
@@ -49,7 +51,7 @@
     display: flex;
     background-color: rgba(27, 31, 34, 0.5);
 
-    @media (min-width: $laptop) {
+    @media (min-width: vars.$laptop) {
       width: 50%;
       background-color: transparent;
     }
@@ -57,8 +59,8 @@
     .cube {
       animation: rotateCube 10s linear infinite;
       transform-style: preserve-3d;
-      width: $cube-width-xss;
-      height: $cube-width-xss;
+      width: vars.$cube-width-xss;
+      height: vars.$cube-width-xss;
       margin: auto;
       position: relative;
 
@@ -69,122 +71,122 @@
         height: 100%;
 
         &:nth-child(1) {
-          transform: rotateY(0deg) translateZ($cube-width-xss * 0.5);
+          transform: rotateY(0deg) translateZ(vars.$cube-width-xss * 0.5);
         }
 
         &:nth-child(2) {
-          transform: rotateY(90deg) translateZ($cube-width-xss * 0.5);
+          transform: rotateY(90deg) translateZ(vars.$cube-width-xss * 0.5);
         }
 
         &:nth-child(3) {
-          transform: rotateY(180deg) translateZ($cube-width-xss * 0.5);
+          transform: rotateY(180deg) translateZ(vars.$cube-width-xss * 0.5);
         }
 
         &:nth-child(4) {
-          transform: rotateY(-90deg) translateZ($cube-width-xss * 0.5);
+          transform: rotateY(-90deg) translateZ(vars.$cube-width-xss * 0.5);
         }
 
         &:nth-child(5) {
-          transform: rotateX(90deg) translateZ($cube-width-xss * 0.5);
+          transform: rotateX(90deg) translateZ(vars.$cube-width-xss * 0.5);
         }
 
         &:nth-child(6) {
-          transform: rotateX(-90deg) translateZ($cube-width-xss * 0.5);
+          transform: rotateX(-90deg) translateZ(vars.$cube-width-xss * 0.5);
         }
       }
 
       //>512
-      @media (min-width: $mobile-large) {
-        width: $cube-width-xs;
-        height: $cube-width-xs;
+      @media (min-width: vars.$mobile-large) {
+        width: vars.$cube-width-xs;
+        height: vars.$cube-width-xs;
 
         .skill-wrapper {
           &:nth-child(1) {
-            transform: rotateY(0deg) translateZ($cube-width-xs * 0.5);
+            transform: rotateY(0deg) translateZ(vars.$cube-width-xs * 0.5);
           }
 
           &:nth-child(2) {
-            transform: rotateY(90deg) translateZ($cube-width-xs * 0.5);
+            transform: rotateY(90deg) translateZ(vars.$cube-width-xs * 0.5);
           }
 
           &:nth-child(3) {
-            transform: rotateY(180deg) translateZ($cube-width-xs * 0.5);
+            transform: rotateY(180deg) translateZ(vars.$cube-width-xs * 0.5);
           }
 
           &:nth-child(4) {
-            transform: rotateY(-90deg) translateZ($cube-width-xs * 0.5);
+            transform: rotateY(-90deg) translateZ(vars.$cube-width-xs * 0.5);
           }
 
           &:nth-child(5) {
-            transform: rotateX(90deg) translateZ($cube-width-xs * 0.5);
+            transform: rotateX(90deg) translateZ(vars.$cube-width-xs * 0.5);
           }
 
           &:nth-child(6) {
-            transform: rotateX(-90deg) translateZ($cube-width-xs * 0.5);
+            transform: rotateX(-90deg) translateZ(vars.$cube-width-xs * 0.5);
           }
         }
       }
 
       //>992
-      @media (min-width: $laptop) {
-        width: $cube-width-md;
-        height: $cube-width-md;
+      @media (min-width: vars.$laptop) {
+        width: vars.$cube-width-md;
+        height: vars.$cube-width-md;
 
         .skill-wrapper {
           &:nth-child(1) {
-            transform: rotateY(0deg) translateZ($cube-width-md * 0.5);
+            transform: rotateY(0deg) translateZ(vars.$cube-width-md * 0.5);
           }
 
           &:nth-child(2) {
-            transform: rotateY(90deg) translateZ($cube-width-md * 0.5);
+            transform: rotateY(90deg) translateZ(vars.$cube-width-md * 0.5);
           }
 
           &:nth-child(3) {
-            transform: rotateY(180deg) translateZ($cube-width-md * 0.5);
+            transform: rotateY(180deg) translateZ(vars.$cube-width-md * 0.5);
           }
 
           &:nth-child(4) {
-            transform: rotateY(-90deg) translateZ($cube-width-md * 0.5);
+            transform: rotateY(-90deg) translateZ(vars.$cube-width-md * 0.5);
           }
 
           &:nth-child(5) {
-            transform: rotateX(90deg) translateZ($cube-width-md * 0.5);
+            transform: rotateX(90deg) translateZ(vars.$cube-width-md * 0.5);
           }
 
           &:nth-child(6) {
-            transform: rotateX(-90deg) translateZ($cube-width-md * 0.5);
+            transform: rotateX(-90deg) translateZ(vars.$cube-width-md * 0.5);
           }
         }
       }
 
       //>1200
-      @media (min-width: $desktop) and (min-height: 720px) {
-        width: $cube-width-lg;
-        height: $cube-width-lg;
+      @media (min-width: vars.$desktop) and (min-height: 720px) {
+        width: vars.$cube-width-lg;
+        height: vars.$cube-width-lg;
 
         .skill-wrapper {
           &:nth-child(1) {
-            transform: rotateY(0deg) translateZ($cube-width-lg * 0.5);
+            transform: rotateY(0deg) translateZ(vars.$cube-width-lg * 0.5);
           }
 
           &:nth-child(2) {
-            transform: rotateY(90deg) translateZ($cube-width-lg * 0.5);
+            transform: rotateY(90deg) translateZ(vars.$cube-width-lg * 0.5);
           }
 
           &:nth-child(3) {
-            transform: rotateY(180deg) translateZ($cube-width-lg * 0.5);
+            transform: rotateY(180deg) translateZ(vars.$cube-width-lg * 0.5);
           }
 
           &:nth-child(4) {
-            transform: rotateY(-90deg) translateZ($cube-width-lg * 0.5);
+            transform: rotateY(-90deg) translateZ(vars.$cube-width-lg * 0.5);
           }
 
           &:nth-child(5) {
-            transform: rotateX(90deg) translateZ($cube-width-lg * 0.5);
+            transform: rotateX(90deg) translateZ(vars.$cube-width-lg * 0.5);
           }
 
           &:nth-child(6) {
-            transform: rotateX(-90deg) translateZ($cube-width-lg * 0.5);
+            transform: rotateX(-90deg) translateZ(vars.$cube-width-lg * 0.5);
           }
         }
       }

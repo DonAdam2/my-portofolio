@@ -1,3 +1,5 @@
+@use '../../generic/variables' as vars;
+
 .loader-wrapper {
   position: fixed;
   top: 0;
@@ -7,7 +9,7 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   z-index: 101;
-  background-color: $black;
+  background-color: vars.$black;
   opacity: 1;
   transition: opacity 0.3s;
   display: flex;
@@ -29,7 +31,7 @@
       position: absolute;
       top: 0;
       left: calc(50% - 10px);
-      background-color: $dark-gold-dark-theme;
+      background-color: vars.$dark-gold-dark-theme;
       animation: squaremove 1s ease-in-out infinite;
     }
 

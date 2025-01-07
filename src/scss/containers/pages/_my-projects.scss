@@ -1,10 +1,12 @@
+@use '../../generic/variables' as vars;
+
 .my-portfolio {
   display: flex;
   width: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 
-  @media (min-width: $tablet) {
+  @media (min-width: vars.$tablet) {
     background-image: url('~@/public/assets/images/mandala/projects/right.svg');
     background-position: right;
     background-repeat: no-repeat;
@@ -24,7 +26,7 @@
     width: 100%;
     text-align: center;
 
-    @media (min-width: $tablet) {
+    @media (min-width: vars.$tablet) {
       background-image: url('~@/public/assets/images/mandala/projects/left.svg');
       background-position: left;
       background-repeat: no-repeat;
@@ -34,13 +36,13 @@
     .project-wrapper {
       border: 1px solid;
       margin-bottom: 15px;
-      border-radius: $book-border-radius;
+      border-radius: vars.$book-border-radius;
       background-color: white;
       color: black;
       display: flex;
       flex-direction: column;
 
-      @media (min-width: $tablet) {
+      @media (min-width: vars.$tablet) {
         flex-direction: row;
       }
 

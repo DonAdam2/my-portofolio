@@ -1,4 +1,6 @@
-@mixin disable-background($color: $black, $background: $black) {
+@use './variables' as vars;
+
+@mixin disable-background($color: vars.$black, $background: vars.$black) {
   box-shadow: none;
   color: rgba($color, 0.26);
   background: rgba($background, 0.12);
@@ -8,7 +10,7 @@
   }
 }
 
-@mixin disable-outlined-background($color: $black, $background: $black) {
+@mixin disable-outlined-background($color: vars.$black, $background: vars.$black) {
   box-shadow: none;
   color: rgba($color, 0.26);
   border-color: rgba($background, 0.26);

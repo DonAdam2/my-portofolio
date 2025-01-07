@@ -1,9 +1,11 @@
+@use '../../generic/variables' as vars;
+
 .about-me {
   background-image: url('~@/public/assets/images/mandala/about/darkAbout.svg');
   background-size: cover;
   align-items: center;
 
-  @media (min-width: $tablet) {
+  @media (min-width: vars.$tablet) {
     background-size: contain;
   }
 
@@ -14,7 +16,7 @@
     flex-basis: 100%;
     align-items: center;
 
-    @media (min-width: $laptop) {
+    @media (min-width: vars.$laptop) {
       flex-basis: 50%;
     }
 
@@ -29,7 +31,7 @@
       flex-basis: 100%;
       color: #f1f1f1;
 
-      @media (min-width: $tablet) {
+      @media (min-width: vars.$tablet) {
         max-height: 900px;
         display: flex;
         height: 100%;
@@ -40,7 +42,7 @@
         font-size: 40px;
         margin: 20px 0 0;
 
-        @media (min-width: $mobile-large) {
+        @media (min-width: vars.$mobile-large) {
           font-size: 50px;
         }
       }
@@ -50,8 +52,8 @@
       }
 
       .main-text {
-        color: $dark-gold-dark-theme;
-        fill: $dark-gold-dark-theme;
+        color: vars.$dark-gold-dark-theme;
+        fill: vars.$dark-gold-dark-theme;
       }
 
       svg {

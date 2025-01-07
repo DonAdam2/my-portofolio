@@ -1,6 +1,8 @@
+@use '../../generic/variables' as vars;
+
 .gradient-text-color {
   display: block;
-  background: $bluish-primary;
+  background: vars.$bluish-primary;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
