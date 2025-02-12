@@ -1,0 +1,163 @@
+@use '../../generic/variables' as vars;
+
+.cube-wrapper {
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+  width: 100%;
+  display: flex;
+  background-color: rgba(27, 31, 34, 0.5);
+
+  @media (min-width: vars.$laptop) {
+    width: 50%;
+    background-color: transparent;
+  }
+
+  .cube {
+    transform-style: preserve-3d;
+    width: vars.$cube-width-xss;
+    height: vars.$cube-width-xss;
+    margin: auto;
+    position: relative;
+    cursor: grab;
+
+    &.auto-rotate {
+      animation: rotateCube 10s linear infinite;
+    }
+
+    .skill-wrapper {
+      position: absolute;
+      opacity: 0.8;
+      width: 100%;
+      height: 100%;
+
+      &:nth-child(1) {
+        transform: rotateY(0deg) translateZ(vars.$cube-width-xss * 0.5);
+      }
+
+      &:nth-child(2) {
+        transform: rotateY(90deg) translateZ(vars.$cube-width-xss * 0.5);
+      }
+
+      &:nth-child(3) {
+        transform: rotateY(180deg) translateZ(vars.$cube-width-xss * 0.5);
+      }
+
+      &:nth-child(4) {
+        transform: rotateY(-90deg) translateZ(vars.$cube-width-xss * 0.5);
+      }
+
+      &:nth-child(5) {
+        transform: rotateX(90deg) translateZ(vars.$cube-width-xss * 0.5);
+      }
+
+      &:nth-child(6) {
+        transform: rotateX(-90deg) translateZ(vars.$cube-width-xss * 0.5);
+      }
+    }
+
+    //>512
+    @media (min-width: vars.$mobile-large) {
+      width: vars.$cube-width-xs;
+      height: vars.$cube-width-xs;
+
+      .skill-wrapper {
+        &:nth-child(1) {
+          transform: rotateY(0deg) translateZ(vars.$cube-width-xs * 0.5);
+        }
+
+        &:nth-child(2) {
+          transform: rotateY(90deg) translateZ(vars.$cube-width-xs * 0.5);
+        }
+
+        &:nth-child(3) {
+          transform: rotateY(180deg) translateZ(vars.$cube-width-xs * 0.5);
+        }
+
+        &:nth-child(4) {
+          transform: rotateY(-90deg) translateZ(vars.$cube-width-xs * 0.5);
+        }
+
+        &:nth-child(5) {
+          transform: rotateX(90deg) translateZ(vars.$cube-width-xs * 0.5);
+        }
+
+        &:nth-child(6) {
+          transform: rotateX(-90deg) translateZ(vars.$cube-width-xs * 0.5);
+        }
+      }
+    }
+
+    //>992
+    @media (min-width: vars.$laptop) {
+      width: vars.$cube-width-md;
+      height: vars.$cube-width-md;
+
+      .skill-wrapper {
+        &:nth-child(1) {
+          transform: rotateY(0deg) translateZ(vars.$cube-width-md * 0.5);
+        }
+
+        &:nth-child(2) {
+          transform: rotateY(90deg) translateZ(vars.$cube-width-md * 0.5);
+        }
+
+        &:nth-child(3) {
+          transform: rotateY(180deg) translateZ(vars.$cube-width-md * 0.5);
+        }
+
+        &:nth-child(4) {
+          transform: rotateY(-90deg) translateZ(vars.$cube-width-md * 0.5);
+        }
+
+        &:nth-child(5) {
+          transform: rotateX(90deg) translateZ(vars.$cube-width-md * 0.5);
+        }
+
+        &:nth-child(6) {
+          transform: rotateX(-90deg) translateZ(vars.$cube-width-md * 0.5);
+        }
+      }
+    }
+
+    //>1200
+    @media (min-width: vars.$desktop) and (min-height: 720px) {
+      width: vars.$cube-width-lg;
+      height: vars.$cube-width-lg;
+
+      .skill-wrapper {
+        &:nth-child(1) {
+          transform: rotateY(0deg) translateZ(vars.$cube-width-lg * 0.5);
+        }
+
+        &:nth-child(2) {
+          transform: rotateY(90deg) translateZ(vars.$cube-width-lg * 0.5);
+        }
+
+        &:nth-child(3) {
+          transform: rotateY(180deg) translateZ(vars.$cube-width-lg * 0.5);
+        }
+
+        &:nth-child(4) {
+          transform: rotateY(-90deg) translateZ(vars.$cube-width-lg * 0.5);
+        }
+
+        &:nth-child(5) {
+          transform: rotateX(90deg) translateZ(vars.$cube-width-lg * 0.5);
+        }
+
+        &:nth-child(6) {
+          transform: rotateX(-90deg) translateZ(vars.$cube-width-lg * 0.5);
+        }
+      }
+    }
+  }
+}
+
+@keyframes rotateCube {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { skillsImages } from '@/js/constants/constants';
 //components
 import SkillsModal from '@/js/containers/modals/SkillsModal';
+import Cube from '@/js/components/shared/Cube';
 
 const SkillsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,17 +21,7 @@ const SkillsPage = () => {
       <button onClick={openModal} className="open-skills-btn">
         See Full Skills
       </button>
-      <div className="cube-wrapper">
-        <div className="cube">
-          {skillsImages.map((el, i) => (
-            <div
-              className="skill-wrapper"
-              key={i}
-              style={{ backgroundImage: `url(${el.image})` }}
-            />
-          ))}
-        </div>
-      </div>
+      <Cube images={skillsImages} />
       <SkillsModal isModalOpen={isModalOpen} closeModal={closeModal} />
     </div>
   );
