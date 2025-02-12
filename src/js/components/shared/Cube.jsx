@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 
 const Cube = ({ images }) => {
   const [isDragging, setIsDragging] = useState(false),
-    rotationRef = useRef({ x: 136, y: 1122 }),
+    rotationRef = useRef({ x: 15, y: 45 }),
     mousePositionRef = useRef({ x: 0, y: 0 }),
     lastPositionRef = useRef({ x: 0, y: 0 }),
     torqueRef = useRef({ x: 0, y: 0 }),
+    isFirstMoveRef = useRef(true),
     cubeRef = useRef(null);
 
   // Configuration constants
@@ -13,15 +14,18 @@ const Cube = ({ images }) => {
     SENSITIVITY_FADE = 0.93,
     SPEED = 2,
     TOUCH_SENSITIVITY = 1.5,
-    FPS = 20;
+    FPS = 30;
 
   // Take only the first 6 images
   const cubeImages = images.slice(0, 6);
 
   const handleStart = (clientX, clientY) => {
     setIsDragging(true);
+    isFirstMoveRef.current = true;
     lastPositionRef.current = { x: clientX, y: clientY };
     mousePositionRef.current = { x: clientX, y: clientY };
+    // Reset torque on start
+    torqueRef.current = { x: 0, y: 0 };
 
     // Remove animation class when starting to drag
     if (cubeRef.current) {
@@ -34,6 +38,11 @@ const Cube = ({ images }) => {
 
     const mouseX = clientX / (window.TouchEvent ? TOUCH_SENSITIVITY : 1);
     const mouseY = clientY / (window.TouchEvent ? TOUCH_SENSITIVITY : 1);
+
+    if (isFirstMoveRef.current) {
+      isFirstMoveRef.current = false;
+      lastPositionRef.current = { x: mouseX, y: mouseY };
+    }
 
     mousePositionRef.current = { x: mouseX, y: mouseY };
   };
