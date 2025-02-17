@@ -50,10 +50,10 @@ const Cube = ({ images }) => {
   const handleEnd = () => {
     setIsDragging(false);
 
-    // Add animation class back when drag ends
+    /*// Add animation class back when drag ends
     if (cubeRef.current) {
       cubeRef.current.classList.add('auto-rotate');
-    }
+    }*/
   };
 
   // Mouse events
