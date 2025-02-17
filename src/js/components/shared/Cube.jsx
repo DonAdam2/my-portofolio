@@ -6,7 +6,15 @@ const Cube = ({ images }) => {
     mousePositionRef = useRef({ x: 0, y: 0 }),
     lastPositionRef = useRef({ x: 0, y: 0 }),
     torqueRef = useRef({ x: 0, y: 0 }),
-    isFirstMoveRef = useRef(true),
+    /*Used during a single drag operation to prevent calculating movement
+    on the first frame of dragging. It's reset to true at the start of each
+    drag and becomes false after the first mouse/touch movement.
+    This helps prevent a sudden jump in the cube's rotation when starting to drag.*/
+    isFirstDragFrameRef = useRef(true),
+    /*Track whether the user has ever interacted with the cube since the component mounted.
+    So that the cube's rotation can be reset to the front face only on the first interaction.
+    It would only be set to false once and stay that way until the component is unmounted.*/
+    isFirstInteractionRef = useRef(true),
     cubeRef = useRef(null);
 
   // Configuration constants
@@ -21,11 +29,20 @@ const Cube = ({ images }) => {
 
   const handleStart = (clientX, clientY) => {
     setIsDragging(true);
-    isFirstMoveRef.current = true;
+    isFirstDragFrameRef.current = true;
     lastPositionRef.current = { x: clientX, y: clientY };
     mousePositionRef.current = { x: clientX, y: clientY };
     // Reset torque on start
     torqueRef.current = { x: 0, y: 0 };
+
+    // Reset rotation to front face only on first interaction
+    if (isFirstInteractionRef.current) {
+      rotationRef.current = { x: 0, y: 0 };
+      if (cubeRef.current) {
+        cubeRef.current.style.transform = `rotateX(0deg) rotateY(0deg)`;
+      }
+      isFirstInteractionRef.current = false;
+    }
 
     // Remove animation class when starting to drag
     if (cubeRef.current) {
@@ -39,8 +56,8 @@ const Cube = ({ images }) => {
     const mouseX = clientX / (window.TouchEvent ? TOUCH_SENSITIVITY : 1);
     const mouseY = clientY / (window.TouchEvent ? TOUCH_SENSITIVITY : 1);
 
-    if (isFirstMoveRef.current) {
-      isFirstMoveRef.current = false;
+    if (isFirstDragFrameRef.current) {
+      isFirstDragFrameRef.current = false;
       lastPositionRef.current = { x: mouseX, y: mouseY };
     }
 
