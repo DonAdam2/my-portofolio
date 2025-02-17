@@ -151,7 +151,7 @@ const Cube = ({ images }) => {
     if (isDragging) {
       window.addEventListener('mousemove', handleMouseMove);
       window.addEventListener('mouseup', handleEnd);
-      window.addEventListener('touchmove', handleTouchMove, { passive: true });
+      window.addEventListener('touchmove', handleTouchMove);
       window.addEventListener('touchend', handleEnd);
     }
 
