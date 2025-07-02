@@ -88,14 +88,14 @@ export const projects = [
     isImg: true,
     imgSrc: signItImage,
     iframe: '',
-    desc: `This app is created using React 18 in 2 languages Arabic and English. It's an e-signature site.`,
+    desc: `This app is created using React 19 in 2 languages Arabic and English. It's an e-signature site.`,
     skills: [
-      'React, Redux, Redux thunk',
+      'React, Redux toolkit',
       'Typescript',
-      'Bulma framework',
-      'PDF Trone for e-signatures',
+      'PDFTron for e-signatures',
       'ES6',
-      'SCSS',
+      'Shadcn UI',
+      'Tailwind CSS',
       'HTML5',
     ],
   },
@@ -259,5 +259,27 @@ Created the infrastructure of the new members area using angular 8.`,
     ),
     desc: `This datatable has the following functionalities: sorting, searching and pagination`,
     skills: ['React', 'Custom hooks', 'Javascript', 'ES6', 'JSX', 'SCSS'],
+  },
+  {
+    title: 'React Dropdown',
+    isImg: false,
+    imgSrc: '',
+    iframe: (
+      <iframe
+        height="265"
+        style={{ width: '100%' }}
+        scrolling="no"
+        title="React Dropdown"
+        src="https://codepen.io/AdamMorsi/embed/preview/vYdQXze?height=265&theme-id=default&default-tab=result,result"
+        frameBorder="no"
+        loading="lazy"
+      >
+        See the Pen <a href="https://codepen.io/AdamMorsi/pen/mdqqpyX">React Dropdown</a> by Adam
+        Morsi (<a href="https://codepen.io/AdamMorsi">@AdamMorsi</a>) on{' '}
+        <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    ),
+    desc: `This pen allows you to create a very dynamic dropdown with many options`,
+    skills: ['React', 'TypeScript', 'ES6', 'TSX', 'SCSS'],
   },
 ];
