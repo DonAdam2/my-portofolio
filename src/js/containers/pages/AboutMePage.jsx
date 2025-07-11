@@ -10,12 +10,12 @@ const AboutMePage = () => (
       <div className="inner-content">
         <p className="main-text title">About Me</p>
         <p>
-          I'm a software developer who lives in Nicosia, Cyprus.
-          <br /> I have been creating and developing websites and web apps for{' '}
+          I'm a software engineer who lives in Nicosia, Cyprus.
+          <br />I have been creating and developing websites and web apps for{' '}
           {getYears('2017-06-01')}+ years.
-          <br /> I have a bachelor degree in computer science.
-          <br />I keep current with latest web development technologies and tools.
-          <br /> I provide beautiful, professional and responsive websites.
+          <br />I hold a Bachelor's degree in Computer Science.
+          <br />I stay at the forefront of modern web development technologies and tools.
+          <br />I provide beautiful, professional and responsive websites.
         </p>
         <p className="main-text subtitle">You may contact me to have a great product:</p>
         <ul>
