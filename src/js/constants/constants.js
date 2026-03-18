@@ -39,7 +39,6 @@ import TravisCIIcon from '@/js/components/icons/skillsIcons/TravisCIIcon';
 import JiraIcon from '@/js/components/icons/skillsIcons/JiraIcon';
 
 export const myPhoneNumber = '97691992';
-export const mySkypeUsername = 'live:don.adam8';
 
 export const skillsImages = [
   { image: darkJavaScriptIcon },

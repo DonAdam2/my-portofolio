@@ -1,8 +1,8 @@
 //constants
 import { getYears } from '@/js/constants/helpers';
-import { myPhoneNumber, mySkypeUsername } from '@/js/constants/constants';
+import { myPhoneNumber } from '@/js/constants/constants';
 //components
-import SkypeIcon from '../../components/icons/SkypeIcon';
+import WhatsAppIcon from '../../components/icons/WhatsAppIcon';
 
 const AboutMePage = () => (
   <div className="about-me page-wrapper">
@@ -10,12 +10,16 @@ const AboutMePage = () => (
       <div className="inner-content">
         <p className="main-text title">About Me</p>
         <p>
-          I'm a software engineer who lives in Nicosia, Cyprus.
+          I'm a software engineer based in Nicosia, Cyprus.
           <br />I have been creating and developing websites and web apps for{' '}
           {getYears('2017-06-01')}+ years.
           <br />I hold a Bachelor's degree in Computer Science.
+          <br />I completed one semester of a Master's program in Artificial Intelligence at the
+          European University of Cyprus.
+          <br />I am currently a Master's student specializing in Artificial Intelligence at the
+          University of Bath.
           <br />I stay at the forefront of modern web development technologies and tools.
-          <br />I provide beautiful, professional and responsive websites.
+          <br />I provide beautiful, professional, and responsive websites.
         </p>
         <p className="main-text subtitle">You may contact me to have a great product:</p>
         <ul>
@@ -35,11 +39,9 @@ const AboutMePage = () => (
           </li>
           <li>
             <strong className="main-text d-flex align-items-center">
-              <SkypeIcon />
+              <WhatsAppIcon />
             </strong>{' '}
-            <a href={`skype:${mySkypeUsername}?chat`}>
-              Start chat <strong>`{mySkypeUsername}`</strong>
-            </a>
+            <a href={`https://wa.me/357${myPhoneNumber}`}>+357 {myPhoneNumber}</a>
           </li>
         </ul>
       </div>
