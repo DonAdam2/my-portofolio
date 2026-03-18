@@ -3,16 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153098389-1"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics (deferred to not block rendering) -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-
-      gtag('config', 'UA-153098389-1');
+      window.addEventListener('load', function () {
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=UA-153098389-1';
+        s.async = true;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'UA-153098389-1');
+      });
     </script>
     <!-- Google / Search Engine Tags -->
     <meta name="robots" content="index,follow" />
@@ -59,6 +64,13 @@
       href="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/favicon/favicon-16x16.png') %>"
     />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <!--preload hero background-->
+    <link
+      rel="preload"
+      href="<%= require('./assets/images/mandala/home/darkHomeMobile.svg') %>"
+      as="image"
+      type="image/svg+xml"
+    />
     <!--fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

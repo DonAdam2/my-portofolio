@@ -47,12 +47,19 @@ module.exports = async (env, options) => {
       // used to avoid duplicated dependencies from node modules
       runtimeChunk: 'single',
       splitChunks: {
+        chunks: 'all',
         cacheGroups: {
+          framework: {
+            test: /[\\/]node_modules[\\/](react|react-dom|react-router|react-router-dom|scheduler)[\\/]/,
+            name: 'framework',
+            chunks: 'all',
+            priority: 20,
+          },
           vendor: {
             test: /[\\/]node_modules[\\/]/,
             name: 'vendor',
-            enforce: true,
             chunks: 'all',
+            priority: 10,
           },
         },
       },
