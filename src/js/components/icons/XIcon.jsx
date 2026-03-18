@@ -7,6 +7,8 @@ const XIcon = ({ className = '', isGradient = false, onClick }) => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     onClick={onClick}
+    aria-hidden="true"
+    focusable="false"
   >
     <path
       d="M1 13L13 1M1 1L13 13"

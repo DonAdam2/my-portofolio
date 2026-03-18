@@ -238,9 +238,9 @@
     box-shadow: none;
   }
 
-  &:focus,
   &:focus-visible {
-    outline: none;
+    outline: 2px solid #4776e6;
+    outline-offset: 2px;
   }
 
   .button-content {

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 //dark images
 import darkHomeDesktop from '@/public/assets/images/mandala/home/darkHomeDesktop.svg';
@@ -140,12 +140,14 @@ const App = () => {
       <Gate isAnimateGate={isAnimateGate}>
         <div className="page">
           <div className="content">
-            <Routes>
-              {routes.map((el, i) => (
-                <Route key={i} path={el.path} element={el.element} />
-              ))}
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
+            <Suspense>
+              <Routes>
+                {routes.map((el, i) => (
+                  <Route key={i} path={el.path} element={el.element} />
+                ))}
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+            </Suspense>
           </div>
           <Footer />
         </div>

@@ -1,5 +1,5 @@
 const DarkLinkedInIcon = () => (
-  <svg viewBox="0 0 1288 1101">
+  <svg viewBox="0 0 1288 1101" aria-hidden="true" focusable="false">
     <defs>
       <linearGradient
         id="prefix__a"

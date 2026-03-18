@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 //images
 import spinner from '@/public/assets/images/spinner.gif';
 
-const LazyImage = ({ src, alt, className, loaderIcon }) => {
+const LazyImage = ({ src, alt, className, loaderIcon, width, height }) => {
   const [imgSrc, setImgSrc] = useState(loaderIcon ? loaderIcon : spinner),
     imageRef = useRef(null);
 
@@ -40,6 +40,9 @@ const LazyImage = ({ src, alt, className, loaderIcon }) => {
       className={className}
       src={imgSrc}
       alt={alt}
+      loading="lazy"
+      {...(width ? { width } : {})}
+      {...(height ? { height } : {})}
     />
   );
 };

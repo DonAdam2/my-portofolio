@@ -1,5 +1,5 @@
 const DarkHomeIcon = ({ width }) => (
-  <svg viewBox="0 0 1288 1101" style={{ width }}>
+  <svg viewBox="0 0 1288 1101" style={{ width }} aria-hidden="true" focusable="false">
     <defs>
       <linearGradient
         id="prefix__a"

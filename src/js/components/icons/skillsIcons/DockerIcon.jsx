@@ -3,6 +3,8 @@ const SvgComponent = () => (
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 32 32"
+    aria-hidden="true"
+    focusable="false"
   >
     <defs>
       <clipPath id="prefix__a">

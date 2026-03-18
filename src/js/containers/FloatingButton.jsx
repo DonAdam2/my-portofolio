@@ -402,6 +402,7 @@ const FloatingButton = ({
               >
                 <button
                   className={`sub-button ${el.className ?? ''}`}
+                  aria-label={el.tooltipLabel}
                   ref={(el) => (buttonsRefs.current[i] = el)}
                   style={{
                     opacity: isHover ? 0.9 : 0,

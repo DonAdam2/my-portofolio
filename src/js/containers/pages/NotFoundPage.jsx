@@ -5,7 +5,7 @@ import { getHomePageUrl } from '@/js/routing/appUrls';
 const NotFoundPage = () => (
   <div className="not-found page-wrapper">
     <div className="inner-content">
-      <h3 className="title">not found page</h3>
+      <h1 className="title">not found page</h1>
       <Link className="subtitle" to={getHomePageUrl()}>
         Go back
       </Link>

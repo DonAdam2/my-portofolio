@@ -58,6 +58,7 @@ const Modal = ({ header, footer, wrapper, maxWidth, className, children }) => {
               <button
                 data-test="modal-header-close-btn"
                 className="header-close-btn"
+                aria-label="Close"
                 onClick={closeHandler}
               >
                 <XIcon />
@@ -113,6 +114,9 @@ const Modal = ({ header, footer, wrapper, maxWidth, className, children }) => {
           >
             <div
               className={`modal-wrapper ${wrapperClassName ?? ''}`}
+              role="dialog"
+              aria-modal="true"
+              aria-label={title || 'Dialog'}
               style={{
                 flexDirection: wrapperHeader || wrapperFooter ? 'column' : 'row',
                 justifyContent: wrapperHeader || wrapperFooter ? 'space-between' : 'center',

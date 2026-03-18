@@ -7,6 +7,8 @@ const NodeJsIcon = () => (
     height="48"
     viewBox="0 0 48 48"
     style={{ fill: '#000000' }}
+    aria-hidden="true"
+    focusable="false"
   >
     <path
       fill="#388e3c"

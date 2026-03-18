@@ -10,17 +10,32 @@ const Footer = () => (
   <div className="footer">
     <div className="footer-wrapper row">
       <Tooltip position="top" isDisplayTooltipIndicator={false} tooltipContent="LinknedIn">
-        <a href="https://www.linkedin.com/in/adam-morsi-715517b3/" className="link" target="_blank">
+        <a
+          href="https://www.linkedin.com/in/adam-morsi-715517b3/"
+          className="link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <DarkLinkedInIcon />
         </a>
       </Tooltip>
       <Tooltip position="top" isDisplayTooltipIndicator={false} tooltipContent="Github">
-        <a href="https://github.com/DonAdam2" className="link" target="_blank">
+        <a
+          href="https://github.com/DonAdam2"
+          className="link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <DarkGitHubIcon />
         </a>
       </Tooltip>
       <Tooltip position="top" isDisplayTooltipIndicator={false} tooltipContent="Codepen">
-        <a href="https://codepen.io/AdamMorsi" className="link" target="_blank">
+        <a
+          href="https://codepen.io/AdamMorsi"
+          className="link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <DarkCodePenIcon />
         </a>
       </Tooltip>
@@ -34,6 +49,7 @@ const Footer = () => (
           href="https://play.google.com/store/apps/details?id=com.adam_morsi.adam_morsi_cv"
           className="link"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <DarkGooglePlayIcon />
         </a>

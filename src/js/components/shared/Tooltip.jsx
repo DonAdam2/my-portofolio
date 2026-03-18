@@ -240,7 +240,8 @@ const Tooltip = ({
           {show && tooltipContent && (
             <span
               ref={tooltipMessage}
-              className={`tooltip-message 
+              role="tooltip"
+              className={`tooltip-message
               ${className}
  on-${newPosition.current} ${isDisplayTooltipIndicator ? 'is-indicator' : ''}`}
               dangerouslySetInnerHTML={{ __html: tooltipContent }}

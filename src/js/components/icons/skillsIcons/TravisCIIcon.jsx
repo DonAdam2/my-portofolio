@@ -5,6 +5,8 @@ const TravisCIIcon = () => (
     viewBox="0 0 32 32"
     width={64}
     height={64}
+    aria-hidden="true"
+    focusable="false"
   >
     <g transform="matrix(.16 0 0 .16 0 .01)">
       <path
