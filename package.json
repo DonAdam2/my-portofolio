@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Adam Morsi portfolio which has information about skills, projects, etc...",
   "engines": {
-    "node": "18.19.1"
+    "node": ">=18.19.1"
   },
   "repository": {
     "type": "git",
@@ -53,7 +53,6 @@
     "html-webpack-plugin": "5.6.6",
     "identity-obj-proxy": "3.0.0",
     "mini-css-extract-plugin": "2.10.1",
-    "plop": "4.0.5",
     "postcss": "8.5.8",
     "postcss-flexbugs-fixes": "5.0.2",
     "postcss-loader": "8.2.1",
