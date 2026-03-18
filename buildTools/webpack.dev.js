@@ -8,8 +8,8 @@ const { merge } = require('webpack-merge'),
   //constants
   { protocol } = require('./constants');
 
-module.exports = (env, options) => {
-  return merge(common(env, options), {
+module.exports = async (env, options) => {
+  return merge(await common(env, options), {
     mode: 'development',
     devtool: 'eval',
     //required for hot reload

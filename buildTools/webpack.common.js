@@ -20,9 +20,12 @@ const path = require('path'),
     indexHtmlPath,
   } = require('./paths');
 
-module.exports = (env, options) => {
+module.exports = async (env, options) => {
   // the mode variable is passed in package.json scripts (development, production)
   const isDevelopment = options.mode === 'development';
+
+  // postcss-preset-env v11 is ESM-only, use dynamic import
+  const postcssPresetEnv = (await import('postcss-preset-env')).default;
 
   return {
     entry: appIndexPath,
@@ -129,14 +132,11 @@ module.exports = (env, options) => {
                   ident: 'postcss',
                   plugins: [
                     'postcss-flexbugs-fixes',
-                    [
-                      'postcss-preset-env',
-                      {
-                        stage: 0,
-                        //uncomment the following if you want to prefix grid properties
-                        // autoprefixer: { grid: true },
-                      },
-                    ],
+                    postcssPresetEnv({
+                      stage: 0,
+                      //uncomment the following if you want to prefix grid properties
+                      // autoprefixer: { grid: true },
+                    }),
                     // Adds PostCSS Normalize as the reset css with default options,
                     // so that it honors browserslist config in package.json
                     // which in turn let users customize the target behavior as per their needs.

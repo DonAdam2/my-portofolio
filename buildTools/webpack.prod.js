@@ -17,7 +17,7 @@ const { merge } = require('webpack-merge'),
   //helpers
   { getDirectoryDirectories, getDirectoryFiles } = require('./helpers');
 
-module.exports = (env, options) => {
+module.exports = async (env, options) => {
   const containedDirectoriesInPublicDirectory = getDirectoryDirectories('public'),
     containedDirectoriesInAssetsDirectory = getDirectoryDirectories('public/assets'),
     containedFilesInPublicDirectory = getDirectoryFiles('public'),
@@ -30,7 +30,7 @@ module.exports = (env, options) => {
     ),
     inPublicOtherFiles = containedFilesInPublicDirectory.filter((el) => el !== 'index.html');
 
-  return merge(common(env, options), {
+  return merge(await common(env, options), {
     performance: {
       hints: false,
       maxEntrypointSize: 512 * 1024,

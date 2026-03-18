@@ -1,10 +1,7 @@
-const path = require('path'),
-  js = require('@eslint/js'),
-  react = require('eslint-plugin-react'),
+const js = require('@eslint/js'),
   reactHooks = require('eslint-plugin-react-hooks'),
   prettier = require('eslint-plugin-prettier'),
   prettierConfig = require('eslint-config-prettier'),
-  babelParser = require('@babel/eslint-parser'),
   globals = require('globals');
 
 module.exports = [
@@ -18,19 +15,11 @@ module.exports = [
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
-      parser: babelParser,
       ecmaVersion: 'latest',
       sourceType: 'module',
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
-          modules: true,
-          arrowFunctions: true,
-          restParams: true,
-          experimentalObjectRestSpread: true,
-        },
-        babelOptions: {
-          configFile: path.join(__dirname, 'babel.config.js'),
         },
       },
       globals: {
@@ -41,35 +30,18 @@ module.exports = [
       },
     },
     plugins: {
-      react: react,
       'react-hooks': reactHooks,
       prettier: prettier,
     },
     rules: {
-      // React recommended rules
-      ...react.configs.recommended.rules,
-      ...react.configs['jsx-runtime'].rules,
-
-      // React Hooks recommended
-      ...reactHooks.configs.recommended.rules,
+      // React Hooks rules
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
 
       // Custom overrides
       'prettier/prettier': 'error',
       'no-unused-vars': 'warn',
       'no-empty': 'warn',
-      'react/prop-types': 'off',
-      'react/jsx-no-target-blank': 'off',
-      'react/no-unescaped-entities': 'off',
-
-      // Ensure React hooks rules are active
-      'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'warn',
-    },
-    settings: {
-      'import/resolver': 'webpack',
-      react: {
-        version: 'detect',
-      },
     },
   },
 ];
