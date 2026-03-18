@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Adam Morsi portfolio which has information about skills, projects, etc...",
   "engines": {
-    "node": ">=20.19.0"
+    "node": "24.14.0"
   },
   "repository": {
     "type": "git",
