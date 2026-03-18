@@ -19,18 +19,14 @@ module.exports = (api) => {
       [
         '@babel/preset-env',
         {
-          targets: {
-            browsers: ['ie >= 11', 'last 2 versions'],
-          },
-          useBuiltIns: 'entry',
-          corejs: '3',
+          targets: 'last 2 versions, not dead, not op_mini all',
+          useBuiltIns: false,
         },
       ],
       ['@babel/preset-react', { runtime: hasJsxRuntime ? 'automatic' : 'classic' }],
     ],
     plugins: [
       '@babel/plugin-transform-runtime',
-      '@babel/plugin-syntax-dynamic-import',
       // Applies the react-refresh Babel plugin on non-production modes only
       ...(api.env() === 'development' ? ['react-refresh/babel'] : []),
     ],

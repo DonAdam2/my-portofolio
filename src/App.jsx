@@ -1,22 +1,5 @@
 import { useState, useEffect, useRef, Suspense } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-//dark images
-import darkHomeDesktop from '@/public/assets/images/mandala/home/darkHomeDesktop.svg';
-import darkHomeMobile from '@/public/assets/images/mandala/home/darkHomeMobile.svg';
-import darkAbout from '@/public/assets/images/mandala/about/darkAbout.svg';
-import darkSkillsDesktop from '@/public/assets/images/mandala/skills/darkSkillsDesktop.svg';
-import darkSkillsLaptop from '@/public/assets/images/mandala/skills/darkSkillsLaptop.svg';
-import leftDarkProjects from '@/public/assets/images/mandala/projects/left.svg';
-import rightDarkProjects from '@/public/assets/images/mandala/projects/right.svg';
-import darkNotFoundDesktop from '@/public/assets/images/mandala/notFound/darkNotFoundDesktop.svg';
-import darkNotFoundMobile from '@/public/assets/images/mandala/notFound/darkNotFoundMobile.svg';
-import darkBackendIcon from '@/public/assets/images/skillsIcons/dark/darkBackendIcon.svg';
-import darkCmsIcon from '@/public/assets/images/skillsIcons/dark/darkCmsIcon.svg';
-import darkFrontendIcon from '@/public/assets/images/skillsIcons/dark/darkFrontendIcon.svg';
-import darkJavaScriptIcon from '@/public/assets/images/skillsIcons/dark/darkJavaScriptIcon.svg';
-import darkStylesIcon from '@/public/assets/images/skillsIcons/dark/darkStylesIcon.svg';
-import darkTypescriptIcon from '@/public/assets/images/skillsIcons/dark/darkTypescriptIcon.svg';
-import introImg from '@/public/assets/images/intro.png';
 //constants
 import {
   getAboutPageUrl,
@@ -58,28 +41,21 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const images = [
-      darkHomeDesktop,
-      darkHomeMobile,
-      darkAbout,
-      darkSkillsDesktop,
-      darkSkillsLaptop,
-      leftDarkProjects,
-      rightDarkProjects,
-      darkNotFoundDesktop,
-      darkNotFoundMobile,
-      darkBackendIcon,
-      darkCmsIcon,
-      darkFrontendIcon,
-      darkJavaScriptIcon,
-      darkStylesIcon,
-      darkTypescriptIcon,
-      introImg,
-    ];
-    images.forEach((picture) => {
-      const img = new Image();
-      img.src = picture;
-    });
+    const preloadImages = () => {
+      const imagePaths = require.context('@/public/assets/images/mandala', true, /\.svg$/);
+      imagePaths.keys().forEach((key) => {
+        const img = new Image();
+        img.src = imagePaths(key);
+      });
+    };
+
+    if ('requestIdleCallback' in window) {
+      const id = requestIdleCallback(preloadImages);
+      return () => cancelIdleCallback(id);
+    } else {
+      const id = setTimeout(preloadImages, 3000);
+      return () => clearTimeout(id);
+    }
   }, []);
 
   const animateGate = () => {
