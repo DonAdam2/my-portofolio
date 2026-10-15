@@ -14,8 +14,11 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 50%;
+    // overlap by 1px so no hairline seam shows between the halves when closed
+    width: calc(50% + 1px);
     transform: scaleX(0);
+    will-change: transform;
+    backface-visibility: hidden;
     z-index: 10;
   }
 
@@ -30,16 +33,21 @@
   }
 
   .open-gate {
-    animation: gate 2s infinite;
+    animation: gate 2s both;
   }
 }
 
+// closes, holds briefly while the route changes behind it (navigation fires at ~950ms), then opens.
+// each motion uses its own ease-in-out curve so both ends start and settle softly
 @keyframes gate {
   0% {
     transform: scaleX(0);
+    animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
   }
-  50% {
+  42%,
+  58% {
     transform: scaleX(1);
+    animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
   }
   100% {
     transform: scaleX(0);
