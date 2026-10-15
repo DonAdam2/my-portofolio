@@ -1,0 +1,71 @@
+//dark theme (default): black and gold
+:root {
+  --theme-bg: #1b1f22;
+  --theme-bg-overlay: rgba(27, 31, 34, 0.7);
+  --theme-bg-overlay-light: rgba(27, 31, 34, 0.5);
+  --theme-surface: #1b1f22;
+  --theme-text: #ffdb99;
+  --theme-text-strong: #f1f1f1;
+  --theme-accent: #e1a328;
+  --theme-primary-light: #ffdb99;
+  --theme-primary-dark: #e1a328;
+  --theme-text-shadow: #000000;
+  --theme-border-muted: grey;
+  --theme-copyright: #ffffff;
+  --theme-gate: #000000;
+  --theme-loader-bg: #000000;
+  --theme-modal-backdrop: rgba(0, 0, 0, 0.7);
+  --theme-modal-shadow: rgba(0, 0, 0, 0.2);
+
+  //metallic gradients used by the menu and footer icons
+  --icon-ring-1: #f4b12d;
+  --icon-ring-2: #f7e9cc;
+  --icon-ring-3: #9b7019;
+  --icon-ring-4: #e9a92a;
+  --icon-ring-5: #f8ddad;
+  --icon-fill-1: #8c6034;
+  --icon-fill-2: #a9824f;
+  --icon-fill-3: #f2d893;
+  --icon-fill-4: #ffe79f;
+  --icon-fill-5: #e2c07c;
+  --icon-fill-6: #a67033;
+  --icon-bg: #1b1b1b;
+
+  color-scheme: dark;
+}
+
+//light theme: cream, ink and terracotta
+:root[data-theme='light'] {
+  --theme-bg: #efe7dd;
+  --theme-bg-overlay: rgba(239, 231, 221, 0.7);
+  --theme-bg-overlay-light: rgba(239, 231, 221, 0.5);
+  --theme-surface: #f6f1e8;
+  --theme-text: #3d322d;
+  --theme-text-strong: #2b2320;
+  --theme-accent: #a4583c;
+  --theme-primary-light: #c4785a;
+  --theme-primary-dark: #a4583c;
+  --theme-text-shadow: #ffffff;
+  --theme-border-muted: #d6cabd;
+  --theme-copyright: #6f6560;
+  --theme-gate: #2b2320;
+  --theme-loader-bg: #efe7dd;
+  --theme-modal-backdrop: rgba(43, 35, 32, 0.45);
+  --theme-modal-shadow: rgba(43, 35, 32, 0.15);
+
+  //terracotta gradients used by the menu and footer icons (match the theme toggle)
+  --icon-ring-1: #9c583a;
+  --icon-ring-2: #c98f6e;
+  --icon-ring-3: #6d3a28;
+  --icon-ring-4: #965438;
+  --icon-ring-5: #c58461;
+  --icon-fill-1: #723d2a;
+  --icon-fill-2: #8a4c33;
+  --icon-fill-3: #bf7853;
+  --icon-fill-4: #c3815e;
+  --icon-fill-5: #b76944;
+  --icon-fill-6: #7d442e;
+  --icon-bg: #efe7dd;
+
+  color-scheme: light;
+}

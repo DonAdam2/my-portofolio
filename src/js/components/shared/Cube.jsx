@@ -1,191 +1,153 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+
+// Configuration constants
+const AUTO_ROTATE_SPEED = { x: 0.012, y: 0.03 }, // degrees per ms around the screen axes
+  DRAG_SENSITIVITY = 0.4, // degrees per dragged pixel
+  RETURN_TO_AUTO_ROTATE = 0.04, // how fast a throw eases back into the idle spin (per 60fps frame)
+  THROW_TIMEOUT = 80, // ms without movement before release, after which the cube is not thrown
+  FRAME = 1000 / 60;
+
+/*Rotations are kept as a quaternion and applied in screen space, so dragging always
+turns the cube in the direction of the pointer, whatever its current orientation.*/
+const toRadians = (deg) => (deg * Math.PI) / 180;
+
+const axisAngleQuaternion = (x, y, angleDeg) => {
+  const length = Math.hypot(x, y);
+  if (!length || !angleDeg) return [0, 0, 0, 1];
+  const half = toRadians(angleDeg) / 2,
+    s = Math.sin(half) / length;
+  return [x * s, y * s, 0, Math.cos(half)];
+};
+
+const multiplyQuaternions = ([ax, ay, az, aw], [bx, by, bz, bw]) => {
+  const q = [
+      aw * bx + ax * bw + ay * bz - az * by,
+      aw * by - ax * bz + ay * bw + az * bx,
+      aw * bz + ax * by - ay * bx + az * bw,
+      aw * bw - ax * bx - ay * by - az * bz,
+    ],
+    length = Math.hypot(...q);
+  return q.map((v) => v / length);
+};
+
+// rotates the cube around the screen x & y axes by the given amounts (degrees)
+const rotateBy = (q, degX, degY) =>
+  multiplyQuaternions(axisAngleQuaternion(degX, degY, Math.hypot(degX, degY)), q);
+
+const toCssTransform = ([x, y, z, w]) => {
+  const angle = 2 * Math.acos(Math.min(1, Math.abs(w))),
+    s = Math.sqrt(1 - w * w);
+  if (s < 1e-6) return 'rotate3d(0, 1, 0, 0rad)';
+  const sign = w < 0 ? -1 : 1;
+  return `rotate3d(${(sign * x) / s}, ${(sign * y) / s}, ${(sign * z) / s}, ${angle}rad)`;
+};
+
+const INITIAL_ROTATION = multiplyQuaternions(
+  axisAngleQuaternion(1, 0, 15),
+  axisAngleQuaternion(0, 1, 45)
+);
 
 const Cube = ({ images }) => {
-  const [isDragging, setIsDragging] = useState(false),
-    rotationRef = useRef({ x: 15, y: 45 }),
-    mousePositionRef = useRef({ x: 0, y: 0 }),
-    lastPositionRef = useRef({ x: 0, y: 0 }),
-    torqueRef = useRef({ x: 0, y: 0 }),
-    /*Used during a single drag operation to prevent calculating movement
-    on the first frame of dragging. It's reset to true at the start of each
-    drag and becomes false after the first mouse/touch movement.
-    This helps prevent a sudden jump in the cube's rotation when starting to drag.*/
-    isFirstDragFrameRef = useRef(true),
-    /*Track whether the user has ever interacted with the cube since the component mounted.
-    So that the cube's rotation can be reset to the front face only on the first interaction.
-    It would only be set to false once and stay that way until the component is unmounted.*/
-    isFirstInteractionRef = useRef(true),
-    cubeRef = useRef(null);
-
-  // Configuration constants
-  const SENSITIVITY = 0.1,
-    SENSITIVITY_FADE = 0.93,
-    SPEED = 2,
-    TOUCH_SENSITIVITY = 1.5,
-    FPS = 30;
+  const cubeRef = useRef(null),
+    rotationRef = useRef(INITIAL_ROTATION),
+    velocityRef = useRef({ x: 0, y: 0 }), // degrees per ms
+    dragRef = useRef(null);
 
   // Take only the first 6 images
   const cubeImages = images.slice(0, 6);
 
-  const handleStart = (clientX, clientY) => {
-    setIsDragging(true);
-    isFirstDragFrameRef.current = true;
-    lastPositionRef.current = { x: clientX, y: clientY };
-    mousePositionRef.current = { x: clientX, y: clientY };
-    // Reset torque on start
-    torqueRef.current = { x: 0, y: 0 };
-
-    // Reset rotation to front face only on first interaction
-    if (isFirstInteractionRef.current) {
-      rotationRef.current = { x: 0, y: 0 };
-      if (cubeRef.current) {
-        cubeRef.current.style.transform = `rotateX(0deg) rotateY(0deg)`;
-      }
-      isFirstInteractionRef.current = false;
-    }
-
-    // Remove animation class when starting to drag
-    if (cubeRef.current) {
-      cubeRef.current.classList.remove('auto-rotate');
-    }
-  };
-
-  const handleMove = (clientX, clientY) => {
-    if (!isDragging) return;
-
-    const mouseX = clientX / (window.TouchEvent ? TOUCH_SENSITIVITY : 1);
-    const mouseY = clientY / (window.TouchEvent ? TOUCH_SENSITIVITY : 1);
-
-    if (isFirstDragFrameRef.current) {
-      isFirstDragFrameRef.current = false;
-      lastPositionRef.current = { x: mouseX, y: mouseY };
-    }
-
-    mousePositionRef.current = { x: mouseX, y: mouseY };
-  };
-
-  const handleEnd = () => {
-    setIsDragging(false);
-
-    /*// Add animation class back when drag ends
-    if (cubeRef.current) {
-      cubeRef.current.classList.add('auto-rotate');
-    }*/
-  };
-
-  // Mouse events
-  const handleMouseDown = (e) => {
-    e.preventDefault();
-    handleStart(e.pageX, e.pageY);
-  };
-
-  // Touch events
-  const handleTouchStart = (e) => {
-    const touch = e.touches[0];
-    handleStart(touch.pageX, touch.pageY);
-  };
-
-  const handleTouchMove = (e) => {
-    const touch = e.touches[0];
-    handleMove(touch.pageX, touch.pageY);
-  };
-
   // Animation loop
   useEffect(() => {
-    let animationFrameId;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+      autoRotate = prefersReducedMotion ? { x: 0, y: 0 } : AUTO_ROTATE_SPEED;
+    let animationFrameId,
+      lastTime = performance.now();
 
-    const animate = () => {
-      if (isDragging) {
-        const distanceX = mousePositionRef.current.x - lastPositionRef.current.x;
-        const distanceY = mousePositionRef.current.y - lastPositionRef.current.y;
-
-        torqueRef.current = {
-          x:
-            torqueRef.current.x * SENSITIVITY_FADE +
-            (distanceX * SPEED - torqueRef.current.x) * SENSITIVITY,
-          y:
-            torqueRef.current.y * SENSITIVITY_FADE +
-            (distanceY * SPEED - torqueRef.current.y) * SENSITIVITY,
-        };
-
-        let newX = rotationRef.current.x - torqueRef.current.y;
-        let newY = rotationRef.current.y + torqueRef.current.x;
-
-        // Keep angles within 0-360 range
-        newX = newX % 360;
-        newY = newY % 360;
-        if (newX < 0) newX += 360;
-        if (newY < 0) newY += 360;
-
-        rotationRef.current = { x: newX, y: newY };
-        lastPositionRef.current = { ...mousePositionRef.current };
-
-        // Update cube transform
-        if (cubeRef.current) {
-          cubeRef.current.style.transform = `rotateX(${newX}deg) rotateY(${newY}deg)`;
-        }
-      } else {
-        // Apply torque fade-out when not dragging
-        torqueRef.current = {
-          x: torqueRef.current.x * SENSITIVITY_FADE,
-          y: torqueRef.current.y * SENSITIVITY_FADE,
-        };
-      }
-
-      animationFrameId = setTimeout(() => {
-        requestAnimationFrame(animate);
-      }, 1000 / FPS);
-    };
-
-    animate();
-    return () => {
-      if (animationFrameId) {
-        clearTimeout(animationFrameId);
-      }
-    };
-  }, [isDragging]); // Only depend on isDragging state
-
-  useEffect(() => {
-    const handleMouseMove = (e) => handleMove(e.pageX, e.pageY);
-
-    if (isDragging) {
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleEnd);
-      window.addEventListener('touchmove', handleTouchMove);
-      window.addEventListener('touchend', handleEnd);
+    if (!prefersReducedMotion) {
+      velocityRef.current = { ...AUTO_ROTATE_SPEED };
     }
 
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleEnd);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handleEnd);
+    const animate = (time) => {
+      // cap the step so returning to a background tab doesn't spin the cube wildly
+      const dt = Math.min(time - lastTime, 50);
+      lastTime = time;
+
+      if (!dragRef.current) {
+        const velocity = velocityRef.current,
+          ease = 1 - Math.pow(1 - RETURN_TO_AUTO_ROTATE, dt / FRAME);
+
+        // a throw slows down smoothly and blends back into the idle spin
+        velocity.x += (autoRotate.x - velocity.x) * ease;
+        velocity.y += (autoRotate.y - velocity.y) * ease;
+        rotationRef.current = rotateBy(rotationRef.current, velocity.x * dt, velocity.y * dt);
+      }
+
+      if (cubeRef.current) {
+        cubeRef.current.style.transform = toCssTransform(rotationRef.current);
+      }
+
+      animationFrameId = requestAnimationFrame(animate);
     };
-    //eslint-disable-next-line
-  }, [isDragging]);
+
+    animationFrameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
+  const handlePointerDown = (e) => {
+    e.preventDefault();
+    e.currentTarget.setPointerCapture(e.pointerId);
+    e.currentTarget.classList.add('is-dragging');
+    dragRef.current = { pointerId: e.pointerId, x: e.clientX, y: e.clientY, time: e.timeStamp };
+    velocityRef.current = { x: 0, y: 0 };
+  };
+
+  const handlePointerMove = (e) => {
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== e.pointerId) return;
+
+    const degX = -(e.clientY - drag.y) * DRAG_SENSITIVITY,
+      degY = (e.clientX - drag.x) * DRAG_SENSITIVITY,
+      dt = Math.max(e.timeStamp - drag.time, 1);
+
+    rotationRef.current = rotateBy(rotationRef.current, degX, degY);
+    // smoothed pointer speed, used to throw the cube on release
+    velocityRef.current = {
+      x: velocityRef.current.x * 0.2 + (degX / dt) * 0.8,
+      y: velocityRef.current.y * 0.2 + (degY / dt) * 0.8,
+    };
+    dragRef.current = { ...drag, x: e.clientX, y: e.clientY, time: e.timeStamp };
+  };
+
+  const handlePointerUp = (e) => {
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== e.pointerId) return;
+
+    // holding still before releasing shouldn't throw the cube
+    if (e.timeStamp - drag.time > THROW_TIMEOUT) {
+      velocityRef.current = { x: 0, y: 0 };
+    }
+    e.currentTarget.classList.remove('is-dragging');
+    dragRef.current = null;
+  };
 
   return (
     <div className="cube-wrapper">
       <div
         ref={cubeRef}
-        className="cube auto-rotate"
-        style={{
-          transform: isDragging
-            ? 'none'
-            : `rotateX(${rotationRef.current.x}deg) rotateY(${rotationRef.current.y}deg)`,
-          transition: isDragging ? 'none' : 'transform 0.3s ease-out',
-          touchAction: 'none',
-        }}
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleTouchStart}
+        className="cube"
+        style={{ transform: toCssTransform(INITIAL_ROTATION) }}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
       >
         {cubeImages.map((el, i) => (
           <div
             className="skill-wrapper"
             key={i}
             style={{
-              backgroundImage: `url(${el.image})`,
-              touchAction: 'none',
+              '--dark-image': `url(${el.image})`,
+              '--light-image': `url(${el.lightImage})`,
             }}
           />
         ))}

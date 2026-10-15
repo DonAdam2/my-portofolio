@@ -12,6 +12,10 @@
     background-position: right;
     background-repeat: no-repeat;
     background-size: contain;
+
+    :root[data-theme='light'] & {
+      background-image: url('~@/public/assets/images/mandala/projects/lightRight.svg');
+    }
   }
 
   .book-img,
@@ -32,6 +36,10 @@
       background-position: left;
       background-repeat: no-repeat;
       background-size: contain;
+
+      :root[data-theme='light'] & {
+        background-image: url('~@/public/assets/images/mandala/projects/lightLeft.svg');
+      }
     }
 
     .project-wrapper {

@@ -19,6 +19,7 @@ import DarkBagIcon from './js/components/icons/floatingButtonIcons/dark/DarkBagI
 import FloatingButton from '@/js/containers/FloatingButton';
 import Gate from '@/js/components/Gate';
 import Footer from './js/components/Footer';
+import ThemeToggle from '@/js/components/ThemeToggle';
 //pages
 import NotFoundPage from '@/js/containers/pages/NotFoundPage';
 
@@ -42,11 +43,20 @@ const App = () => {
 
   useEffect(() => {
     const preloadImages = () => {
-      const imagePaths = require.context('@/public/assets/images/mandala', true, /\.svg$/);
-      imagePaths.keys().forEach((key) => {
-        const img = new Image();
-        img.src = imagePaths(key);
-      });
+      const backgroundPaths = require.context('@/public/assets/images/mandala', true, /\.svg$/),
+        cubeIconPaths = require.context('@/public/assets/images/skillsIcons', true, /\.svg$/),
+        isLightTheme = document.documentElement.dataset.theme === 'light';
+      // only preload the images of the active theme (light ones are prefixed with "light"),
+      // the service worker caches them at runtime, so the active theme also works offline
+      [backgroundPaths, cubeIconPaths].forEach((imagePaths) =>
+        imagePaths
+          .keys()
+          .filter((key) => key.split('/').pop().startsWith('light') === isLightTheme)
+          .forEach((key) => {
+            const img = new Image();
+            img.src = imagePaths(key);
+          })
+      );
     };
 
     if ('requestIdleCallback' in window) {
@@ -134,6 +144,7 @@ const App = () => {
         buttons={buttons}
         mainButtonIcon={<DarkLogoIcon width={iconWidth} />}
       />
+      <ThemeToggle />
     </>
   );
 };

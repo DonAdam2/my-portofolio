@@ -21,10 +21,21 @@ $grey-100: #e5e5e5;
 $blue-gray-200: #e2e8f0;
 $blue-gray-500: #64748b;
 
-//dork colors
-$grey-dark-theme: #1b1f22;
-$light-gold-dark-theme: #ffdb99;
-$dark-gold-dark-theme: #e1a328;
+//theme colors (values per theme live in themes.scss)
+$theme-bg: var(--theme-bg);
+$theme-bg-overlay: var(--theme-bg-overlay);
+$theme-bg-overlay-light: var(--theme-bg-overlay-light);
+$theme-surface: var(--theme-surface);
+$theme-text: var(--theme-text);
+$theme-text-strong: var(--theme-text-strong);
+$theme-accent: var(--theme-accent);
+$theme-text-shadow: var(--theme-text-shadow);
+$theme-border-muted: var(--theme-border-muted);
+$theme-copyright: var(--theme-copyright);
+$theme-gate: var(--theme-gate);
+$theme-loader-bg: var(--theme-loader-bg);
+$theme-modal-backdrop: var(--theme-modal-backdrop);
+$theme-modal-shadow: var(--theme-modal-shadow);
 
 //skills cube
 $cube-width-xss: 150px;

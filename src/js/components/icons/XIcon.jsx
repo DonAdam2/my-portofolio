@@ -12,7 +12,7 @@ const XIcon = ({ className = '', isGradient = false, onClick }) => (
   >
     <path
       d="M1 13L13 1M1 1L13 13"
-      stroke={isGradient ? 'url(#paint0_linear_1540_100)' : '#e1a328'}
+      stroke={isGradient ? 'url(#paint0_linear_1540_100)' : 'var(--theme-accent)'}
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"

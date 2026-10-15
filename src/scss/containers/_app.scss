@@ -12,8 +12,8 @@ body,
 }
 
 .page {
-  background-color: vars.$grey-dark-theme;
-  color: vars.$light-gold-dark-theme;
+  background-color: vars.$theme-bg;
+  color: vars.$theme-text;
   padding: 40px 40px 0 40px;
   min-height: 100%;
   display: flex;
@@ -25,7 +25,7 @@ body,
 
     .inner-content {
       flex-basis: 100%;
-      background-color: rgba(27, 31, 34, 0.7);
+      background-color: vars.$theme-bg-overlay;
 
       @media (min-width: vars.$laptop) {
         flex-basis: 50%;

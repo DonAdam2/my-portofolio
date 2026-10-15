@@ -7,10 +7,18 @@
     background-image: url('~@/public/assets/images/mandala/home/darkHomeDesktop.svg');
   }
 
+  :root[data-theme='light'] & {
+    background-image: url('~@/public/assets/images/mandala/home/lightHomeMobile.svg');
+
+    @media (min-width: vars.$laptop) {
+      background-image: url('~@/public/assets/images/mandala/home/lightHomeDesktop.svg');
+    }
+  }
+
   .title {
     font-size: 21px;
     margin-top: 0;
-    color: vars.$dark-gold-dark-theme;
+    color: vars.$theme-accent;
 
     @media (min-width: vars.$mobile-small) {
       font-size: 28px;

@@ -5,7 +5,7 @@
   perspective-origin: 50% 50%;
   width: 100%;
   display: flex;
-  background-color: rgba(27, 31, 34, 0.5);
+  background-color: vars.$theme-bg-overlay-light;
   touch-action: none;
 
   @media (min-width: vars.$laptop) {
@@ -21,18 +21,25 @@
     position: relative;
     cursor: grab;
     touch-action: none;
+    // keeps the cube on its own compositor layer, so rotating it doesn't repaint the faces
+    will-change: transform;
 
-    &.auto-rotate {
-      animation: rotateCube 10s linear infinite;
+    &.is-dragging {
+      cursor: grabbing;
     }
 
     .skill-wrapper {
+      background-image: var(--dark-image);
       position: absolute;
       opacity: 0.8;
       width: 100%;
       height: 100%;
       touch-action: none;
       backface-visibility: hidden;
+
+      :root[data-theme='light'] & {
+        background-image: var(--light-image);
+      }
 
       &:nth-child(1) {
         transform: rotateY(0deg) translateZ(vars.$cube-width-xss * 0.5);
@@ -154,14 +161,5 @@
         }
       }
     }
-  }
-}
-
-@keyframes rotateCube {
-  from {
-    transform: rotateX(0deg) rotateY(0deg);
-  }
-  to {
-    transform: rotateX(360deg) rotateY(360deg);
   }
 }

@@ -12,6 +12,14 @@
     background-image: url('~@/public/assets/images/mandala/notFound/darkNotFoundDesktop.svg');
   }
 
+  :root[data-theme='light'] & {
+    background-image: url('~@/public/assets/images/mandala/notFound/lightNotFoundMobile.svg');
+
+    @media (min-width: vars.$laptop) {
+      background-image: url('~@/public/assets/images/mandala/notFound/lightNotFoundDesktop.svg');
+    }
+  }
+
   .inner-content {
     text-transform: capitalize;
 
@@ -27,7 +35,7 @@
     .subtitle {
       font-size: 25px;
       text-decoration: none;
-      color: vars.$dark-gold-dark-theme;
+      color: vars.$theme-accent;
 
       &:hover {
         text-decoration: underline;
