@@ -1,3 +1,5 @@
+//simple bar
+import 'simplebar-react/dist/simplebar.min.css';
 import SimpleBar from 'simplebar-react';
 //constants
 import { skillsList } from '@/js/constants/constants';
