@@ -35,6 +35,7 @@ import SassIcon from '@/js/components/icons/skillsIcons/SassIcon';
 import BootstrapIcon from '@/js/components/icons/skillsIcons/BootstrapIcon';
 import MaterialDesignIcon from '@/js/components/icons/skillsIcons/MaterialDesignIcon';
 import NodeJsIcon from '@/js/components/icons/skillsIcons/NodeJsIcon';
+import PythonIcon from '@/js/components/icons/skillsIcons/PythonIcon';
 import MongoDBIcon from '@/js/components/icons/skillsIcons/MongoDBIcon';
 import DrupalIcon from '@/js/components/icons/skillsIcons/DrupalIcon';
 import WordPressIcon from '@/js/components/icons/skillsIcons/WordPressIcon';
@@ -77,6 +78,7 @@ export const skillsList = [
   { label: 'Bootstrap', icon: <BootstrapIcon /> },
   { label: `Material D`, icon: <MaterialDesignIcon /> },
   { label: 'NodeJS', icon: <NodeJsIcon /> },
+  { label: 'Python', icon: <PythonIcon /> },
   { label: 'MongoDB', icon: <MongoDBIcon /> },
   { label: 'Drupal', icon: <DrupalIcon /> },
   { label: 'WordPress', icon: <WordPressIcon /> },
