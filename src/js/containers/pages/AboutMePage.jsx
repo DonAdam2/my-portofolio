@@ -14,10 +14,9 @@ const AboutMePage = () => (
           <br />I have been creating and developing websites and web apps for{' '}
           {getYears('2017-06-01')}+ years.
           <br />I hold a Bachelor's degree in Computer Science.
-          <br />I completed one semester of a Master's program in Artificial Intelligence at the
-          European University of Cyprus.
           <br />I am currently a Master's student specializing in Artificial Intelligence at the
-          University of Bath.
+          University of Bath, having previously completed one semester of AI studies at the European
+          University of Cyprus.
           <br />I stay at the forefront of modern web development technologies and tools.
           <br />I provide beautiful, professional, and responsive websites.
         </p>
