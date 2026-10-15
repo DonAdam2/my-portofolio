@@ -2,7 +2,7 @@ const DarkBagIcon = ({ width }) => (
   <svg viewBox="0 0 1288 1101" style={{ width }} aria-hidden="true" focusable="false">
     <defs>
       <linearGradient
-        id="prefix__b"
+        id="bagIcon__b"
         x1={644.32}
         y1={1058.59}
         x2={644.32}
@@ -18,7 +18,7 @@ const DarkBagIcon = ({ width }) => (
         <stop offset={1} stopColor="var(--icon-ring-5)" />
       </linearGradient>
       <linearGradient
-        id="prefix__a"
+        id="bagIcon__a"
         x1={383.67}
         y1={397.82}
         x2={910.9}
@@ -33,12 +33,12 @@ const DarkBagIcon = ({ width }) => (
         <stop offset={1} stopColor="var(--icon-fill-6)" />
       </linearGradient>
       <linearGradient
-        id="prefix__c"
+        id="bagIcon__c"
         x1={383.67}
         y1={644.98}
         x2={910.9}
         y2={644.98}
-        xlinkHref="#prefix__a"
+        xlinkHref="#bagIcon__a"
       />
     </defs>
     <g data-name="Layer 11">
@@ -52,11 +52,11 @@ const DarkBagIcon = ({ width }) => (
         fill="var(--theme-bg)"
         strokeMiterlimit={10}
         strokeWidth={51.178}
-        stroke="url(#prefix__b)"
+        stroke="url(#bagIcon__b)"
       />
-      <path d="M739.56 378.27v-67.7H555v67.7H383.67v106.79H910.9V378.27z" fill="url(#prefix__a)" />
+      <path d="M739.56 378.27v-67.7H555v67.7H383.67v106.79H910.9V378.27z" fill="url(#bagIcon__a)" />
       <path
-        fill="url(#prefix__c)"
+        fill="url(#bagIcon__c)"
         d="M808.44 571.92h-46.99v-49.91H528.4v49.91h-47v-49.91h-97.73v245.94H910.9V522.01H808.44v49.91z"
       />
     </g>

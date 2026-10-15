@@ -36,4 +36,9 @@
   align-items: center;
   font-size: 20px;
   color: vars.$theme-text;
+
+  //matches the menu icons and theme toggle
+  :root[data-theme='light'] & {
+    color: vars.$theme-accent;
+  }
 }

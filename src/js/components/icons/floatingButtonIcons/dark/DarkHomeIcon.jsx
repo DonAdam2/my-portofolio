@@ -2,7 +2,7 @@ const DarkHomeIcon = ({ width }) => (
   <svg viewBox="0 0 1288 1101" style={{ width }} aria-hidden="true" focusable="false">
     <defs>
       <linearGradient
-        id="prefix__a"
+        id="homeIcon__a"
         x1={634.32}
         y1={1059.02}
         x2={634.32}
@@ -18,7 +18,7 @@ const DarkHomeIcon = ({ width }) => (
         <stop offset={1} stopColor="var(--icon-ring-5)" />
       </linearGradient>
       <linearGradient
-        id="prefix__b"
+        id="homeIcon__b"
         x1={348.43}
         y1={550.41}
         x2={900.14}
@@ -44,11 +44,11 @@ const DarkHomeIcon = ({ width }) => (
         fill="var(--theme-bg)"
         strokeMiterlimit={10}
         strokeWidth={52.031}
-        stroke="url(#prefix__a)"
+        stroke="url(#homeIcon__a)"
       />
       <path
         d="M804.3 792.06a17.85 17.85 0 0017.86-17.85v-190.9h47a31 31 0 0019.4-55.23l-60.66-52.61v-87.54a18.54 18.54 0 00-18.53-18.55H771a18.55 18.55 0 00-18.55 18.55V410l-107.86-93.65a31 31 0 00-40.64 0L359.11 528.88a31 31 0 0020.31 54.43h46.94v190.9a17.85 17.85 0 0017.87 17.85h105.49V653.27a35.51 35.51 0 0135.52-35.52h78.1a35.52 35.52 0 0135.52 35.52v138.79z"
-        fill="url(#prefix__b)"
+        fill="url(#homeIcon__b)"
       />
     </g>
   </svg>
