@@ -10,12 +10,12 @@ const DarkLogoIcon = ({ width }) => (
         gradientTransform="rotate(-45 638.32 529.849)"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset={0} stopColor="#f4b12d" />
-        <stop offset={0.23} stopColor="#f7e9cc" />
-        <stop offset={0.45} stopColor="#f4b12d" />
-        <stop offset={0.68} stopColor="#9b7019" />
-        <stop offset={0.88} stopColor="#e9a92a" />
-        <stop offset={1} stopColor="#f8ddad" />
+        <stop offset={0} stopColor="var(--icon-ring-1)" />
+        <stop offset={0.23} stopColor="var(--icon-ring-2)" />
+        <stop offset={0.45} stopColor="var(--icon-ring-1)" />
+        <stop offset={0.68} stopColor="var(--icon-ring-3)" />
+        <stop offset={0.88} stopColor="var(--icon-ring-4)" />
+        <stop offset={1} stopColor="var(--icon-ring-5)" />
       </linearGradient>
       <linearGradient
         id="prefix__a"
@@ -25,12 +25,12 @@ const DarkLogoIcon = ({ width }) => (
         y2={353.75}
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset={0} stopColor="#8c6034" />
-        <stop offset={0.14} stopColor="#a9824f" />
-        <stop offset={0.46} stopColor="#f2d893" />
-        <stop offset={0.51} stopColor="#ffe79f" />
-        <stop offset={0.67} stopColor="#e2c07c" />
-        <stop offset={1} stopColor="#a67033" />
+        <stop offset={0} stopColor="var(--icon-fill-1)" />
+        <stop offset={0.14} stopColor="var(--icon-fill-2)" />
+        <stop offset={0.46} stopColor="var(--icon-fill-3)" />
+        <stop offset={0.51} stopColor="var(--icon-fill-4)" />
+        <stop offset={0.67} stopColor="var(--icon-fill-5)" />
+        <stop offset={1} stopColor="var(--icon-fill-6)" />
       </linearGradient>
       <linearGradient
         id="prefix__c"
@@ -65,7 +65,7 @@ const DarkLogoIcon = ({ width }) => (
         height={992.3}
         rx={496.15}
         transform="rotate(45 638.319 529.85)"
-        fill="none"
+        fill="var(--theme-bg)"
         strokeMiterlimit={10}
         strokeWidth={52.773}
         stroke="url(#prefix__b)"

@@ -21,13 +21,21 @@
     background-position: right;
   }
 
+  :root[data-theme='light'] & {
+    background-image: url('~@/public/assets/images/mandala/skills/lightSkillsLaptop.svg');
+
+    @media (min-width: vars.$desktop) {
+      background-image: url('~@/public/assets/images/mandala/skills/lightSkillsDesktop.svg');
+    }
+  }
+
   .open-skills-btn {
     position: absolute;
     top: 23px;
-    right: 15px;
+    right: 60px;
     cursor: pointer;
     text-decoration: underline;
-    color: vars.$dark-gold-dark-theme;
+    color: vars.$theme-accent;
     background-color: transparent;
     outline: none;
     border: none;

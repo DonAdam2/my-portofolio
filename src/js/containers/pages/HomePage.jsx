@@ -16,7 +16,7 @@ const HomePage = () => {
             ]}
             typingSpeed={100}
             isInfinite={true}
-            color="#ffdb99"
+            color="var(--theme-text)"
           />
         </p>
       </div>

@@ -5,7 +5,7 @@
   perspective-origin: 50% 50%;
   width: 100%;
   display: flex;
-  background-color: rgba(27, 31, 34, 0.5);
+  background-color: vars.$theme-bg-overlay-light;
   touch-action: none;
 
   @media (min-width: vars.$laptop) {
@@ -27,12 +27,17 @@
     }
 
     .skill-wrapper {
+      background-image: var(--dark-image);
       position: absolute;
       opacity: 0.8;
       width: 100%;
       height: 100%;
       touch-action: none;
       backface-visibility: hidden;
+
+      :root[data-theme='light'] & {
+        background-image: var(--light-image);
+      }
 
       &:nth-child(1) {
         transform: rotateY(0deg) translateZ(vars.$cube-width-xss * 0.5);

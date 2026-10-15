@@ -1,7 +1,7 @@
 @use '../generic/variables' as vars;
 
 .skill {
-  background-color: vars.$grey-dark-theme;
+  background-color: vars.$theme-bg;
   margin: 10px;
   display: inline-flex;
   flex-direction: column;

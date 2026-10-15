@@ -184,7 +184,8 @@ const Cube = ({ images }) => {
             className="skill-wrapper"
             key={i}
             style={{
-              backgroundImage: `url(${el.image})`,
+              '--dark-image': `url(${el.image})`,
+              '--light-image': `url(${el.lightImage})`,
               touchAction: 'none',
             }}
           />

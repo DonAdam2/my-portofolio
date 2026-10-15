@@ -161,7 +161,8 @@ module.exports = async (env, options) => {
         //this is the output name of your service worker file
         swDest: 'serviceWorker.js',
         //exclude netlify _redirects file
-        exclude: ['_redirects'],
+        //exclude theme images (dark & light): they are cached at runtime, so only the active theme is stored
+        exclude: ['_redirects', /assets\/images\/(mandala|skillsIcons)\//],
       }),
     ],
   });

@@ -1,0 +1,70 @@
+//dark theme (default): black and gold
+:root {
+  --theme-bg: #1b1f22;
+  --theme-bg-overlay: rgba(27, 31, 34, 0.7);
+  --theme-bg-overlay-light: rgba(27, 31, 34, 0.5);
+  --theme-surface: #1b1f22;
+  --theme-text: #ffdb99;
+  --theme-text-strong: #f1f1f1;
+  --theme-accent: #e1a328;
+  --theme-primary-light: #ffdb99;
+  --theme-primary-dark: #e1a328;
+  --theme-text-shadow: #000000;
+  --theme-border-muted: grey;
+  --theme-copyright: #ffffff;
+  --theme-gate: #000000;
+  --theme-loader-bg: #000000;
+  --theme-modal-backdrop: rgba(0, 0, 0, 0.7);
+  --theme-modal-shadow: rgba(0, 0, 0, 0.2);
+
+  //metallic gradients used by the menu and footer icons
+  --icon-ring-1: #f4b12d;
+  --icon-ring-2: #f7e9cc;
+  --icon-ring-3: #9b7019;
+  --icon-ring-4: #e9a92a;
+  --icon-ring-5: #f8ddad;
+  --icon-fill-1: #8c6034;
+  --icon-fill-2: #a9824f;
+  --icon-fill-3: #f2d893;
+  --icon-fill-4: #ffe79f;
+  --icon-fill-5: #e2c07c;
+  --icon-fill-6: #a67033;
+  --icon-bg: #1b1b1b;
+
+  color-scheme: dark;
+}
+
+//light theme: white and brown
+:root[data-theme='light'] {
+  --theme-bg: #faf6f0;
+  --theme-bg-overlay: rgba(250, 246, 240, 0.7);
+  --theme-bg-overlay-light: rgba(250, 246, 240, 0.5);
+  --theme-surface: #ffffff;
+  --theme-text: #6b4226;
+  --theme-text-strong: #3b2a1e;
+  --theme-accent: #895328;
+  --theme-primary-light: #b17438;
+  --theme-primary-dark: #6b4226;
+  --theme-text-shadow: #ffffff;
+  --theme-border-muted: #d9c7b0;
+  --theme-copyright: #6b4226;
+  --theme-gate: #5c3d24;
+  --theme-loader-bg: #faf6f0;
+  --theme-modal-backdrop: rgba(59, 42, 30, 0.45);
+  --theme-modal-shadow: rgba(92, 61, 36, 0.15);
+
+  --icon-ring-1: #985b29;
+  --icon-ring-2: #cf9d5e;
+  --icon-ring-3: #5c351c;
+  --icon-ring-4: #8f5628;
+  --icon-ring-5: #cd924c;
+  --icon-fill-1: #5f3921;
+  --icon-fill-2: #794d2d;
+  --icon-fill-3: #c7853c;
+  --icon-fill-4: #d08f44;
+  --icon-fill-5: #b17438;
+  --icon-fill-6: #6c4224;
+  --icon-bg: #faf6f0;
+
+  color-scheme: light;
+}

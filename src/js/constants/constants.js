@@ -4,6 +4,12 @@ import darkTypescriptIcon from '@/public/assets/images/skillsIcons/dark/darkType
 import darkStylesIcon from '@/public/assets/images/skillsIcons/dark/darkStylesIcon.svg';
 import darkBackendIcon from '@/public/assets/images/skillsIcons/dark/darkBackendIcon.svg';
 import darkFrontendIcon from '@/public/assets/images/skillsIcons/dark/darkFrontendIcon.svg';
+import lightJavaScriptIcon from '@/public/assets/images/skillsIcons/light/lightJavaScriptIcon.svg';
+import lightCmsIcon from '@/public/assets/images/skillsIcons/light/lightCmsIcon.svg';
+import lightTypescriptIcon from '@/public/assets/images/skillsIcons/light/lightTypescriptIcon.svg';
+import lightStylesIcon from '@/public/assets/images/skillsIcons/light/lightStylesIcon.svg';
+import lightBackendIcon from '@/public/assets/images/skillsIcons/light/lightBackendIcon.svg';
+import lightFrontendIcon from '@/public/assets/images/skillsIcons/light/lightFrontendIcon.svg';
 import signItImage from '@/public/assets/images/signIt.png';
 import flowardPremiumImage from '@/public/assets/images/flowardPremium.png';
 import flowardSSOImage from '@/public/assets/images/flowardSSO.png';
@@ -41,12 +47,12 @@ import JiraIcon from '@/js/components/icons/skillsIcons/JiraIcon';
 export const myPhoneNumber = '97691992';
 
 export const skillsImages = [
-  { image: darkJavaScriptIcon },
-  { image: darkCmsIcon },
-  { image: darkTypescriptIcon },
-  { image: darkStylesIcon },
-  { image: darkBackendIcon },
-  { image: darkFrontendIcon },
+  { image: darkJavaScriptIcon, lightImage: lightJavaScriptIcon },
+  { image: darkCmsIcon, lightImage: lightCmsIcon },
+  { image: darkTypescriptIcon, lightImage: lightTypescriptIcon },
+  { image: darkStylesIcon, lightImage: lightStylesIcon },
+  { image: darkBackendIcon, lightImage: lightBackendIcon },
+  { image: darkFrontendIcon, lightImage: lightFrontendIcon },
 ];
 
 export const skillsList = [

@@ -10,12 +10,12 @@ const DarkCodePenIcon = () => (
         gradientTransform="rotate(-45 630.73 560.703)"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset={0} stopColor="#f4b12d" />
-        <stop offset={0.23} stopColor="#f7e9cc" />
-        <stop offset={0.45} stopColor="#f4b12d" />
-        <stop offset={0.68} stopColor="#9b7019" />
-        <stop offset={0.88} stopColor="#e9a92a" />
-        <stop offset={1} stopColor="#f8ddad" />
+        <stop offset={0} stopColor="var(--icon-ring-1)" />
+        <stop offset={0.23} stopColor="var(--icon-ring-2)" />
+        <stop offset={0.45} stopColor="var(--icon-ring-1)" />
+        <stop offset={0.68} stopColor="var(--icon-ring-3)" />
+        <stop offset={0.88} stopColor="var(--icon-ring-4)" />
+        <stop offset={1} stopColor="var(--icon-ring-5)" />
       </linearGradient>
       <linearGradient
         id="prefix__b"
@@ -41,25 +41,25 @@ const DarkCodePenIcon = () => (
         y2={394}
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset={0} stopColor="#8c6034" />
-        <stop offset={0.14} stopColor="#a9824f" />
-        <stop offset={0.46} stopColor="#f2d893" />
-        <stop offset={0.51} stopColor="#ffe79f" />
-        <stop offset={0.67} stopColor="#e2c07c" />
-        <stop offset={1} stopColor="#a67033" />
+        <stop offset={0} stopColor="var(--icon-fill-1)" />
+        <stop offset={0.14} stopColor="var(--icon-fill-2)" />
+        <stop offset={0.46} stopColor="var(--icon-fill-3)" />
+        <stop offset={0.51} stopColor="var(--icon-fill-4)" />
+        <stop offset={0.67} stopColor="var(--icon-fill-5)" />
+        <stop offset={1} stopColor="var(--icon-fill-6)" />
       </linearGradient>
     </defs>
     <g data-name="Layer 9">
       <path
         transform="rotate(45 630.72 560.703)"
-        fill="#1b1b1b"
+        fill="var(--icon-bg)"
         strokeMiterlimit={10}
         strokeWidth={37.779}
         stroke="url(#prefix__a)"
         d="M275.55 205.52h710.36v710.36H275.55z"
       />
       <path
-        fill="#1b1b1b"
+        fill="var(--icon-bg)"
         strokeMiterlimit={10}
         strokeWidth={37.779}
         stroke="url(#prefix__b)"

@@ -9,7 +9,7 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   z-index: 101;
-  background-color: vars.$black;
+  background-color: vars.$theme-loader-bg;
   opacity: 1;
   transition: opacity 0.3s;
   display: flex;
@@ -31,7 +31,7 @@
       position: absolute;
       top: 0;
       left: calc(50% - 10px);
-      background-color: vars.$dark-gold-dark-theme;
+      background-color: vars.$theme-accent;
       animation: squaremove 1s ease-in-out infinite;
     }
 

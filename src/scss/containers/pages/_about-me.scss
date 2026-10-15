@@ -2,6 +2,10 @@
 
 .about-me {
   background-image: url('~@/public/assets/images/mandala/about/darkAbout.svg');
+
+  :root[data-theme='light'] & {
+    background-image: url('~@/public/assets/images/mandala/about/lightAbout.svg');
+  }
   background-size: cover;
   align-items: center;
 
@@ -10,7 +14,7 @@
   }
 
   .content-wrapper {
-    background-color: rgba(27, 31, 34, 0.7);
+    background-color: vars.$theme-bg-overlay;
     height: 100%;
     display: flex;
     flex-basis: 100%;
@@ -29,7 +33,7 @@
       display: block;
       background-color: transparent !important;
       flex-basis: 100%;
-      color: #f1f1f1;
+      color: vars.$theme-text-strong;
 
       @media (min-width: vars.$tablet) {
         max-height: 900px;
@@ -52,8 +56,8 @@
       }
 
       .main-text {
-        color: vars.$dark-gold-dark-theme;
-        fill: vars.$dark-gold-dark-theme;
+        color: vars.$theme-accent;
+        fill: vars.$theme-accent;
       }
 
       svg {
@@ -76,7 +80,7 @@
       }
 
       a {
-        color: #f1f1f1;
+        color: vars.$theme-text-strong;
       }
     }
   }
