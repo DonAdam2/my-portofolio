@@ -21,9 +21,11 @@
     position: relative;
     cursor: grab;
     touch-action: none;
+    // keeps the cube on its own compositor layer, so rotating it doesn't repaint the faces
+    will-change: transform;
 
-    &.auto-rotate {
-      animation: rotateCube 10s linear infinite;
+    &.is-dragging {
+      cursor: grabbing;
     }
 
     .skill-wrapper {
@@ -159,14 +161,5 @@
         }
       }
     }
-  }
-}
-
-@keyframes rotateCube {
-  from {
-    transform: rotateX(0deg) rotateY(0deg);
-  }
-  to {
-    transform: rotateX(360deg) rotateY(360deg);
   }
 }
